@@ -1,0 +1,96 @@
+@media screen and (min-width:768px) {
+    #about{
+        position: relative;
+        height:max-content;
+        background-image: linear-gradient(0deg,rgba(255,255,255,0.9),rgba(255,255,255,0.9)), url(../images/back.jpg);/**/
+        font-family: 'Quicksand', sans-serif;
+    }
+    #aboutdesc{
+        height:100vh;
+        width:100%;
+        display: flex;
+        overflow: visible;
+    }
+    #desccol{
+        padding-top:5vw;
+        padding-left: 10vw;
+        padding-right: 2vw;
+        width:50vw;
+        height:auto;
+        font-size: 15px;
+    }
+    .two{
+        height:auto;
+    }
+    #vccut{
+        height:auto;
+        width:30vw;
+        padding-top:5vw;
+        padding-right:10vw;
+    }
+    .readmore:hover{
+        background-color: white !important;
+        color:rgb(203, 45, 45) !important;
+        border:1px solid grey !important;
+        transition: all 0.4s;
+    }
+    .aboutheads::after{
+        content: "";
+        display: block;
+        width: inherit;
+        height:3px;
+        background-color: rgb(203, 45, 45);
+    }
+}
+ @media screen and (max-width:768px)
+{
+    #about{
+        width:100%;
+        height:auto;
+        background-image: linear-gradient(0deg,rgba(255,255,255,0.9),rgba(255,255,255,0.9)), url(../images/back.jpg);
+        font-family: 'Quicksand', sans-serif;
+        overflow-y: hidden;
+        display: flex;
+        justify-content: center;
+    }
+   #aboutdesc{
+        height:max-content;
+        width:100%;
+        display: flex;
+        flex-direction: column;
+    }
+    #desccol{
+        padding-top:5vw;
+        margin-left: 20px;
+        margin-right: 20px;
+        width:fit-content;
+        height:auto;
+        font-size: 15px;
+    }
+    .two{
+        height:auto;
+    }
+    #vccut{
+        height:auto;
+        width:fit-content;
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+        margin-left: 20px;
+        margin-right: 20px;
+        /* backdrop-filter: blur(1px); */
+    }
+    .readmore:hover{
+        background-color: white !important;
+        color:rgb(203, 45, 45) !important;
+        border:1px solid grey !important;
+        transition: all 0.4s;
+    }
+    .aboutheads::after{
+        content: "";
+        display: block;
+        width: inherit;
+        height:3px;
+        background-color: rgb(203, 45, 45);
+    }
+}

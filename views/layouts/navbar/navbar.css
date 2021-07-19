@@ -1,0 +1,113 @@
+body{
+    margin:0px;
+}
+#navbar{
+    display:flex;
+    flex-direction: row;
+    background-color: rgba(203, 45, 45,0);
+    width:100%;
+    height:auto;
+    justify-content: space-between;
+    margin-top: 0px;
+    position:sticky;
+    z-index: 100;
+    top:0px;
+    transition: background-color 0.6s;
+}
+.navcontent{
+    display:flex;
+    flex-direction: row;
+    font-family: 'Raleway', sans-serif;
+    color:white;
+    height:auto;
+    font-size:14px;
+}
+#toggle{
+    font-size: 17px;
+    display:none;
+    color:white;
+}
+#shrinkbar{
+    padding: 16px;
+}
+.navitems{
+    display:initial;
+    text-align: center;
+    height:14px;
+    background-repeat: no-repeat;
+    background-image:linear-gradient(to bottom,
+                    transparent 0%,
+                    transparent 50%,
+                    white 50%,
+                    white 100%);
+    background-size:100% 200%;
+    transition: 0.3s background-position ease-in,0.5s color;
+    align-content: center;
+    /* text-shadow: 0px 0px 3px white; */
+}
+@keyframes phisal{
+    0%{
+        margin-left:-120%;
+    }
+    50%{
+        margin-left:-120%;
+    }
+    100%{
+        margin-left:0%;
+    }
+}
+.navitems:hover{
+    background-position:100% 100%;
+    color:#CB2D2D;
+}
+@media screen and (max-width:768px) {
+    #navbar{
+        display:flex;
+        flex-direction: row;
+        background-color: rgba(203, 45, 45,0);
+        width:100%;
+        height:auto;
+        justify-content: space-between;
+        margin-top: 0px;
+        position:sticky;
+        z-index: 100;
+        top:0px;
+        transition: background-color 0.6s;
+    }
+    .navcontent{
+        display:flex;
+        flex-direction: row;
+        font-family: 'Poppins', sans-serif;
+        color:white;
+        height:auto;
+        font-size:14px;
+    }
+    #toggle{
+        font-size: 17px;
+        display:none;
+        color:white;
+    }
+    #shrinkbar{
+        padding: 16px;
+        display: flex;
+        justify-content: flex-end;
+    }
+    .navitems{
+        display:initial;
+        text-align: center;
+        height:14px;
+        align-content: center;
+        text-shadow: 0px 0px 3px white;
+    }
+    @keyframes phisal{
+        0%{
+            margin-left:-140%;
+        }
+        50%{
+            margin-left:-140%;
+        }
+        100%{
+            margin-left:0%;
+        }
+    }
+}

@@ -1,0 +1,27 @@
+#committee{
+    width:100%;
+    background-image: linear-gradient(0deg,rgba(255,255,255,0.9),rgba(255,255,255,0.9)), url(../images/back.jpg);
+   
+}
+#album{
+    height:75vh;
+    width:60%;
+    padding-left: 100px;
+    padding-top:90px;
+    padding-bottom:90px;
+    /* border:2px solid black; */
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.album1{
+    width:100%;
+    height:46%;
+    /* border:2px solid black; */
+    display:flex;
+    justify-content: space-between;
+}
+.commembers{
+    border:2px solid black;
+    box-shadow: 15px 15px 25px rgba(83, 83, 83,0.7);
+}

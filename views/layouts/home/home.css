@@ -1,0 +1,559 @@
+@media screen and (min-width: 768px)
+{
+html{
+    scroll-behavior: smooth;
+}
+body{
+    height:200%;
+}
+/*displaytext*/
+.intro {
+    display: flex;
+    color: white;
+    height: 100%;
+    align-items:flex-start;
+    
+    justify-content: center;
+    background-size: cover;
+    background-position:center;
+    font-family: 'Bungee Shade', cursive;
+    font-size: 5vw;
+  }
+  .typing {
+    height: auto;
+    margin-left: 10px;
+    position: relative;
+  }
+  .typing::after {
+    content: "";
+    position: absolute;
+    right: -5px;
+    width: 1px;
+    height: 100%;
+    border-right: 2px solid white;
+    animation: blink 0.5s ease infinite;
+  }
+  @keyframes blink {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+/*displaytext*/
+/*slideshow*/
+#slideshow{
+    width:100%; 
+    height:100vh;
+    position:absolute; 
+    z-index: -10;
+    overflow: hidden;
+}
+#slideshow::after{
+    content:"";
+    background-color: rgba(7, 7, 7, 0.6);
+    mix-blend-mode: multiply;
+    height:100vh;
+    width:100%;
+    top:0px;
+    position: absolute;
+}
+.backsgroup{
+    width:100%;
+    height:100%;
+    background-attachment:fixed;
+}
+#back1{
+    background-image: url(../images/Capture9.JPG);
+    background-size: cover;
+    position: absolute;
+    z-index: -100;
+    animation: back1op 50s infinite;
+}
+@keyframes back1op {
+    0%{
+        opacity: 1;
+    }
+    18%{
+        opacity: 1;
+    }
+    20%{
+        opacity:0;
+    }
+    95%{
+        opacity: 0;
+    }
+}
+#back2{
+    background-image: url(../images/Capture8.JPG);
+    background-size: cover;
+    position: absolute;
+    z-index: -200;
+    animation: back2op 50s infinite;
+}
+@keyframes back2op {
+    20%{
+        opacity:1;
+    }
+    38%{
+        opacity:1;
+    }
+    40%{
+        opacity:0;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+#back3{
+    background-image: url(../images/Capture7.JPG);
+    background-size: cover;
+    position: absolute;
+    z-index: -300;
+    animation: back3op 50s infinite;
+}
+@keyframes back3op {
+    40%{
+        opacity:1;
+    }
+    58%{
+        opacity:1;
+    }
+    60%{
+        opacity:0;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+#back4{
+    background-image: url(../images/Capture6.JPG);
+    background-size: cover;
+    position: absolute;
+    z-index: -400;
+    animation: back4op 50s infinite;
+}
+@keyframes back4op {
+    60%{
+        opacity:1;
+    }
+    78%{
+        opacity:1;
+    }
+    80%{
+        opacity:0;
+    }
+    100%{
+        opacity:0;
+    }
+}
+#back5{
+    background-image: url(../images/Capture5.JPG);
+    background-size: cover;
+    position: absolute;
+    z-index: -500;
+}
+
+/*slideshow*/
+
+body{
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-size:100%;
+    animation: changeback 20s infinite;
+    transition: background-image 1s infinite;
+}
+
+#ad{
+    width:100%;
+    height:auto;
+    display:flex;
+    flex-direction: row;
+    position: relative;
+    font-family: 'Quicksand', sans-serif;
+    justify-content: space-between;
+}
+#logohead{
+    color:white;
+    padding-left:30px;
+    padding-top:20px;
+    font-size:30px;
+    display:flex;
+    flex-direction: row;
+}
+#location{
+    color:white;
+    display:flex;
+    flex-direction: row;
+    padding:30px;
+}
+#slidehead{
+    text-shadow: 0px 0px 4px white;
+    height:90px;
+    margin-top: 25px;
+    display:flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+#eng{
+    animation: engslip 15s infinite ease-out;
+}
+#hin{
+    position: absolute;
+    z-index: -2;
+    animation: hinslip 15s infinite ease-out;
+}
+@keyframes engslip{
+    0%{
+        margin-top: 0px;
+        opacity:1;
+    }
+    48%{
+        margin-top: 0px;
+        opacity:1;
+    }
+    50%{
+        margin-top: -20px;
+        opacity:0.5;
+    }
+    52%{
+        margin-top: 0px;
+        opacity:0;
+    }
+    96%{
+        margin-top: 0px;
+        opacity:0;
+    }
+    98%{
+        margin-top:20px;
+        opacity:0.5;
+    }
+    100%{
+        margin-top: 0px;
+        opacity:1;
+    }
+}
+@keyframes hinslip {
+    0%{
+        margin-top: 0px;
+        opacity:0;
+    }
+    48%{
+        margin-top: 0px;
+        opacity:0;
+    }
+    50%{
+        margin-top: 20px;
+        opacity:0.5;
+    }
+    52%{
+        margin-top: 0px;
+        opacity:1;
+    }
+    96%{
+        margin-top: 0px;
+        opacity:1;
+    }
+    98%{
+        margin-top: -20px;
+        opacity:0.5;
+    }
+    100%{
+        margin-top: 0px;
+        opacity:0;
+    }
+}
+/*home*/
+
+/*about*/
+#home{
+    position: relative;
+    height:69vh;
+}
+#events{
+    
+}
+}
+@media screen and (max-width:768px) {
+    html{
+        scroll-behavior: smooth;
+    }
+
+    /*displaytext*/
+    .intro {
+        display: flex;
+        color: white;
+        height: 300px;
+        align-items:flex-start;
+        
+        justify-content: center;
+        background-size: cover;
+        background-position:center;
+        font-family: 'Bungee Shade', cursive;
+        font-size: 40px;
+        text-align: center;
+      }
+      .typing {
+        height: auto;
+        margin-left: 10px;
+        position: relative;
+      }
+      .typing::after {
+        content: "";
+        position: absolute;
+        right: -5px;
+        width: 1px;
+        height: 100%;
+        border-right: 2px solid white;
+        animation: blink 0.5s ease infinite;
+      }
+      @keyframes blink {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+    /*displaytext*/
+    /*slideshow*/
+    #slideshow{
+        width:100%; 
+        height:100vh;
+        position:absolute; 
+        z-index: -10;
+        overflow: hidden;
+    }
+    #slideshow::after{
+        content:"";
+        background-color: rgba(7, 7, 7, 0.6);
+        mix-blend-mode: multiply;
+        height:100vh;
+        width:100%;
+        top:0px;
+        position: absolute;
+    }
+    .backsgroup{
+        width:100%;
+        height:100%;
+        background-attachment:fixed;
+        align-content: center;
+    }
+    #back1{
+        background-image: url(../images/Capture9.JPG);
+        background-size: cover;
+        position: absolute;
+        z-index: -100;
+        animation: back1op 50s infinite;
+        background-position: center;
+    }
+    @keyframes back1op {
+        0%{
+            opacity: 1;
+        }
+        18%{
+            opacity: 1;
+        }
+        20%{
+            opacity:0;
+        }
+        95%{
+            opacity: 0;
+        }
+    }
+    #back2{
+        background-image: url(../images/Capture8.JPG);
+        background-size: cover;
+        position: absolute;
+        z-index: -200;
+        animation: back2op 50s infinite;
+        background-position: center;
+    }
+    @keyframes back2op {
+        20%{
+            opacity:1;
+        }
+        38%{
+            opacity:1;
+        }
+        40%{
+            opacity:0;
+        }
+        100%{
+            opacity: 0;
+        }
+    }
+    #back3{
+        background-image: url(../images/Capture7.JPG);
+        background-size: cover;
+        position: absolute;
+        z-index: -300;
+        animation: back3op 50s infinite;
+        background-position: center;
+    }
+    @keyframes back3op {
+        40%{
+            opacity:1;
+        }
+        58%{
+            opacity:1;
+        }
+        60%{
+            opacity:0;
+        }
+        100%{
+            opacity: 0;
+        }
+    }
+    #back4{
+        background-image: url(../images/Capture6.JPG);
+        background-size: cover;
+        position: absolute;
+        z-index: -400;
+        animation: back4op 50s infinite;
+        background-position: center;
+    }
+    @keyframes back4op {
+        60%{
+            opacity:1;
+        }
+        78%{
+            opacity:1;
+        }
+        80%{
+            opacity:0;
+        }
+        100%{
+            opacity:0;
+        }
+    }
+    #back5{
+        background-image: url(../images/Capture5.JPG);
+        background-size: cover;
+        position: absolute;
+        z-index: -500;
+        background-position: center;
+    }
+    
+    /*slideshow*/
+    
+    body{
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-size:100%;
+        animation: changeback 20s infinite;
+        transition: background-image 1s infinite;
+    }
+    
+    #ad{
+        width:100%;
+        height:auto;
+        display:flex;
+        flex-direction: row;
+        position: relative;
+        font-family: 'Quicksand', sans-serif;
+        justify-content: center;
+    }
+    #ggvlogo{
+        width:80px !important;
+        height:80px !important;
+        padding-right:1vw;
+        margin-top: 30px;
+    }
+    #logohead{
+        color:white;
+        font-size:30px;
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    #location{
+        display: none;
+    }
+    #slidehead{
+        text-shadow: 0px 0px 4px white;
+        height:90px;
+        margin-top: 25px;
+        display:flex;
+        flex-direction: column;
+        overflow: hidden;
+    }
+    #eng{
+        animation: engslip 15s infinite ease-out;
+    }
+    #hin{
+        align-self: center;
+        position: absolute;
+        z-index: -2;
+        animation: hinslip 15s infinite ease-out;
+    }
+    @keyframes engslip{
+        0%{
+            margin-top: 0px;
+            opacity:1;
+        }
+        48%{
+            margin-top: 0px;
+            opacity:1;
+        }
+        50%{
+            margin-top: -20px;
+            opacity:0.5;
+        }
+        52%{
+            margin-top: 0px;
+            opacity:0;
+        }
+        96%{
+            margin-top: 0px;
+            opacity:0;
+        }
+        98%{
+            margin-top:20px;
+            opacity:0.5;
+        }
+        100%{
+            margin-top: 0px;
+            opacity:1;
+        }
+    }
+    @keyframes hinslip {
+        0%{
+            margin-top: 0px;
+            opacity:0;
+        }
+        48%{
+            margin-top: 0px;
+            opacity:0;
+        }
+        50%{
+            margin-top: 20px;
+            opacity:0.5;
+        }
+        52%{
+            margin-top: 0px;
+            opacity:1;
+        }
+        96%{
+            margin-top: 0px;
+            opacity:1;
+        }
+        98%{
+            margin-top: -20px;
+            opacity:0.5;
+        }
+        100%{
+            margin-top: 0px;
+            opacity:0;
+        }
+    }
+    /*home*/
+    
+    /*about*/
+    #home{
+        z-index: 1000;
+        height:max-content;
+    }
+}
