@@ -12,9 +12,10 @@
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" &display=swap rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="navbar/navbar.css">
     <link rel="stylesheet" href="loading/loading.css">
@@ -22,6 +23,7 @@
     <link rel="stylesheet" href="home/home.css">
     <link rel="stylesheet" href="about/about.css">
     <link rel="stylesheet" href="committee/committee.css">
+    <link rel="stylesheet" href="footer/footer.css">
     <style>
     </style>
 </head>
@@ -93,7 +95,8 @@
                         </p>
                     </div>
                     <div class=two>
-                        <h1 class=aboutheads>ABOUT <span style="color:rgb(203, 45, 45);">NATIONAL CENTRE FOR ACCELARATOR BASED
+                        <h1 class=aboutheads>ABOUT <span style="color:rgb(203, 45, 45);">NATIONAL CENTRE FOR ACCELARATOR
+                                BASED
                                 RESEARCH</span></h1>
                         <p>Guru Ghasidas Vishwavidyalaya established a 3.0 MV pelletron accelerator(9SDH-4, NEC).This is
                             accordance with the Memorandum of Understanding (MoU) signed between Board of Research in
@@ -118,17 +121,19 @@
                     </div>
                 </div>
                 <div id=vccut>
-                    <h1 class=aboutheads>MESSAGE FROM THE <span style="color:rgb(203, 45, 45);">VICE CHANCELLOR</span></h1>
+                    <h1 class=aboutheads>MESSAGE FROM THE <span style="color:rgb(203, 45, 45);">VICE CHANCELLOR</span>
+                    </h1>
                     <p style="display: flex; flex-direction: row;"><img
                             style="height:fit-content; margin-right: 20px; border-left: 8px  solid rgb(203, 45, 45); border-bottom: 8px  solid rgb(203, 45, 45);"
                             src="images/VC.PNG" alt=" ">
                     <h2>Prof. Anjila Gupta</h2>
                     I feel privileged as I greet you at the website of Guru Ghasidas Vishwavidyalaya. This
                     Central University, named after the great Satnami Saint and social reformer, Guru Ghasidas ji, is
-                    nestled in the state of Chhattisgarh in India. It’s a matter of pride to be in Chhattisgarh. <button class=readmore
-                    style="margin-left: 20px; background-color: rgb(203, 45, 45); border:0px; height: 40px; color: ivory; border-radius: 3px; border:1px solid transparent; cursor: pointer;"><span
-                        style="padding: 20px; font-family: 'Quicksand', sans-serif;">Read More</span></button></p>
-                    
+                    nestled in the state of Chhattisgarh in India. It’s a matter of pride to be in Chhattisgarh. <button
+                        class=readmore
+                        style="margin-left: 17px; background-color: rgb(203, 45, 45); border:0px; height: 35px; color: ivory; border-radius: 2px; border:1px solid transparent; cursor: pointer;"><span
+                            style="padding: 17px; font-family: 'Quicksand', sans-serif;">Read More</span></button></p>
+
                 </div>
             </div>
         </div>
@@ -147,9 +152,33 @@
                     <div style="height:50%; width:22%;" class=commembers></div>
                 </div>
             </div>
-        </div>
+            <div id="comhead">
+                <p style="font-size:5.5vw; font-family: 'Fredericka the Great', cursive; line-height: 64px;">The <span
+                        style="color:rgb(203, 45, 45);">committee</span></p>
+                        <p>The world gets more complicated with every passing day. We get involved with our families and work
+                            and suddenly we’ve lost touch with those outside that close circle. The Alumni Association can help
+                            you stay connected to those friends and to the vast resources available here, from the faculty that
+                            taught and guided you to our libraries, seminars and symposia, web sites, social media and an
+                            extraordinary variety of “stay connected” programs designed with you in mind. They are all designed
+                            to support you as you pursue your post-academic life and career.</p>
+            </div>
+            <div id=contactsofmems></div>
+            </div>
+            <div id="footer">
+                <div class="wider" style=" border-right:3px dashed rgba(240, 255, 255, 0.5);">
+                    <img style="width:22%;height:auto;" src="/images/ggvlogo.png" alt="">
+                    <div style="width:85%; height:13%; text-align:center;">
+                        <div id=location style=" display:flex; flex-direction: column; font-size: 14px;">Guru Ghasidas Vishwavidyalaya<br><span style="color:rgba(255, 255, 255, 0.5);">Koni, Bilaspur - 495006, C.G., India</span></div>
+                        <div class=contactdetails><i style="margin-right: 1vw;" class="bi bi-telephone-fill"></i> 07752 260454</div>
+                        <div class=contactdetails><i style="margin-right: 1vw;" class="bi bi-envelope-fill"></i> ggvalumni@gmail.com</div>
+                        <div class=contactdetails><i style="margin-right: 1vw;" class="bi bi-phone-fill"></i> 09425280380</div>
+                    </div>
+                </div>
+                <div class="thinner"></div>
+                <div class="thinner"></div>
+                <div class="wider"></div>
+            </div>
 
-        <%- include('../partials/footer') %>
             <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
                 integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
                 crossorigin="anonymous"></script>

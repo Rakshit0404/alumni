@@ -6,18 +6,18 @@
         font-family: 'Quicksand', sans-serif;
     }
     #aboutdesc{
-        height:100vh;
+        height:max-content;
         width:100%;
         display: flex;
         overflow: visible;
     }
     #desccol{
         padding-top:5vw;
-        padding-left: 10vw;
-        padding-right: 2vw;
+        padding-left: 8vw;
+        padding-right: 3vw;
         width:50vw;
         height:auto;
-        font-size: 15px;
+        font-size: 14px;
     }
     .two{
         height:auto;
@@ -26,7 +26,8 @@
         height:auto;
         width:30vw;
         padding-top:5vw;
-        padding-right:10vw;
+        padding-right:8vw;
+        font-size: 14px;
     }
     .readmore:hover{
         background-color: white !important;

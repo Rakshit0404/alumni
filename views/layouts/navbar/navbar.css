@@ -20,7 +20,7 @@ body{
     font-family: 'Raleway', sans-serif;
     color:white;
     height:auto;
-    font-size:14px;
+    font-size:12px;
 }
 #toggle{
     font-size: 17px;
@@ -28,12 +28,12 @@ body{
     color:white;
 }
 #shrinkbar{
-    padding: 16px;
+    padding: 14px;
 }
 .navitems{
     display:initial;
     text-align: center;
-    height:14px;
+    height:13px;
     background-repeat: no-repeat;
     background-image:linear-gradient(to bottom,
                     transparent 0%,
@@ -41,9 +41,12 @@ body{
                     white 50%,
                     white 100%);
     background-size:100% 200%;
-    transition: 0.3s background-position ease-in,0.5s color;
+    transition: 0.2s background-position ease-in,0.5s color;
     align-content: center;
     /* text-shadow: 0px 0px 3px white; */
+}
+.bi{
+    margin-right: 3px;
 }
 @keyframes phisal{
     0%{
@@ -58,7 +61,7 @@ body{
 }
 .navitems:hover{
     background-position:100% 100%;
-    color:#CB2D2D;
+    color:#C21717;
 }
 @media screen and (max-width:768px) {
     #navbar{

@@ -8,7 +8,7 @@ const body= document.querySelector('body');
 window.addEventListener('scroll',()=>{
     if(navbar.getBoundingClientRect().top==body.scrollTop)
     {
-        navbar.style.backgroundColor="rgba(203, 45, 45,1)";
+        navbar.style.backgroundColor="#C21717";
     }
     else if(navbar.getBoundingClientRect().top>body.scrollTop)
     {

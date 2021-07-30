@@ -1,0 +1,26 @@
+#footer{
+    width:100%;
+    height:60vh;
+    background-color: rgb(30, 29, 46);
+    display:flex;
+    flex-direction: row;
+    color:white;
+    font-family: 'Quicksand', sans-serif;
+}
+.wider{
+    height:83%;
+    width:28%;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 25px;
+    margin-top: 8vh;
+    font-size:14px;
+}
+.thinner{
+    height:100%;
+    width:22%;
+}
+.contactdetails{
+    color:rgba(240, 255, 255, 0.5);
+}

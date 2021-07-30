@@ -4,20 +4,30 @@ html{
     scroll-behavior: smooth;
 }
 body{
-    height:200%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-size:100%;
+    animation: changeback 20s infinite;
+    transition: background-image 1s infinite;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    text-shadow: 0px 0px 2px rgba(165, 159, 159,0.5);
+    display:flex;
+    flex-direction: column;
 }
+
 /*displaytext*/
 .intro {
     display: flex;
     color: white;
     height: 100%;
     align-items:flex-start;
-    
     justify-content: center;
     background-size: cover;
     background-position:center;
-    font-family: 'Bungee Shade', cursive;
-    font-size: 5vw;
+    font-family: 'Monoton', cursive;
+    font-size: 4.5vw;
+    word-spacing: 17px;
   }
   .typing {
     height: auto;
@@ -42,6 +52,19 @@ body{
     }
   }
 /*displaytext*/
+
+/*eventsbar*/
+#events{
+    width:80%;
+    position:absolute;
+    z-index: 90;
+    height:200px;
+    background-color: #C21717;
+    margin-top: -170px;
+    margin-left: 10%;
+}
+/*eventsbar*/
+
 /*slideshow*/
 #slideshow{
     width:100%; 
@@ -157,13 +180,7 @@ body{
 
 /*slideshow*/
 
-body{
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-size:100%;
-    animation: changeback 20s infinite;
-    transition: background-image 1s infinite;
-}
+
 
 #ad{
     width:100%;
@@ -173,13 +190,14 @@ body{
     position: relative;
     font-family: 'Quicksand', sans-serif;
     justify-content: space-between;
+    
 }
 #logohead{
     color:white;
     padding-left:30px;
     padding-top:20px;
-    font-size:30px;
     display:flex;
+    font-size:25px;
     flex-direction: row;
 }
 #location{
@@ -187,9 +205,10 @@ body{
     display:flex;
     flex-direction: row;
     padding:30px;
+    font-size: medium;
 }
 #slidehead{
-    text-shadow: 0px 0px 4px white;
+    text-shadow: 0px 0px 3px white;
     height:90px;
     margin-top: 25px;
     display:flex;
@@ -271,9 +290,6 @@ body{
     position: relative;
     height:69vh;
 }
-#events{
-    
-}
 }
 @media screen and (max-width:768px) {
     html{
@@ -286,13 +302,13 @@ body{
         color: white;
         height: 300px;
         align-items:flex-start;
-        
         justify-content: center;
         background-size: cover;
         background-position:center;
-        font-family: 'Bungee Shade', cursive;
+        font-family: 'Monoton', cursive;
         font-size: 40px;
         text-align: center;
+        word-spacing: 17px;
       }
       .typing {
         height: auto;
