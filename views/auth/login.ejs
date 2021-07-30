@@ -1,0 +1,24 @@
+<% layout('layouts/boilerplate') %>
+<h2 style="text-align: center;" >Log in</h2>
+<form action="/login" class="validate-form" novalidate method="post">
+    <div class="mb-3">
+        <label for="username" class="form-label">username:</label>
+        <!-- campgrounds[title] we are grouping things together in campground-->
+        <input type="text" class="form-control" id="username" name='username' required>
+        <div class="valid-feedback">
+            looks good!
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="password" class="form-label">password</label>
+        <!-- campgrounds[title] we are grouping things together in campground-->
+        <input type="password" class="form-control" id="password" name='password' required>
+        <div class="valid-feedback">
+            looks good!
+        </div>
+    </div>
+
+     <button class="btn btn-success" >Log in</button>
+
+</form>
