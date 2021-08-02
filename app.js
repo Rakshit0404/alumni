@@ -78,6 +78,9 @@ app.get('/',(req,res)=>{
 app.get('/contactus',(req,res)=>{
     res.render("alumni/contactus")
 })
+app.get('/edit',(req,res)=>{
+    res.render('layouts/edit')
+})
 
 app.use('/',userRoutes)
 
