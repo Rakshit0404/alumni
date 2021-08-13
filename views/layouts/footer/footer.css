@@ -8,6 +8,7 @@
     flex-direction: row;
     color:white;
     font-family: 'Quicksand', sans-serif;
+    clip-path: polygon(0% 0%, 60% 0%, 70% 50%, 80% 0%, 100% 0%, 100% 100%, 80% 100%, 70% 50%, 60% 100%, 0% 100%);
 }
 .wider{
     height:83%;

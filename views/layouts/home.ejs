@@ -16,6 +16,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rozha+One&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="navbar/navbar.css">
     <link rel="stylesheet" href="loading/loading.css">
@@ -24,6 +26,7 @@
     <link rel="stylesheet" href="about/about.css">
     <link rel="stylesheet" href="committee/committee.css">
     <link rel="stylesheet" href="footer/footer.css">
+    <link rel="stylesheet" href="happenings/happenings.css">
     <style>
     </style>
 </head>
@@ -39,7 +42,7 @@
         <div style="display: flex; flex-direction: row;">
             <div id=logohead>
                 <img id=ggvlogo style="width:95px;height:95px;padding-right:1vw;" src="/images/ggvlogo.png" alt="">
-                <div id=slidehead><span id=eng>GURU GHASIDAS VISHWAVIDYALAYA</span><span id="hin">गुरु घासीदास
+                <div id=slidehead><span id=eng>Guru Ghasidas Vishwavidyalaya</span><span id="hin">गुरु घासीदास
                         विश्वविद्यालय</span></div>
             </div>
         </div>
@@ -55,10 +58,14 @@
                 <p class="typing"></p>
             </div>
             <div id=events>
-                <div  style="color: white;" class="getalong"><span class=eventheads>MAGAZINE</span><i style="font-size: 40px;" class="bi bi-book-half"></i><p>Have a look at<br>your magazine UDAAN</p></div>
+                <div class=outerouter>
+                <div  style="color: white; background-color: #C21717;" class="getalong"><span class=eventheads>MAGAZINE</span><i style="font-size: 40px;" class="bi bi-book-half"></i><p>Have a look at<br>your magazine UDAAN</p></div>
+                <div  style="color: rgb(61, 26, 26);background-color: rgb(255, 244, 244);" class="getalong"><span class=eventheads>CAMPUS LIFE</span><i style="font-size: 40px;" class="bi bi-signpost-split"></i><p>See how it has changed<br>after you've left</p></div>
+                </div>
+                <div class=outerouter>
+                <div  style="color: white; background-color: #C21717;" class="getalong"><span class=eventheads>MAGAZINE</span><i style="font-size: 40px;" class="bi bi-book-half"></i><p>Have a look at<br>your magazine UDAAN</p></div>
                 <div  style="color: rgb(61, 26, 26);background-color: rgb(255, 244, 244);" class="getalong"><span class=eventheads>MAGAZINE</span><i style="font-size: 40px;" class="bi bi-book-half"></i><p>Have a look at<br>your magazine UDAAN</p></div>
-                <div  style="color: white;" class="getalong"><span class=eventheads>MAGAZINE</span><i style="font-size: 40px;" class="bi bi-book-half"></i><p>Have a look at<br>your magazine UDAAN</p></div>
-                <div  style="color: rgb(61, 26, 26);background-color: rgb(255, 244, 244);" class="getalong"><span class=eventheads>MAGAZINE</span><i style="font-size: 40px;" class="bi bi-book-half"></i><p>Have a look at<br>your magazine UDAAN</p></div>
+                </div>
             </div>
         </div>
         <div id=about>
@@ -140,16 +147,16 @@
         <div id=committee>
             <div id=album>
                 <div class=album1>
-                    <div style="height:50%; width:22%; align-self:flex-end;" class=commembers></div>
-                    <div style="height:100%; width:22%; align-self:flex-end;" class=commembers></div>
-                    <div style="height:80%; width:18%; align-self:flex-end;" class=commembers></div>
-                    <div style="height:50%; width:22%; align-self:flex-end;" class=commembers></div>
+                    <div style="height:50%; width:22%; align-self:flex-end;" class=commembers><p class=names></p></div>
+                    <div style="height:100%; width:22%; align-self:flex-end;" class=commembers><p class=names></p></div>
+                    <div style="height:80%; width:18%; align-self:flex-end;" class=commembers><p class=names></p></div>
+                    <div style="height:50%; width:22%; align-self:flex-end;" class=commembers><p class=names></p></div>
                 </div>
                 <div class=album1>
-                    <div style="height:50%; width:22%;" class=commembers></div>
-                    <div style="height:80%; width:18%;" class=commembers></div>
-                    <div style="height:100%; width:22%;" class=commembers></div>
-                    <div style="height:50%; width:22%;" class=commembers></div>
+                    <div style="height:50%; width:22%;" class=commembers><p class=names></p></div>
+                    <div style="height:80%; width:18%;" class=commembers><p class=names></p></div>
+                    <div style="height:100%; width:22%;" class=commembers><p class=names></p></div>
+                    <div style="height:50%; width:22%;" class=commembers><p class=names></p></div>
                 </div>
             </div>
             <div id="comhead">
@@ -164,6 +171,10 @@
             </div>
             <div id=contactsofmems></div>
         </div>
+        <div id="happenings">
+            <p id=eventheader><span style="color:rgb(203, 45, 45);">E</span>vents</p>
+        </div>
+        <div style="background-image: linear-gradient(0deg,rgba(255,255,255,0.9),rgba(255,255,255,0.9)), url(../images/back.jpg);">
         <div id="footer">
             <div class="wider" style=" border-right:2px dotted rgba(240, 255, 255, 0.5);">
                 <img style="width:22%;height:auto;" src="/images/ggvlogo.png" alt="">
@@ -201,6 +212,7 @@
             </div>
             <div class="wider"></div>
         </div>
+    </div>
 
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
             integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"

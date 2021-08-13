@@ -80,7 +80,6 @@ body{
     position:absolute;
     z-index: 90;
     height:200px;
-    background-color: #C21717;
     margin-top: -170px;
     margin-left: 10%;
     display: flex;
@@ -89,17 +88,26 @@ body{
     text-align: center;
 }
 .getalong{
-    width: 25%;
+    width: 50%;
     height:100%;
     display:flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    transition:transform 0.3s ease-in-out;
+}
+.getalong:hover{
+    transform:translateY(-10px);
 }
 .eventheads{
     font-size: large;
     font-family: 'Monoton', cursive;
     font-family: 'Quicksand', sans-serif;
+}
+.outerouter{
+    display:flex;
+    flex-direction: row;
+    width:50%;
 }
 /*eventsbar*/
 
@@ -255,9 +263,13 @@ body{
 }
 #eng{
     animation: engslip 15s infinite ease-out;
+    font-family: 'Kaushan Script', cursive;
+    font-size: 33px;
 }
 #hin{
     position: absolute;
+    font-family: 'Rozha One', serif;
+    font-size:33px;
     z-index: -2;
     animation: hinslip 15s infinite ease-out;
 }
@@ -344,7 +356,7 @@ body{
         background-size: cover;
         background-position:center;
         font-family: 'Monoton', cursive;
-        font-size: 40px;
+        font-size: 30px;
         text-align: center;
         word-spacing: 17px;
       }
@@ -371,6 +383,42 @@ body{
         }
       }
     /*displaytext*/
+
+    /*eventsbar*/
+#events{
+    width:80%;
+    z-index: 90;
+    height:300px;
+    margin-top: -160px;
+    margin-left: 10%;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Quicksand', sans-serif;
+    text-align: center;
+    font-size:10px;
+}
+.getalong{
+    width: 100%;
+    height: 100%;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition:transform 0.3s ease-in-out;
+}
+.eventheads{
+    font-size: large;
+    font-family: 'Monoton', cursive;
+    font-family: 'Quicksand', sans-serif;
+}
+.outerouter{
+    display:flex;
+    flex-direction: row;
+    width:100%;
+    height:50%;
+}
+/*eventsbar*/
+
     /*slideshow*/
     #slideshow{
         width:100%; 
@@ -536,10 +584,12 @@ body{
     }
     #eng{
         animation: engslip 15s infinite ease-out;
+        font-family: 'Kaushan Script', cursive;
     }
     #hin{
         align-self: center;
         position: absolute;
+        font-family: 'Rozha One', serif;
         z-index: -2;
         animation: hinslip 15s infinite ease-out;
     }
