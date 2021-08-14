@@ -3,7 +3,7 @@
         min-height: 100vh;
         position: relative;
         height:max-content;
-        background-image: linear-gradient(0deg,rgba(255,255,255,0.9),rgba(255,255,255,0.9)), url(../images/back.jpg);/**/
+        background-image: linear-gradient(0deg,rgba(255,255,255,0.9),rgba(255,255,255,0.9)), url(../images/back.jpg);
         font-family: 'Quicksand', sans-serif;
     }
     #aboutdesc{
@@ -35,6 +35,9 @@
         color:rgb(203, 45, 45) !important;
         border:1px solid grey !important;
         transition: all 0.4s;
+    }
+    .aboutheads{
+
     }
     .aboutheads::after{
         content: "";

@@ -11,13 +11,13 @@ const userRoutes=require('./routes/user');
 const User=require('./models/user');
 const ExpressError=require('./utils/ExpressError');
 const catchAsync=require('./utils/catchAsync');
+const Blog=require('./models/blog');
 
 mongoose.connect('mongodb://localhost:27017/alumni', {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true,
     useFindAndModify: false
-
 })
 
 const db = mongoose.connection;
@@ -25,6 +25,7 @@ db.on("error", console.error.bind(console, "connection error:"))
 db.once('open', () => {
     console.log("Database connected");
 });
+
 
 //middelware
 app.engine('ejs',ejsmate);
@@ -72,16 +73,29 @@ app.use((req,res,next)=>{
 
 app.get('/',(req,res)=>{
     // res.send("<h1>home page</h1>");
-    res.render('layouts/home')
+    res.render('layouts/home');
+})
+
+app.get('/blogs/:corner',async(req,res)=>{
+    const corner=await Blog.find({name:req.params.corner});
+    res.render('alumni/blogtype',{corner});
+})
+
+app.get('/blogs',(req,res)=>{
+    res.render("alumni/blog.ejs");
 })
 
 app.get('/contactus',(req,res)=>{
-    res.render("alumni/contactus")
+    res.render("alumni/contactus");
 })
 
 
 app.get('/edits',(req,res)=>{
+<<<<<<< HEAD
     res.render('layouts/edit')
+=======
+    res.render('layouts/edit');
+>>>>>>> 0f35bf47064e1b29032e10e058ab51e5feda85f6
 })
 
 app.use('/',userRoutes)
@@ -93,8 +107,8 @@ app.all('*',(req,res,next)=>{
 
 app.use((err,req,res,next)=>{
     const {statusCode = 500 } = err;
-    if(!err.message) err.message="Something Went Wrong "
-    res.status(statusCode).render('error',{err})
+    if(!err.message) err.message="Something Went Wrong ";
+    res.status(statusCode).render('error',{err});
 })
 
 app.listen('3000',()=>{

@@ -8,7 +8,7 @@
     justify-content: space-between;
 }
 #contactsofmems{
-    width:50%; 
+    width:50%;
     height:100%;
     position: absolute;
     margin-left: 98%;
@@ -48,6 +48,9 @@
     border:1px solid grey;
     transition: transform 0.4s, box-shadow 0.4s;
     cursor: pointer;
+    display:flex;
+    color:black;
+    align-items: flex-end;
 }
 .commembers:hover{
     transform: scale(1.05,1.05);

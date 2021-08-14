@@ -1,22 +1,25 @@
 <div id=navbar>
   <div id=shrinkbar><i id=toggle class="bi bi-list"></i></div>
   <div class=navcontent>
-      <div class=navitems ><a href="/#topbar" style="text-decoration: none; color: inherit;"  ><i class="bi bi-house-fill"></i> HOME</a></div>
-      <div class=navitems><a href="/#about" style="text-decoration: none; color: inherit; "  ><i class="bi bi-info-circle-fill"></i> ABOUT</a></div>
-      <div class=navitems><a href="/#committee" style="text-decoration: none; color: inherit; "  ><i class="bi bi-people-fill"></i> COMMITTEE</a></div>
-      <div class=navitems><a href="/contactus" style="text-decoration: none; color: inherit;"  ><i class="bi bi-person-lines-fill"></i> CONTACT</a></div>
-      <div class=navitems><a href="/member" style="color: inherit; text-decoration: none;" ><i class="bi bi-person-circle"></i> MEMBERS</a></div>
+      <div class=navitems onclick="location.href='/#topbar';"><a style="text-decoration: none; color: inherit;"  >HOME</a></div>
+      <div class=navitems onclick="location.href='/#about';"><a style="text-decoration: none; color: inherit; "  >ABOUT</a></div>
+      <div class=navitems onclick="location.href='/#committee';"><a style="text-decoration: none; color: inherit; "  >COMMITTEE</a></div>
+      <div class=navitems onclick="location.href='/contactus';"><a style="text-decoration: none; color: inherit;"  >CONTACT</a></div>
+      <div class=navitems onclick="location.href='/#happenings';"><a style="text-decoration: none; color: inherit;"  >EVENTS</a></div>
+      <div class=navitems onclick="location.href='/blogs';"><a style="text-decoration: none; color: inherit;"  >BLOGS</a></div>
+      <div class=navitems onclick="location.href='/member';"><a style="color: inherit; text-decoration: none;" >MEMBERS</a></div>
   </div>
   <div class=navcontent>
     <% if(!currentUser) { %> 
-      <div class=navitems><a href="/login" style="color: inherit; text-decoration: none;" >Login</a></div>
-      <div class=navitems><a href="/register" style="color: inherit; text-decoration: none;" >SignUp</a></div>
+      <div class=navitems onclick="location.href='/login';"><a style="color: inherit; text-decoration: none;" >LOGIN</a></div>
+      <div class=navitems onclick="location.href='/register';"><a style="color: inherit; text-decoration: none;" >SIGNUP</a></div>
     <% } else { %>
       <div class=navitems> <span> <%=currentUser.username%> </span>  <a href="/logout" style="color: inherit; text-decoration: none;"  >Logout</a></div>
     <% } %>       
   </div>
 
 </div>
+
 
 
 
