@@ -77,7 +77,7 @@ app.get('/',(req,res)=>{
 })
 
 app.get('/blogs/:corner',async(req,res)=>{
-    const corner=await Blog.findOne({naam:req.params.corner});
+    const corner=await Blog.findOne({name:req.params.corner});
     console.log(corner._id);
         // res.render('alumni/blogtype',{corner});
         res.send(corner);
