@@ -80,7 +80,7 @@ app.get('/contactus',(req,res)=>{
 })
 
 
-app.get('/edit',(req,res)=>{
+app.get('/edits',(req,res)=>{
     res.render('layouts/edit')
 })
 

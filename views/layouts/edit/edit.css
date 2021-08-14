@@ -1,9 +1,9 @@
-button{
-    color: aqua;
+*{
+    box-sizing: border-box;
 }
-.btn1{
-    background-color: aquamarine;
-}
+
 body{
-    background-color: black;
+    background-color: #f5f7fa;
+    margin: 0;
 }
+
