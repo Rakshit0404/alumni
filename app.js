@@ -76,8 +76,13 @@ app.get('/',(req,res)=>{
     res.render('layouts/home');
 })
 
+app.get('/blogs/:corner',async(req,res)=>{
+    const corner=await Blog.find({name:req.params.corner});
+    res.render('alumni/blogtype',{corner});
+})
+
 app.get('/blogs',(req,res)=>{
-    res.render('alumni/blog.ejs');
+    res.render("alumni/blog.ejs");
 })
 
 app.get('/contactus',(req,res)=>{
