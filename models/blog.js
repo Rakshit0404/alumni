@@ -14,8 +14,9 @@ const blogs=new mongoose.Schema({
 
 const blogSchema=new mongoose.Schema({
     corners:{
-        name:String,
-        blogs:[blogs]
+        naam:String,
+        num:Number
+        // blogs:[blogs]
     }
 })
 

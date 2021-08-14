@@ -77,8 +77,10 @@ app.get('/',(req,res)=>{
 })
 
 app.get('/blogs/:corner',async(req,res)=>{
-    const corner=await Blog.find({name:req.params.corner});
-    res.render('alumni/blogtype',{corner});
+    const corner=await Blog.findOne({naam:req.params.corner});
+    console.log(corner._id);
+        // res.render('alumni/blogtype',{corner});
+        res.send(corner);
 })
 
 app.get('/blogs',(req,res)=>{
@@ -91,11 +93,7 @@ app.get('/contactus',(req,res)=>{
 
 
 app.get('/edits',(req,res)=>{
-<<<<<<< HEAD
     res.render('layouts/edit')
-=======
-    res.render('layouts/edit');
->>>>>>> 0f35bf47064e1b29032e10e058ab51e5feda85f6
 })
 
 app.use('/',userRoutes)

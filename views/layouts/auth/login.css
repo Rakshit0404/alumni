@@ -11,7 +11,7 @@ body{
 }
 
 
-.background{
+#background{
     display: flex;
     width: 100vw;
     height: 100vh;
@@ -95,10 +95,9 @@ body{
     font-size: 20px;
 }
 
-.frombody{
-    position: absolute;
+#formbody{
     width: 100vw;
-    height: 800px;
+    height: 100vh;
     z-index: 1;
     background-color: #EFF1F2;
 }
