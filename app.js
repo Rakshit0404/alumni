@@ -12,6 +12,7 @@ const User=require('./models/user');
 const ExpressError=require('./utils/ExpressError');
 const catchAsync=require('./utils/catchAsync');
 const Blog=require('./models/blog');
+const userproRoutes=require('./routes/userpro')
 
 mongoose.connect('mongodb://localhost:27017/alumni', {
     useNewUrlParser: true,
@@ -64,7 +65,10 @@ app.use((req,res,next)=>{
     }else{
         req.session.returnTo='/'; 
     }
+   // console.log(req.session);
+   // console.log(req.user);
     res.locals.currentUser=req.user;
+    
     res.locals.success=req.flash('success');
     res.locals.error = req.flash('error');
     next();
@@ -91,15 +95,14 @@ app.get('/contactus',(req,res)=>{
 
 
 app.get('/edits',(req,res)=>{
-<<<<<<< HEAD
     res.render('layouts/edit')
-=======
-    res.render('layouts/edit');
->>>>>>> 0f35bf47064e1b29032e10e058ab51e5feda85f6
 })
+
+
 
 app.use('/',userRoutes)
 
+app.use("/",userproRoutes)
 
 app.all('*',(req,res,next)=>{
      next(new ExpressError('Page Not Found',404));

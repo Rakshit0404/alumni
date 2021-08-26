@@ -4,6 +4,7 @@ const navcontent = document.querySelectorAll('.navcontent');
 const toggle = document.querySelector('#toggle');
 const shrinkbar = document.querySelector('#shrinkbar');
 const body= document.querySelector('body');
+// const user=document.querySelector('#user');
 
 window.addEventListener('scroll',()=>{
     if(navbar.getBoundingClientRect().top==body.scrollTop)

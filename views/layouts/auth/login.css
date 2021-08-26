@@ -3,23 +3,38 @@
 body{
     margin: 0px;
     padding: 0px;
-    background-image: url(../images/Capture11.PNG);
-    background-repeat: no-repeat;
+    /* background-image: url(../images/Capture11.PNG);
+    
     background-size: 100% 100%;
     backdrop-filter: blur(10px);
+    height: 100%; */
     
 }
 
 
-.background{
-    display: flex;
-    width: 100vw;
-    height: 100vh;
-    position: absolute;
-
+.landing_bg {
+    background: url(../images/Capture11.PNG) no-repeat scroll 0 0 transparent;
+    background-size: cover;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    filter: blur(8px);
+    background-position-x: center;
+    background-position-y: center;
+    z-index: -1;
 }
 
-.section{
+.background{
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 100vh;
+   
+}
+
+.section2{
     display: flex;
     width: 400px;
     height: 600px;
@@ -95,10 +110,379 @@ body{
     font-size: 20px;
 }
 
-.frombody{
+.formbody{
+    
     position: absolute;
     width: 100vw;
-    height: 800px;
-    z-index: 1;
+    height: 100vh;
+    display: flex;
+    
     background-color: #EFF1F2;
+    justify-content: center;
+}
+
+.section1{
+    width: 1020px;
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    margin-top: 75px;
+    margin-left: 160px;
+    margin: 40px;
+    
+}
+
+.leftsection{
+    display: flex;
+    flex-direction: column;
+    margin: 0px;
+    width: 350px;
+    height: 100%;
+    background-color: #979696;
+}
+
+.logo::after{
+    content: "";
+    width: 250px;
+    height:2.5px;
+    background-color: rgb(199, 10, 10);
+    margin-top: 50px;
+    margin-left: 40px;
+    margin-right: 25px;
+    position: absolute;
+    display: block;
+}
+
+.rightsection{
+    width: 670px;
+    display: flex;
+    margin: 0px;
+    flex-direction: column;
+    position: relative;
+
+}
+
+.rightsign{
+    font-size: 20px;
+    margin: 20px;
+    margin-left: 30px;
+    
+    font-family: 'Atkinson Hyperlegible', sans-serif;
+}
+
+.signupform{
+    margin-top: 120px;
+    
+
+}
+
+.submit{
+    background-color: rgb(43, 223, 223);
+    border: none;
+    width: 670px;
+    color: white;
+    height: 55px; 
+    font-weight: 500; 
+    position: absolute; 
+    bottom: 0; 
+}
+
+
+
+
+
+.loginform{
+    display: flex;
+    flex-direction: row;
+    
+    width: 100vw;
+    height: 100vh;
+}
+.section3{
+    display: flex;
+    width: 400px;
+    height: 420px;
+    background-color: white;
+    position: relative;
+    margin-top: 75px;
+    margin-left: 160px;
+    flex-direction: column;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5),
+    
+}
+
+
+
+.signcontentl{
+    height: 100px;
+    background-color: white;
+}
+.loginb{
+    background-color: rgb(43, 223, 223);
+    border: none;
+    width: 400px;
+    color: white;
+    height: 55px; 
+    font-weight: 500; 
+    position: absolute; 
+    bottom: 0; 
+}
+
+.headl{
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 39px;
+    margin-left: 40px;
+    margin-right: 100px;
+}
+
+.selected{
+    display: none;
+}
+
+@media screen and (max-width:768px) {
+    
+    
+
+body{
+    margin: 0px;
+    padding: 0px;
+    /* background-image: url(../images/Capture11.PNG) no-repeat scroll 0 0 transparent ;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: max-content;
+     backdrop-filter: blur(10px); */
+    
+}
+
+.landing_bg {
+    background: url(../images/Capture11.PNG) no-repeat scroll 0 0 transparent;
+    background-size: cover;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    filter: blur(8px);
+    background-position-x: center;
+    background-position-y: center;
+    z-index: -1;
+}
+
+.background{
+    display: flex;
+    
+    width: 100vw;
+    height: 100vh;
+    
+
+}
+
+.section2{
+    display: flex;
+    width: 320px;
+    height: 600px;
+    background-color: white;
+    margin-top: 20px;
+    margin-left: 20px;
+    flex-direction: column;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5),
+  
+}
+
+.top{
+    
+    display: flex;
+    height: 120px;
+    background-color: rgb(241, 239, 239);
+}
+
+.signcontent{
+    height: 300px;
+    background-color: rgba(185, 183, 183, 0.85);
+}
+
+
+
+.head{
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 39px;
+    margin-left: 110px;
+    margin-right: 100px;
+    
+
+}
+
+.signup{
+    width: 300px;
+    height: 50px;
+    background-color: #ffffff; 
+    margin: auto;  
+    font-size: 18px;
+    padding-top: 10px;
+    margin-top: 80px;
+    cursor: pointer;
+    color: #3A3F42;
+    font-weight: 600;
+    
+}
+
+.signup::after{
+    content: "";
+    width: inherit;
+    height: 1px;
+    background-color: rgb(7, 6, 6);
+    margin-top: 50px;
+    position: absolute;
+    display: block;
+}
+
+.lastsection{
+    height: 210px;
+    background-color:  rgba(185, 183, 183, 0.85);
+}
+
+.logincontent{
+    width: 300px;
+    height: 50px;
+    color: #3A3F42;
+    margin: auto;  
+    font-size: 18px;
+    padding-top: 10px;
+    text-align: center;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.formbody{
+    
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    
+    background-color: #EFF1F2;
+    justify-content: center;
+}
+
+.section1{
+    width: 400px;
+    height: 600px;
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    
+}
+
+.leftsection{
+   
+ display: none;
+   
+}
+
+/* .logo::after{
+    content: "";
+    width: 250px;
+    height:2.5px;
+    background-color: rgb(199, 10, 10);
+    margin-top: 50px;
+    margin-left: 40px;
+    margin-right: 25px;
+    position: absolute;
+    display: block;
+} */
+
+.rightsection{
+    width: 670px;
+    display: flex;
+    margin: 0px;
+    flex-direction: column;
+    position: relative;
+
+}
+
+.rightsign{
+    font-size: 20px;
+    margin: 20px;
+    margin-left: 30px;
+    
+    font-family: 'Atkinson Hyperlegible', sans-serif;
+}
+
+.signupform{
+    margin-top: 120px;
+    
+}
+
+.submit{
+    background-color: rgb(43, 223, 223);
+    border: none;
+    width: 400px;
+    height: 55px; 
+    font-weight: 500; 
+    position: absolute; 
+    bottom: 0; 
+}
+
+
+.section3{
+    display: flex;
+    width: 320px;
+    height: 430px;
+    background-color: white;
+    margin-top: 20px;
+    margin-left: 20px;
+    flex-direction: column;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5),
+    
+}
+
+.loginform{
+    display: flex;
+    flex-direction: row;
+    
+    width: 100vw;
+    height: 100vh;
+}
+
+.signcontentl{
+    height: 100px;
+    background-color: white;
+}
+.loginb{
+    background-color: rgb(43, 223, 223);
+    border: none;
+    width: 320px;
+    color: white;
+    height: 55px; 
+    font-weight: 500; 
+    position: absolute; 
+    bottom: 0; 
+}
+
+.headl{
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 39px;
+    margin-left: 30px;
+    margin-right: 10px;
+}
+
+.selected{
+    display: none;
+}
+
+/* .bb{
+    position: absolute;
+    display:  initial !important;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+    filter: blur(10px);
+
+} */
+   
 }

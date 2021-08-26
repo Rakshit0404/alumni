@@ -63,6 +63,50 @@ body{
     color:#C21717;
 }
 
+.usertoggle{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 120px;
+    height: 120px;
+    z-index: 200;
+    background-color: ivory;
+    right: 0;
+    top: 230px;
+}
+
+.logout{
+    width:100%;
+    height: 40px;
+    background-color: white;
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 13px;
+}
+
+.logout:hover{
+    background-color: rgb(230, 59, 29);
+    color: white;
+}
+
+.edit{
+    width:100%;
+    height: 40px;
+    background-color: white;
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 13px;  
+}
+
+.edit:hover{
+    background-color: rgb(230, 59, 29);
+    color: white;
+}
+
 @media screen and (max-width:768px) {
     #navbar{
         display:flex;

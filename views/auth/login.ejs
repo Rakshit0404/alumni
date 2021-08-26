@@ -1,12 +1,66 @@
 <% layout('layouts/boilerplate') %>
 
+    <div class="landing_bg"></div>
+    <div class="container mt-2 " style="text-align: center;">
+        <%- include('../partials/flash') %>
+    </div>
+    <div class="formbody selected ">
+        <div class="section1" id="section1">
+            <div class="leftsection" id="leftsection">
+                <div class="logo"><img id=ggvlogo style="width: 100px;height: 100px;padding-right:1vw;
+                margin: 20px;
+                margin-left: 25px; 
+                margin-top: 25px;" src="/images/ggvlogo.png" alt="">
 
- <div class="formbody">
-       
- </div>
+                </div>
 
-    <div class="background">
-        <div class="section">
+                <div style="margin-top: 100px; margin-left: 35px; font-size: 25px; color: #000000; font-weight: bold; ">
+                    Guru Ghasidas Vishwavidyalaya<br>Bilaspur
+                </div>
+                <div style="margin-top: 30px; margin-left: 35px; font-size: 18px; color: #1b1a1a; ">
+                    Chhattisgarh
+                </div>
+            </div>
+            <div class="rightsection">
+                <div class="rightsign"> <i class="bi bi-arrow-left-square " id="back"
+                        style="margin: 20px; cursor: pointer; font-size: 20px; "></i> Account Details </div>
+                <div class="signupform">
+                    <form action="/register" class="validate-form" method="post">
+                        <div class="mb-3">
+                            <label for="username" class="form-label"
+                                style="margin-left: 40px; color: rgb(128, 128, 128);">Username:</label>
+
+                            <input type="text" class="form-control" id="username" name='username' placeholder="username"
+                                required style="width: 300px; margin-left: 40px; ">
+
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label"
+                                style="margin-left: 40px; color: rgb(128, 128, 128);">Email:</label>
+
+                            <input type="email" class="form-control" id="email" name='email' placeholder="email"
+                                required style="width: 300px; margin-left: 40px;">
+
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label"
+                                style="margin-left: 40px; color: rgb(128, 128, 128);">Password</label>
+
+                            <input type="password" class="form-control" id="password" minlength="8" name='password'
+                                placeholder="password(minlength=8)" required style="width: 300px; margin-left: 40px;">
+
+                        </div>
+
+                        <button class="btn  submit ">Submit</button>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="loginform selected ">
+        <div class="section3" id="section3">
             <div class="top">
                 <div><img id=ggvlogo style="width: 59px;height:50px;padding-right:1vw;
                                             margin: 10px;
@@ -21,44 +75,66 @@
 
                 </div>
             </div>
-            <div class="signcontent">
-                <div class="head" style="font-family: 'PT Sans', sans-serif;" >Come Aboard </div>
-                <div class="signup"><i class="bi bi-envelope-fill" style="font-size: 18px;
-                                                                          margin-right: 35px; 
-                                                                          margin-left: 18px;"></i>  Sign up with Email </div>
-                
-                
+            <div class="signcontentl">
+                <div class="headl" style="font-family: 'PT Sans', sans-serif;"><i class="bi bi-arrow-left-square "
+                        id="backl"
+                        style=" margin-right: 30px; margin-left: 10px; cursor: pointer; font-size: 20px; "></i> Login
+                    with username </div>
             </div>
 
-            <div class="lastsection"  >
-                <div class="logincontent" >  Login  with Email </div>
-            </div>
+
+            <form action="/login" class="validate-form" method="post">
+                <div class="mb-1">
+                    <label for="username" class="form-label"
+                        style="margin-left: 40px; color: rgb(128, 128, 128);">Username:</label>
+                    <input type="text" class="form-control" id="username" name='username' placeholder="username"
+                        required style="width: 250px; margin-left: 40px; ">
+
+                </div>
+
+                <div class="mb-1">
+                    <label for="password" class="form-label"
+                        style="margin-left: 40px; color: rgb(128, 128, 128);">password:</label>
+                    <input type="password" class="form-control" placeholder="passowrd" id="password" name='password'
+                        required style="width: 250px; margin-left: 40px;  ">
+                </div>
+
+                <button class="btn  loginb ">Log in</button>
+
+            </form>
         </div>
     </div>
 
 
+    <!-- <div class="bb" style="display: none;"></div> -->
+    <div class="background  ">
+        <div class="section2" id="section2">
+            <div class="top">
+                <div><img id=ggvlogo style="width: 59px;height:50px;padding-right:8px ;
+                                            margin: 10px;
+                                            margin-left: 15px; 
+                                            margin-top: 15px;" src="/images/ggvlogo.png" alt=""></div>
+                <div>
+                    <p class="clgname" style="color: #000000; font-weight: bold; 
+                              font-size: 20px;
+                              padding-top: 16px; 
+                              font-family: 'PT Sans', sans-serif;">Guru Ghasidas Vishwavidyalaya<br><span
+                            style="color: #666666;font-size: 15px; " class="bsp">Bilaspur</span></p>
+
+                </div>
+            </div>
+            <div class="signcontent">
+                <div class="head" style="font-family: 'PT Sans', sans-serif;">Come Aboard </div>
+                <div class="signup" id="signup"> <i class="bi bi-envelope-fill" style="font-size: 18px;
+                                                                          margin-right: 35px; 
+                                                                          margin-left: 18px;"></i> Sign up with Email
+                </div>
 
 
-    <!-- <h2 style="text-align: center;" >Log in</h2>
-<form action="/login" class="validate-form" novalidate method="post">
-    <div class="mb-3">
-        <label for="username" class="form-label">username:</label>
-         campgrounds[title] we are grouping things together in campground-->
-    <!-- <input type="text" class="form-control" id="username" name='username' required>
-        <div class="valid-feedback">
-            looks good!
+            </div>
+
+            <div class="lastsection">
+                <div class="logincontent" id="login"> Login with Email </div>
+            </div>
         </div>
-    </div> -->
-
-    <!-- <div class="mb-3">
-        <label for="password" class="form-label">password</label>
-         campgrounds[title] we are grouping things together in campground-->
-    <!-- <input type="password" class="form-control" id="password" name='password' required>
-        <div class="valid-feedback">
-            looks good!
-        </div>
-    </div> -->
-
-    <!-- <button class="btn btn-success" >Log in</button>
-
-</form>  -->
+    </div>
