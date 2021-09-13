@@ -127,9 +127,13 @@ app.post('/upload', function (req, res) {
         if (err) {
           return res.status(500).send(err);
         }
-        // array[currentUser.username]=req.files.file.name;
+        if(!(array[req.user._id]))
+        {
+          array[req.user._id]=[];
+        }
+        array[req.user._id].push(req.files.file.name);
+        console.log(array[req.user._id]);
         console.log(req.user);
-        // console.log(array[currentUser.username]);
         res.send({ 'location': `../../blogimages/${req.files.file.name}`});
     });
   }
@@ -161,7 +165,7 @@ app.post('/tempupload',(req,res)=>{
       .concat(arr2)
       .filter(item => !arr1.includes(item) || !arr2.includes(item));
   }
-  var diff=diffArray(array,divide);
+  var diff=diffArray(array[req.user._id],divide);
   console.log(diff);
   for(let d of diff)
   {
