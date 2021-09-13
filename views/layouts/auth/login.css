@@ -27,6 +27,10 @@ body{
     z-index: -1;
 }
 
+
+
+
+
 #background{
 
     display: flex;
@@ -121,8 +125,8 @@ body{
     display: flex;
     background-color: #EFF1F2;
     justify-content: center;
-}    
-
+    
+}
 /* #formbody{
     width: 100vw;
     height: 100vh;
@@ -204,7 +208,7 @@ body{
 .loginform{
     display: flex;
     flex-direction: row;
-    
+ 
     width: 100vw;
     height: 100vh;
 }
@@ -224,7 +228,7 @@ body{
 
 
 .signcontentl{
-    height: 100px;
+    height: 70px;
     background-color: white;
 }
 .loginb{
@@ -291,18 +295,18 @@ body{
 
 .section2{
     display: flex;
-    width: 320px;
+    width: 380px;
     height: 600px;
     background-color: white;
-    margin-top: 20px;
-    margin-left: 20px;
+    margin-top: 40px;
+    margin-left: 60px;
     flex-direction: column;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5),
   
 }
 
 .top{
-    
+    width: 100%;
     display: flex;
     height: 120px;
     background-color: rgb(241, 239, 239);
@@ -339,7 +343,7 @@ body{
     
 }
 
-.signup::after{
+/* .signup::after{
     content: "";
     width: inherit;
     height: 1px;
@@ -347,7 +351,7 @@ body{
     margin-top: 50px;
     position: absolute;
     display: block;
-}
+} */
 
 .lastsection{
     height: 210px;
@@ -440,11 +444,11 @@ body{
 
 .section3{
     display: flex;
-    width: 320px;
-    height: 430px;
+    width: 380px;
+    height: 450px;
     background-color: white;
-    margin-top: 20px;
-    margin-left: 20px;
+    margin-top: 120px;
+    margin-left: 65px;
     flex-direction: column;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5),
     
@@ -459,13 +463,13 @@ body{
 }
 
 .signcontentl{
-    height: 100px;
+    height: 70px;
     background-color: white;
 }
 .loginb{
-    background-color: rgb(43, 223, 223);
+    background-color: rgb(248, 47, 47);
     border: none;
-    width: 320px;
+    width: 380px;
     color: white;
     height: 55px; 
     font-weight: 500; 
