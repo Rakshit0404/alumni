@@ -17,9 +17,9 @@ const User=require('./models/user');
 const ExpressError=require('./utils/ExpressError');
 const catchAsync=require('./utils/catchAsync');
 const Blog=require('./models/blog');
-<<<<<<< HEAD
+
 const userproRoutes=require('./routes/userpro')
-=======
+
 // const multer=require('multer');
 // const {storage}=require('./cloudinary');
 // const upload=multer({storage});
@@ -30,7 +30,7 @@ var fileUpload = require('express-fileupload');
 var mime = require('mime');
 app.use(fileUpload({}));
 const array=require('./models/array');
->>>>>>> ee37317aa490aea15bfb96761bb4ec2d24426904
+
 
 mongoose.connect('mongodb://localhost:27017/alumni', {
     useNewUrlParser: true,

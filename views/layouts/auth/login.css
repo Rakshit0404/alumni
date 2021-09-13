@@ -12,7 +12,7 @@ body{
 }
 
 
-<<<<<<< HEAD
+
 .landing_bg {
     background: url(../images/Capture11.PNG) no-repeat scroll 0 0 transparent;
     background-size: cover;
@@ -27,10 +27,8 @@ body{
     z-index: -1;
 }
 
-.background{
-=======
 #background{
->>>>>>> ee37317aa490aea15bfb96761bb4ec2d24426904
+
     display: flex;
     flex-direction: row;
     width: 100vw;
@@ -86,7 +84,7 @@ body{
     
 }
 
-.signup::after{
+/* .signup::after{
     content: "";
     width: inherit;
     height: 1px;
@@ -94,7 +92,7 @@ body{
     margin-top: 50px;
     position: absolute;
     display: block;
-}
+} */
 
 .lastsection{
     height: 210px;
@@ -114,23 +112,24 @@ body{
     font-size: 20px;
 }
 
-<<<<<<< HEAD
+
 .formbody{
     
     position: absolute;
     width: 100vw;
     height: 100vh;
     display: flex;
-    
-=======
-#formbody{
+    background-color: #EFF1F2;
+    justify-content: center;
+}    
+
+/* #formbody{
     width: 100vw;
     height: 100vh;
     z-index: 1;
->>>>>>> ee37317aa490aea15bfb96761bb4ec2d24426904
     background-color: #EFF1F2;
     justify-content: center;
-}
+} */
 
 .section1{
     width: 1020px;
