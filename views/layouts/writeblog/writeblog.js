@@ -138,6 +138,6 @@ butto.addEventListener('click',(e)=>{
     var content=document.querySelector("#content");
     content.value=getcontent;
     console.log(array);
-    // document.querySelector("#submit").click();
+    document.querySelector("#submit").click();
 })
 
