@@ -1,0 +1,21 @@
+.pages::-webkit-scrollbar-track
+  {
+      border-radius: 10px;
+      background-color: transparent;
+  }
+  
+  .pages::-webkit-scrollbar
+  {
+      width: 5px;
+      background-color: white;
+  }
+  
+  .pages::-webkit-scrollbar-thumb
+  {
+      background-color: rgb(182, 178, 178);
+  }
+
+  .pages{
+      margin-left: auto;
+      margin-right: auto;
+  }

@@ -1,3 +1,8 @@
+if (process.env.NODE_ENV !== "production") {
+    require('dotenv').config();
+}
+
+
 const express=require('express');
 const path = require('path');
 const app=express();
@@ -12,6 +17,9 @@ const User=require('./models/user');
 const ExpressError=require('./utils/ExpressError');
 const catchAsync=require('./utils/catchAsync');
 const Blog=require('./models/blog');
+<<<<<<< HEAD
+const userproRoutes=require('./routes/userpro')
+=======
 // const multer=require('multer');
 // const {storage}=require('./cloudinary');
 // const upload=multer({storage});
@@ -22,6 +30,7 @@ var fileUpload = require('express-fileupload');
 var mime = require('mime');
 app.use(fileUpload({}));
 const array=require('./models/array');
+>>>>>>> ee37317aa490aea15bfb96761bb4ec2d24426904
 
 mongoose.connect('mongodb://localhost:27017/alumni', {
     useNewUrlParser: true,
@@ -70,12 +79,15 @@ passport.deserializeUser(User.deserializeUser());
 
 
 app.use((req,res,next)=>{
-    if(!['/login','/'].includes(req.originalUrl)){
-        req.session.returnTo=req.originalUrl;
-    }else{
-        req.session.returnTo='/'; 
-    }
+    // if(!['/login','/'].includes(req.originalUrl)){
+    //     req.session.returnTo=req.originalUrl;
+    // }else{
+    //     req.session.returnTo='/'; 
+    // }
+   // console.log(req.session);
+   // console.log(req.user);
     res.locals.currentUser=req.user;
+    
     res.locals.success=req.flash('success');
     res.locals.error = req.flash('error');
     next();
@@ -184,8 +196,11 @@ app.get('/edits',(req,res)=>{
     res.render('layouts/edit')
 })
 
+
+
 app.use('/',userRoutes)
 
+app.use("/",userproRoutes)
 
 app.all('*',(req,res,next)=>{
      next(new ExpressError('Page Not Found',404));
