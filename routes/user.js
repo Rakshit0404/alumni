@@ -9,7 +9,7 @@ router.get('/register',(req,res)=>{
     res.render('auth/register')
 })
 
-router.post('/register', catchAsync(async(req,res)=>{
+router.post('/register',  catchAsync(async(req,res)=>{
     try{
         const {username , email , password }=req.body;
         //console.log(username, password,email);

@@ -27,7 +27,9 @@
 
      <h2 style="text-align: center; margin-top: 20px; margin-bottom: 40px; font-family: 'Dancing Script', cursive; font-size: 80px; " >Edit profile</h2>
     <div class="pages"  style="width: 750px; height: 750px; overflow: scroll;" >  
-        <form action="/userprofile" method="post" novalidate class="validate-form">
+        <form action="/userprofile" method="post" novalidate class="validate-form" enctype="multipart/form-data"  >
+
+
 
             <% if(!currentUser){ %> 
             <div class="mb-2 mt-2 ">
@@ -115,7 +117,7 @@
             <div class="mb-2">
                 <label style="margin-left: 120px; color: rgb(128, 128, 128);" for="school" class="form-label"> School:
                 </label>
-                <select name="user[School]" id="school"  style="width: 500px; margin-left: 120px; "   required class="form-select" aria-label="Default select example" >
+                <select name="user[school]" id="school"  style="width: 500px; margin-left: 120px; "   required class="form-select" aria-label="Default select example" >
                    
                     <option value="Art">School of Studies in Art</option>
                     <option value="Engineering & Technology">School of Studies in Engineering & Technology</option>
@@ -216,6 +218,21 @@
                 </div>
             </div>
           
+          
+<!--             
+            <input type="file" name="image" id="image"> -->
+             
+            <div class="mb-3 mt-2 " style="width: 623px; margin-top: 8px; " >
+                <div class="form-file custom-file" style="margin-left: 120px; color: rgb(128, 128, 128);" >
+                    <input type="file" class="form-file-input" id="image" name="image"  >
+                    <label class="form-file-label" for="image">
+                        <span class="form-file-text custom-file-label">Choose image...</span>
+                        <span class="form-file-button">Browse</span>
+                    </label>
+                </div>
+            </div>
+     
+
             <div class="mb-2 mt-5 "  > 
                 <button class="btn btn-primary " style="width: 400px; margin-left: 180px;" >Submit</button>
             </div>

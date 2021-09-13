@@ -1,3 +1,8 @@
+if (process.env.NODE_ENV !== "production") {
+    require('dotenv').config();
+}
+
+
 const express=require('express');
 const path = require('path');
 const app=express();
@@ -60,11 +65,11 @@ passport.deserializeUser(User.deserializeUser());
 
 
 app.use((req,res,next)=>{
-    if(!['/login','/'].includes(req.originalUrl)){
-        req.session.returnTo=req.originalUrl;
-    }else{
-        req.session.returnTo='/'; 
-    }
+    // if(!['/login','/'].includes(req.originalUrl)){
+    //     req.session.returnTo=req.originalUrl;
+    // }else{
+    //     req.session.returnTo='/'; 
+    // }
    // console.log(req.session);
    // console.log(req.user);
     res.locals.currentUser=req.user;

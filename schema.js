@@ -13,5 +13,6 @@ module.exports.userprofileSchema = Joi.object({
         department: Joi.string()
 
 
-    }).required()
+    }).required(),
+    deleteImages: Joi.object()
 })
