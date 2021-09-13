@@ -5,8 +5,63 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+    <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/writeblog/writeblog.css">
+    <link rel="stylesheet" href="/navbar2/navbar2.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
+
 <body>
-    
+    <%- include('../partials/navbar2') %>
+        <!-- <%- include('../partials/topbar') %> -->
+        <div style="display: flex;width:100%;">
+            <div class="carrier">
+                <div id=select>
+                    <div id="selecthead">Navigate to other pages</div>
+                    <div id="selectoptions">
+                        <div class="givenoptions">Educational</div>
+                        <div class="givenoptions">Career</div>
+                        <div class="givenoptions">Food</div>
+                        <div class="givenoptions">Travel</div>
+                        <div class="givenoptions">Music</div>
+                        <div class="givenoptions">Lifestyle</div>
+                        <div class="givenoptions">Fitness</div>
+                        <div class="givenoptions">Sports</div>
+                        <div class="givenoptions">Finance</div>
+                        <div class="givenoptions">Political</div>
+                        <div class="givenoptions">Personal</div>
+                    </div>
+                </div>
+                <div style="width:90%; height:45%; margin-left: 20px; margin-top: 50px;">
+                    <textarea name="text" id="text"
+                        placeholder="Write HTML codes for extra styling in your blog..."></textarea>
+                    <button class="btn btn-warning" id=add style="float:right;">Add to Blog</button>
+                    <button class="btn btn-secondary" id=clear style="float:right;margin-right: 6px;">Clear</button>
+                </div>
+            </div>
+            <div class="carrier">
+                <textarea class="tinymce" id=upload></textarea>
+                <form action="/blogs" method="post" enctype="multipart/form-data">
+                    <input type="text" name="content" id="content" style="display:none;">
+                    <input type="submit" id="submit" value="Post" style="display:none;">
+                </form>
+                <button id=butto style="float: right; margin-top: 6px;">Click</button>
+                <!-- submitting request -->
+                <iframe id=justupdate src="/uploadtemp" frameborder="0" style="display:none;"></iframe>
+            </div>
+            
+        </div>
+        <script type=module src="/writeblog/writeblog.js"></script>
+        <script type=text/javascript src="/plugins/tinymce/tinymce.min.js"></script>
+        <script type=text/javascript src="/plugins/tinymce/init-tinymce.js"></script>
 </body>
+
 </html>

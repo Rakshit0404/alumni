@@ -13,10 +13,8 @@ const blogs=new mongoose.Schema({
 })
 
 const blogSchema=new mongoose.Schema({
-    corners:{
-        name:String,
-        blogs:[blogs]
-    }
+    name:String,
+    blogs:[blogs]
 })
 
 module.exports=mongoose.model('Blog',blogSchema);

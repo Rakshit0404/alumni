@@ -36,9 +36,6 @@
         border:1px solid grey !important;
         transition: all 0.4s;
     }
-    .aboutheads{
-
-    }
     .aboutheads::after{
         content: "";
         display: block;
