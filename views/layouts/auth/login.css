@@ -12,6 +12,7 @@ body{
 }
 
 
+<<<<<<< HEAD
 .landing_bg {
     background: url(../images/Capture11.PNG) no-repeat scroll 0 0 transparent;
     background-size: cover;
@@ -27,6 +28,9 @@ body{
 }
 
 .background{
+=======
+#background{
+>>>>>>> ee37317aa490aea15bfb96761bb4ec2d24426904
     display: flex;
     flex-direction: row;
     width: 100vw;
@@ -110,6 +114,7 @@ body{
     font-size: 20px;
 }
 
+<<<<<<< HEAD
 .formbody{
     
     position: absolute;
@@ -117,6 +122,12 @@ body{
     height: 100vh;
     display: flex;
     
+=======
+#formbody{
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+>>>>>>> ee37317aa490aea15bfb96761bb4ec2d24426904
     background-color: #EFF1F2;
     justify-content: center;
 }
