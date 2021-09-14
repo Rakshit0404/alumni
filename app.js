@@ -16,7 +16,7 @@ const userRoutes=require('./routes/user');
 const User=require('./models/user');
 const ExpressError=require('./utils/ExpressError');
 const catchAsync=require('./utils/catchAsync');
-const Blog=require('./models/blog');
+const {Blog,comment,post}=require('./models/blog');
 
 const userproRoutes=require('./routes/userpro')
 
@@ -25,11 +25,6 @@ const userproRoutes=require('./routes/userpro')
 // const upload=multer({storage});
 // const upload=require('./uploads/multer');
 // const cloudinary=require('cloudinary').v2;
-const fs = require('fs-extra');
-var fileUpload = require('express-fileupload');
-var mime = require('mime');
-app.use(fileUpload({}));
-const array=require('./models/array');
 
 
 mongoose.connect('mongodb://localhost:27017/alumni', {
@@ -99,14 +94,26 @@ app.get('/',(req,res)=>{
     res.render('layouts/home');
 })
 
+
+app.use('/',userRoutes)
+
+app.use("/",userproRoutes)
+
+
+const fs = require('fs-extra');
+var fileUpload = require('express-fileupload');
+var mime = require('mime');
+app.use(fileUpload({}));
+const array=require('./models/array');
+
 app.get('/blogs/:corner',async(req,res,next)=>{
-    const corner=await Blog.findOne({name:req.params.corner});
-    console.log(corner.name);
+    const corner=await Blog.find({name:req.params.corner});
     res.render('alumni/blogtype',{corner});
 })
 
 app.get('/blogs/:corner/writeblog',(req,res)=>{
-    res.render('alumni/writeblog');
+  const {corner}=req.params;
+  res.render('alumni/writeblog',{corner});
 })
 
 app.get('/blogs',(req,res)=>{
@@ -144,8 +151,8 @@ app.post('/upload', function (req, res) {
           array[req.user._id]=[];
         }
         array[req.user._id].push(req.files.file.name);
-        console.log(array[req.user._id]);
-        console.log(req.user);
+        // console.log(array[req.user._id]);
+        // console.log(req.user);
         res.send({ 'location': `../../blogimages/${req.files.file.name}`});
     });
   }
@@ -156,7 +163,6 @@ app.get('/uploadtemp',(req,res)=>{
 })
 
 app.post('/tempupload',(req,res)=>{
-  console.log("hiii");
   const {filenames}= req.body;
   var divide=[];
   var str="";
@@ -185,11 +191,12 @@ app.post('/tempupload',(req,res)=>{
   }
 });
 
-app.post('/blogs',(req,res)=>{
-    var {content}=req.body;
+app.post('/blogs/:corner',async (req,res)=>{
+    const {corner}=req.params; 
+    const newpost=await new post({bloggerName:req.user.username,blogText:req.body.corner,upvotes:0,comments:[]});
+    console.log(newpost);
+    await Blog.insertMany([{newpost}]);
 
-    content="<div style='width:600px; height:auto;'>"+content+"</div>";
-    res.send(content);
 })
 
 app.get('/contactus',(req,res)=>{
@@ -200,11 +207,6 @@ app.get('/edits',(req,res)=>{
     res.render('layouts/edit')
 })
 
-
-
-app.use('/',userRoutes)
-
-app.use("/",userproRoutes)
 
 app.all('*',(req,res,next)=>{
      next(new ExpressError('Page Not Found',404));

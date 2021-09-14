@@ -5,12 +5,16 @@ const comments=new mongoose.Schema({
     commentText:String
 })
 
+module.exports=mongoose.model('comment',comments);
+
 const blogs=new mongoose.Schema({
     bloggerName:String,
     blogText:String,
     comments:[comments],
     upvotes:Number
 })
+
+module.exports=mongoose.model('post',blogs);
 
 const blogSchema=new mongoose.Schema({
     name:String,
