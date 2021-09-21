@@ -8,13 +8,12 @@
 </head>
 <body>
     <h1><%=corner.name %> </h1>
-    <p><%=corner%></p>
     <% if(corner.blogs.length!=0){ %>
         <% for(let blog of corner.blogs){ %>
-            <h2><%=blog.bloggerName%></h2>
-            <div><%=blog.blogText%></div>
-            <% } %>
+            <div><%-blog.bloggerName%></h2></div>
+            <div id="text"><%-blog.blogText%></div>
         <% } %>
+    <% } %>
             
     <div onclick="location.href='/blogs/<%=corner.name %>/writeblog'">write a blog</div>
 </body>
