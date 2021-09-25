@@ -63,7 +63,7 @@
         <div id="block">
             <div
                 style="display: flex; flex-direction: row; width:100%; padding: 10px; margin-bottom: 20px; background-color: rgb(226, 222, 222); border-radius: 5px;">
-                <input type="text" name="" id="" placeholder="create post" style="width:80%;">
+                <input type="text" name="" id="" placeholder="create post" style="width:inherit;">
                 <button class="icon"><i class="bi bi-images"></i></button>
                 <button class="icon"><i class="bi bi-link-45deg"></i></button>
             </div>
@@ -71,20 +71,23 @@
                 <% for(let blog of corner.blogs){ %>
                     <div class=ablog>
                         <div class=likes></div>
-                        <div>
+                        <div style="width:100%;">
                             <div class=contentcontainer>
-                                <div>
+                                <div style="width:100%;">
                                     <%-blog.bloggerName%>
                                 </div>
                                 <div class="text">
+                                    <div class=over>
+                                        <p>Click to view</p>
+                                    </div>
                                     <%-blog.blogText%>
                                 </div>
                             </div>
                             <div class=details></div>
                         </div>
                     </div>
-                    <% } %>
-                        <% } %>
+                <% } %>
+            <% } %>
 
         </div>
 
