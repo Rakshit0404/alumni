@@ -105,6 +105,8 @@ app.get('/blogs/:corner',async(req,res,next)=>{
     console.log(req.params.corner);
     var corner=await Blogtype.find({name:req.params.corner}).populate({
       path:'blogs'
+    }).populate({
+      path:'bloggerName'
     })
     if(corner.length==0)
     {
@@ -202,13 +204,16 @@ app.post('/tempupload',(req,res)=>{
 
 app.post('/blogs/:corner',async (req,res)=>{
     const {corner}=req.params; 
-    const newpost=await new Blog({blogText:req.body.content,});
+    const banda=await User.find({email:req.user.email});
+    banda=banda[0];
+    const newpost=await new Blog({blogText:req.body.content,bloggerName:banda});
     const requiredtype= await Blogtype.findOne({name:corner});
     requiredtype.blogs.push(newpost);
     await newpost.save();
     await requiredtype.save();
     const newblog=await Blog.find({blogText:req.body.content});
     console.log(newblog);
+    res.redirect('/blogs/:corner');
 })
 
 app.get('/contactus',(req,res)=>{
