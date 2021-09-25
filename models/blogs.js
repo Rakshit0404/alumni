@@ -1,7 +1,7 @@
 const mongoose=require('mongoose');
 
 const comments=require('./comments');
-const user=require('./user');
+const User=require('./user');
 
 const blogs=new mongoose.Schema({
     bloggerName:{
