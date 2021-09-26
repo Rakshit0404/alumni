@@ -24,13 +24,17 @@
       </div>
     </div>
   </nav>
+       
 
+      <a href="/viewprofile/<%=currentUser.email%> ">viewprofile</a>
      <h2 style="text-align: center; margin-top: 20px; margin-bottom: 40px; font-family: 'Dancing Script', cursive; font-size: 80px; " >Edit profile</h2>
-    <div class="pages"  style="width: 750px; height: 750px; overflow: scroll;" >  
+   
+   
+     <div class="pages"  style="width: 750px; height: 750px; overflow: scroll;" >  
+        
+        
+        
         <form action="/userprofile" method="post" novalidate class="validate-form" enctype="multipart/form-data"  >
-
-
-
             <% if(!currentUser){ %> 
             <div class="mb-2 mt-2 ">
                 <label style="margin-left: 120px; color: rgb(128, 128, 128);" for="username"
@@ -224,7 +228,7 @@
              
             <div class="mb-3 mt-2 " style="width: 623px; margin-top: 8px; " >
                 <div class="form-file custom-file" style="margin-left: 120px; color: rgb(128, 128, 128);" >
-                    <input type="file" class="form-file-input" id="image" name="image"  >
+                    <input type="file" class="form-file-input" id="image" name="i"  >
                     <label class="form-file-label" for="image">
                         <span class="form-file-text custom-file-label">Choose image...</span>
                         <span class="form-file-button">Browse</span>
