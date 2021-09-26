@@ -100,6 +100,7 @@ var fileUpload = require('express-fileupload');
 var mime = require('mime');
 app.use(fileUpload({}));
 const array=require('./models/array');
+const { findById } = require('./models/user');
 
 app.get('/blogs/:corner',async(req,res,next)=>{
     console.log(req.params.corner);
@@ -128,6 +129,14 @@ app.get('/blogs/:corner/writeblog',(req,res)=>{
 app.get('/blogs',(req,res)=>{
     res.render("alumni/blog.ejs");
 })
+
+app.get('/blogs/:corner/:id',async (req,res)=>{
+    const{id,corner}=req.params;
+    const blog= await Blog.findById({_id:id});
+    console.log(blog);
+    res.render("alumni/viewblog",{blog,corner});
+})
+
 app.post('/upload', function (req, res) {
     var folderName = path.join(__dirname, `uploads`);
     console.log(folderName);
