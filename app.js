@@ -69,31 +69,26 @@ passport.deserializeUser(User.deserializeUser());
 
 
 app.use((req,res,next)=>{
-    // if(!['/login','/'].includes(req.originalUrl)){
-    //     req.session.returnTo=req.originalUrl;
-    // }else{
-    //     req.session.returnTo='/'; 
-    // }
-   // console.log(req.session);
-   // console.log(req.user);
     res.locals.currentUser=req.user;
-    
     res.locals.success=req.flash('success');
     res.locals.error = req.flash('error');
     next();
 })
 
 
-app.get('/',(req,res)=>{
-    // res.send("<h1>home page</h1>");
-    res.render('layouts/home');
-})
 
+
+
+
+
+
+app.get('/',(req,res)=>{
+  res.render('layouts/home');
+})
 
 app.use('/',userRoutes)
 
 app.use("/",userproRoutes)
-
 
 const fs = require('fs-extra');
 var fileUpload = require('express-fileupload');
@@ -101,6 +96,7 @@ var mime = require('mime');
 app.use(fileUpload({}));
 const array=require('./models/array');
 const { findById } = require('./models/user');
+
 
 app.get('/blogs/:corner',async(req,res,next)=>{
     console.log(req.params.corner);
@@ -233,6 +229,7 @@ app.get('/contactus',(req,res)=>{
 app.get('/edits',(req,res)=>{
     res.render('layouts/edit')
 })
+
 
 
 app.all('*',(req,res,next)=>{

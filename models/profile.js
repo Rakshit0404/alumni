@@ -15,7 +15,11 @@ const UserprofileSchema=new schema({
     school:String,
     course:String,
     dep:String,
-    notable:String
+    notable:String,
+    image:[{
+        url:String,
+        filename:String
+    }]
 })
 
 module.exports=mongoose.model('Userpro',UserprofileSchema);
