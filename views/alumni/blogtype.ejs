@@ -54,10 +54,12 @@
         </nav>
         <div id="intro" style="background-image: url(../images/<%=corner.name%>.jpg);"></div>
         <div id="head">
-            <div style="border-radius: 50%; background-color: white;  margin-right: 25px; width:min-content;"><img
-                    src="/images/<%=corner.name%>-icon.png" style="width:85px; height:85px; padding: 5px;" alt=""></div>
+            <div
+                style="border-radius: 50%; background-color: white;  margin-right: 25px; width:min-content; overflow: hidden;">
+                <img src="/images/<%=corner.name%>-icon.png" style="width:85px; height:85px; padding: 5px;" alt="">
+            </div>
             <h1>
-                <%=corner.name %>
+                /<%=corner.name %>
             </h1>
         </div>
         <div id="block">
@@ -70,24 +72,36 @@
             <% if(corner.blogs.length!=0){ %>
                 <% for(let blog of corner.blogs){ %>
                     <div class=ablog>
-                        <div class=likes></div>
+                        <div class=likes>
+                            <div>
+                                <div style="width:40px; height:30px; border:1px solid black; margin-top: 40px;"></div>
+                                <i class="bi bi-hand-thumbs-up-fill" style="font-size: 25px;"></i>
+                                
+                            </div>
+                        </div>
                         <div style="width:100%;">
                             <div class=contentcontainer>
-                                <div style="width:100%;">
-                                    <%-blog.bloggerName%>
+                                <div class=username>
+                                    <span style="color:rgb(163, 162, 162);"><i class="bi bi-share-fill"></i> Posted by
+                                    </span>
+                                    <b><a href="/viewprofile" style="color: black;">/<%-blog.bloggerName.username%>
+                                                </a></b>
                                 </div>
                                 <div class="text">
-                                    <div class=over>
+                                    <div class=over onclick="location.href='/blogs/<%= corner.name %>/<%=blog._id%>'">
                                         <p>Click to view</p>
                                     </div>
                                     <%-blog.blogText%>
                                 </div>
                             </div>
-                            <div class=details></div>
+                            <div class=details>
+                                <div><i class="bi bi-chat-fill"></i> comments</div>
+                                <div><i class="bi bi-save2-fill"></i> save</div>
+                            </div>
                         </div>
                     </div>
+                    <% } %>
                 <% } %>
-            <% } %>
 
         </div>
 
