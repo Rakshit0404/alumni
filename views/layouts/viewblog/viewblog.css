@@ -1,6 +1,7 @@
 body{
     display:flex;
     flex-direction: column;
+    display:flex;
 }
 #topbar{
     background-color: #C21717;
@@ -10,6 +11,8 @@ body{
     width: 100%;
 }
 .ablog{
+    margin-top: 18px;
+    width:80%;
     display:flex;
     background-color: rgb(252, 250, 248);
     margin-bottom: 14px;
@@ -38,9 +41,7 @@ body{
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-}
-input{
-    border:0px;
+    font-family: 'Chakra Petch', sans-serif;
 }
 .username{
     width:100%;
@@ -48,11 +49,15 @@ input{
     border-bottom: 1px solid rgb(184, 181, 181);
 }
 .text{
-    max-height:650px;
     width:fit-content !important;
     overflow-y: hidden;
     position: relative;
     padding-top: 20px;
+}
+
+#commentsection{
+    width:80%;
+    height:300px;
 }
 
 .bi-save2-fill, .bi-chat-fill, .bi-hand-thumbs-up-fill{
@@ -62,3 +67,19 @@ input{
 .bi-save2-fill:hover, .bi-chat-fill:hover, .bi-hand-thumbs-up-fill:hover{
     color:black !important;
 }
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: rgb(30, 29, 46);
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 6px;
+    background: rgb(203, 45, 45);
+  }
+  
