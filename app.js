@@ -75,13 +75,6 @@ app.use((req,res,next)=>{
     next();
 })
 
-
-
-
-
-
-
-
 app.get('/',(req,res)=>{
   res.render('layouts/home');
 })
@@ -128,9 +121,11 @@ app.get('/blogs',(req,res)=>{
 
 app.get('/blogs/:corner/:id',async (req,res)=>{
     const{id,corner}=req.params;
-    const blog= await Blog.findById({_id:id});
+    const blog= await Blog.findById({_id:id}).populate({
+      path:'bloggerName'
+    });
     console.log(blog);
-    res.render("alumni/viewblog",{blog,corner});
+    res.render("alumni/viewblog",{blog});
 })
 
 app.post('/upload', function (req, res) {
@@ -222,15 +217,17 @@ app.post('/blogs/:corner',async (req,res)=>{
     res.redirect(`/blogs/${corner}`);
 })
 
+app.post('/comment',(req,res)=>{
+  console.log('Rakshit');
+})
+
 app.get('/contactus',(req,res)=>{
     res.render("alumni/contactus");
 })
 
 app.get('/edits',(req,res)=>{
-    res.render('layouts/edit')
+    res.render('layouts/edit');
 })
-
-
 
 app.all('*',(req,res,next)=>{
      next(new ExpressError('Page Not Found',404));
