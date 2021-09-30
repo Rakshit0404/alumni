@@ -1,5 +1,10 @@
+body{
+    overflow: hidden;
+}
+
 .profile{
     display: flex;
+    
 }
 
 /* h2{
@@ -15,11 +20,12 @@
 }
 
 .vprofile{
-    width: 700px;
-    height: 80vh;
+    width: auto;
+    height: max-content;
     margin-left: 40px;
     background-color:#FFFFFF;
-    box-shadow: transparent 5px 10px ;
+    box-shadow: 5px 10px 25px grey ;
+
 }
 
 .img{
@@ -62,3 +68,18 @@
     text-align: center;
 }
 
+.school , .course , .dep , .designation, .address , .phone_No{
+    margin-top: 20px;
+    font-size: 22px;
+    padding: 5px;
+    letter-spacing: 2px;
+    width: 650px;
+    margin: 10px;
+    border-radius: 5px;
+    background-color: rgb(231, 231, 231);
+}
+
+.bi{
+    margin-left: 5px;
+    margin-right: 12px;
+}
