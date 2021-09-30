@@ -11,6 +11,7 @@
         integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
     <link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/topbar/topbar.css">
     <link rel="stylesheet" href="/viewblog/viewblog.css">
 </head>
@@ -53,32 +54,54 @@
                 </div>
             </div>
         </nav>
-        <div class=ablog>
-            <div class=likes>
-                <div>
-                    <div style="width:40px; height:30px; border:1px solid black; margin-top: 40px;"></div>
-                    <i class="bi bi-hand-thumbs-up-fill" style="font-size: 25px;"></i>
+        <div style="width:100%; display:flex; flex-direction: column; align-items: center;">
+            <div class=ablog>
+                <div class=likes>
+                    <div>
+                        <div style="width:40px; height:30px; text-align:center; margin-top: 40px;">
+                            <%=blog.comments.length%>
+                        </div>
+                        <i class="bi bi-hand-thumbs-up-fill" style="font-size: 25px;"></i>
+                    </div>
+                </div>
+                <div style="width:100%;">
+                    <div class=contentcontainer>
+                        <div class=username>
+                            <span style="color:rgb(163, 162, 162);"><i class="bi bi-share-fill"></i> Posted by
+                            </span>
+                            <b><a href="/viewprofile" style="color: black;">/<%-blog.bloggerName.username%>
+                                </a></b>
+                        </div>
+                        <div class="text">
+                            <%-blog.blogText%>
+                        </div>
+                    </div>
+                    <div class=details>
+                        <div><i class="bi bi-chat-fill"></i>
+                            <%=blog.comments.length%> comments
+                        </div>
+                        <div><i class="bi bi-save2-fill"></i> save</div>
+                    </div>
+                </div>
+            </div>
+            <div id=commentsection>
+                <h1>Comment</h1>
+                <form action="/comment" method="post" id=forming>
+                    <textarea name="comment" id="comment" style="width:100%; height:100px;"></textarea>
+                    <input type="submit" class="btn btn-danger" id="clicktocomment" style="float:right;" value="Post comment">
+                </form>
+                <div style="width:100%; height:auto;">
 
                 </div>
             </div>
-            <div style="width:100%;">
-                <div class=contentcontainer>
-                    <div class=username>
-                        <span style="color:rgb(163, 162, 162);"><i class="bi bi-share-fill"></i> Posted by
-                        </span>
-                        <b><a href="/viewprofile" style="color: black;">/<%-blog.bloggerName.username%>
-                            </a></b>
-                    </div>
-                    <div class="text">
-                        <%-blog.blogText%>
-                    </div>
-                </div>
-                <div class=details>
-                    <div><i class="bi bi-chat-fill"></i> comments</div>
-                    <div><i class="bi bi-save2-fill"></i> save</div>
-                </div>
-            </div>
         </div>
+        <script>
+            const click=document.querySelector('#clicktocomment');
+            click.addEventListener('click',(e)=>{
+                console.log("Rakshit");
+                e.preventDefault();
+            })
+        </script>
 </body>
 
 </html>
