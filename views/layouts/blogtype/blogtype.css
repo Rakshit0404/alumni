@@ -77,6 +77,7 @@ body{
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    font-family: 'Chakra Petch', sans-serif;
 }
 input{
     border:0px;
@@ -117,3 +118,23 @@ input:focus{
 .bi-save2-fill:hover, .bi-chat-fill:hover, .bi-hand-thumbs-up-fill:hover{
     color:black !important;
 }
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: rgb(30, 29, 46);
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 6px;
+    background: rgb(203, 45, 45);
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(203, 45, 45);
+  }
