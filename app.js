@@ -122,9 +122,16 @@ app.get('/blogs',(req,res)=>{
 app.get('/blogs/:corner/:id',async (req,res)=>{
     const{id,corner}=req.params;
     const blog= await Blog.findById({_id:id}).populate({
-      path:'bloggerName'
-    });
-    console.log(blog);
+      path:'bloggerName',
+      populate:{
+        path:'comments'
+      }
+    }).populate({
+      path:'comments',
+      populate:{
+        path:'commentName'
+      }
+    }).populate('commentName');
     res.render("alumni/viewblog",{blog});
 })
 
@@ -209,16 +216,22 @@ app.post('/blogs/:corner',async (req,res)=>{
     banda=banda[0];
     const newpost=await new Blog({blogText:req.body.content,bloggerName:banda});
     const requiredtype= await Blogtype.findOne({name:corner});
-    requiredtype.blogs.push(newpost);
+    requiredtype.blogs.unshift(newpost);
     await newpost.save();
     await requiredtype.save();
-    const newblog=await Blog.find({blogText:req.body.content});
-    console.log(newblog);
     res.redirect(`/blogs/${corner}`);
 })
 
-app.post('/comment',(req,res)=>{
-  console.log('Rakshit');
+app.post('/comment',async (req,res)=>{
+    var user= await User.find({_id:req.user._id});
+    user=user[0];
+    let newcomment= await new Comments({commentName:user, commentText:req.body.comment});
+    newcomment.save();
+    var bloggerName= await Blog.findById({_id:req.body.blogger});
+    console.log(bloggerName);
+    bloggerName.comments.unshift(newcomment);
+    bloggerName.save();
+    console.log(newcomment);
 })
 
 app.get('/contactus',(req,res)=>{
