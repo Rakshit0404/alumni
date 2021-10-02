@@ -115,6 +115,7 @@ app.get('/blogs/:corner/writeblog',(req,res)=>{
   res.render('alumni/writeblog',{corner});
 })
 
+
 app.get('/blogs',(req,res)=>{
     res.render("alumni/blog.ejs");
 })
@@ -132,7 +133,23 @@ app.get('/blogs/:corner/:id',async (req,res)=>{
         path:'commentName'
       }
     }).populate('commentName');
-    res.render("alumni/viewblog",{blog});
+    res.render("alumni/viewblog",{blog,corner});
+})
+
+app.get('/blogs/:corner/:id/a',async (req,res)=>{
+  const{id,corner}=req.params;
+    const blog= await Blog.findById({_id:id}).populate({
+      path:'bloggerName',
+      populate:{
+        path:'comments'
+      }
+    }).populate({
+      path:'comments',
+      populate:{
+        path:'commentName'
+      }
+    }).populate('commentName');
+    res.render("alumni/viewblog",{blog,corner});
 })
 
 app.post('/upload', function (req, res) {
