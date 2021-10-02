@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+    <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/writeblog/writeblog.css">
+    <link rel="stylesheet" href="/topbar/topbar.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <%- include('../partials/topbar') %>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand"><span style="font-family: 'Major Mono Display', monospace;">BLOGSCAPE</span></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+                    aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarScroll">
+                    <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Link</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Link
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled">Link</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div id=cont>
+            <div style="width:100%;height:auto;min-height: 100%;display: flex;">
+                <div class="carrier" style="width:60%;height:auto;">
+                    <div id=pagename>Update your Blog</div>
+                    <textarea class="tinymce" id=upload><%=blog.blogText%></textarea>
+                    <div class="text">
+                        <%-blog.blogText%>
+                    </div>
+                    <form action="/blogs/<%= corner %> " method="post" enctype="multipart/form-data" style="width:min-content;">
+                        <input type="text" name="content" id="content" style="display:none;">
+                        <input type="submit" id="submit" style="display:none;">
+                    </form>
+                    <button id=butto class="btn btn-danger"
+                        style="width:60px; margin-top: 6px; border-radius: 20px;">Post</button>
+                    <!-- submitting request -->
+                    <iframe id=justupdate src="/uploadtemp" frameborder="0" style="display:none;"></iframe>
+                </div>
+                <div class="carrier">
+                    <!-- <div id=select>
+                        <div id="selecthead">Navigate to other pages</div>
+                        <div id="selectoptions">
+                            <div class="givenoptions">Educational</div>
+                            <div class="givenoptions">Career</div>
+                            <div class="givenoptions">Food</div>
+                            <div class="givenoptions">Travel</div>
+                            <div class="givenoptions">Music</div>
+                            <div class="givenoptions">Lifestyle</div>
+                            <div class="givenoptions">Fitness</div>
+                            <div class="givenoptions">Sports</div>
+                            <div class="givenoptions">Finance</div>
+                            <div class="givenoptions">Political</div>
+                            <div class="givenoptions">Personal</div>
+                        </div>
+                    </div> -->
+                    <div id=warning>
+                        <div id="selecthead">Strict Rules</div>
+                        <div style="padding:10px; box-sizing: border-box;">
+                            <ul>
+                                <li>Do not write abusive content</li>
+                                <li>Check for copyrights before uploading images</li>
+                                <li>Do not write the same blog again</li>
+                                <li>Try to use less than 5 photos in the blog if possible</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div style="width:100%; height:48%; margin-left: 20px; margin-top: 30px;">
+                        <textarea name="text" id="text"
+                            placeholder="Write HTML codes for extra styling in your blog..."></textarea>
+                        <button class="btn btn-danger" id=add style="float:right; border-radius: 20px;">Add to
+                            Blog</button>
+                        <button class="btn btn-secondary" id=clear
+                            style="float:right;margin-right: 6px; border-radius: 20px;">Clear</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            console.log(`<%-blog.blogText%>`);
+            // window.addEventListener('load',(e)=>{
+            //     var iframe = document.getElementById('upload_ifr');
+            //     var images = iframe.contentWindow.document.querySelectorAll('p img');
+            //     var contentbody=iframe.contentWindow.document.querySelector('body');
+            //     console.log(contentbody);
+            //     contentbody.innerHTML=`<%-blog.blogText%>`;
+            //     console.log(contentbody);
+            // })
+        </script>
+        <script type=module src="/writeblog/writeblog.js"></script>
+        <script type=text/javascript src="/plugins/tinymce/tinymce.min.js"></script>
+        <script type=text/javascript src="/plugins/tinymce/init-tinymce.js"></script>
+</body>
+</html>
