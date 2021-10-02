@@ -68,10 +68,14 @@
                 <div style="width:100%;">
                     <div class=contentcontainer>
                         <div class=username>
-                            <span style="color:rgb(163, 162, 162);"><i class="bi bi-share-fill"></i> Posted by
+                            <span><span style="color:rgb(163, 162, 162);"><i class="bi bi-share-fill"></i> Posted by
                             </span>
                             <b><a href="/viewprofile" style="color: black;">/<%-blog.bloggerName.username%>
-                                </a></b>
+                                </a></b></span>
+                                <span><button class="btn btn-secondary" onclick="location.href='/blogs/<%= corner%>/<%=blog._id%>/a'">Update your blog</button></span>
+                        </div>
+                        <div class="text">
+                            <%-blog.blogText%>
                         </div>
                         <div class="text">
                             <%-blog.blogText%>
