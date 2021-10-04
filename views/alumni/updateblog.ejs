@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,6 +21,7 @@
     <link rel="stylesheet" href="/topbar/topbar.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
+
 <body>
     <%- include('../partials/topbar') %>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -62,11 +64,9 @@
             <div style="width:100%;height:auto;min-height: 100%;display: flex;">
                 <div class="carrier" style="width:60%;height:auto;">
                     <div id=pagename>Update your Blog</div>
-                    <textarea class="tinymce" id=upload><%=blog.blogText%></textarea>
-                    <div class="text">
-                        <%-blog.blogText%>
-                    </div>
-                    <form action="/blogs/<%= corner %> " method="post" enctype="multipart/form-data" style="width:min-content;">
+                    <textarea class="tinymce" id=upload><%-blog.blogText%></textarea>
+                    <form action="/blogs/<%= corner %> " method="post" enctype="multipart/form-data"
+                        style="width:min-content;">
                         <input type="text" name="content" id="content" style="display:none;">
                         <input type="submit" id="submit" style="display:none;">
                     </form>
@@ -115,18 +115,25 @@
             </div>
         </div>
         <script>
-            console.log(`<%-blog.blogText%>`);
-            // window.addEventListener('load',(e)=>{
-            //     var iframe = document.getElementById('upload_ifr');
-            //     var images = iframe.contentWindow.document.querySelectorAll('p img');
-            //     var contentbody=iframe.contentWindow.document.querySelector('body');
-            //     console.log(contentbody);
-            //     contentbody.innerHTML=`<%-blog.blogText%>`;
-            //     console.log(contentbody);
-            // })
+            const content=document.createElement('div');
+            content.innerHTML=`<%-blog.blogText%>`;
+            console.log(content);
+            var images=content.querySelectorAll('img');
+            console.log(images); 
+            var str = "";
+            for (let im of images) {
+                str += im.src.substr(33) + "|";
+            }
+            str = str.replace(/%20/g, " ");
+            $.post("/update",
+            {string:str},
+            function (data, status) {
+                alert("Data: " + data + "\nStatus: " + status);
+            });
         </script>
         <script type=module src="/writeblog/writeblog.js"></script>
         <script type=text/javascript src="/plugins/tinymce/tinymce.min.js"></script>
         <script type=text/javascript src="/plugins/tinymce/init-tinymce.js"></script>
 </body>
+
 </html>
