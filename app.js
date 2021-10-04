@@ -136,20 +136,12 @@ app.get('/blogs/:corner/:id',async (req,res)=>{
     res.render("alumni/viewblog",{blog,corner});
 })
 
-app.get('/blogs/:corner/:id/a',async (req,res)=>{
+app.get('/:corner/:id/updateblog',async (req,res)=>{
   const{id,corner}=req.params;
     const blog= await Blog.findById({_id:id}).populate({
-      path:'bloggerName',
-      populate:{
-        path:'comments'
-      }
-    }).populate({
-      path:'comments',
-      populate:{
-        path:'commentName'
-      }
-    }).populate('commentName');
-    res.render("alumni/viewblog",{blog,corner});
+      path:'bloggerName'
+    })
+    res.render("alumni/updateblog",{blog,corner});
 })
 
 app.post('/upload', function (req, res) {
@@ -197,20 +189,8 @@ app.get('/uploadtemp',(req,res)=>{
 
 app.post('/tempupload',(req,res)=>{
   const {filenames}= req.body;
-  var divide=[];
-  var str="";
-  const size=filenames.length;
-  for(let i=0;i<size;i++)
-  {
-    if(filenames[i]=="|")
-    {
-      divide.push(str);
-      str="";
-    }
-    else{
-      str+=filenames[i];
-    }
-  }
+  var divide=filenames.split("|");
+  console.log(divide);
   function diffArray(arr1, arr2) {
     return arr1
       .concat(arr2)
@@ -249,6 +229,14 @@ app.post('/comment',async (req,res)=>{
     bloggerName.comments.unshift(newcomment);
     bloggerName.save();
     console.log(newcomment);
+})
+
+app.post('/update',async (req,res)=>{
+    console.log(req.body);
+    var str=(req.body).string;
+    console.log(str);
+    var newarray=str.split("|");
+    console.log(newarray)
 })
 
 app.get('/contactus',(req,res)=>{
