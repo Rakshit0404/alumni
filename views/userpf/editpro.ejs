@@ -1,0 +1,252 @@
+<% layout('layouts/boilerplate') %>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/">GGV Alumni</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                <div class="navbar-nav ms-auto">
+                    <% if(!currentUser) { %>
+                        <div><a style="color: white; text-decoration: none;  ">LOGIN/SIGNUP</a>
+                        </div>
+
+                        <% } else { %>
+                            <div> <span style="font-size: 20px; color: white; font-weight: 400; ">
+                                    <i class="bi bi-person" style="margin-right: 8px; font-size: 25px; "></i>
+                                    <%=currentUser.username%>
+                                </span> </div>
+                            <% } %>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+
+    <h2
+        style="text-align: center; margin-top: 20px; margin-bottom: 40px; font-family: 'Dancing Script', cursive; font-size: 80px; ">
+        Edit Profile</h2>
+
+
+    <div class="pages" style="width: 750px; height: 750px; overflow: scroll;">
+
+
+
+        <form action="/editprofile/<%=currentUser.email%>?_method=PUT" method="post" novalidate class="validate-form"
+            enctype="multipart/form-data">
+
+
+            <div class="mb-2 mt-2 ">
+                <label style="margin-left: 120px; color: rgb(128, 128, 128);" for="username"
+                    class="form-label">Username:</label>
+
+                <input type="text" class="form-control" id="Username" name='user[username]' value="<%=user.username%> "
+                    placeholder="username" required style="width: 500px; margin-left: 120px; ">
+                <div class="valid-feedback" style="margin-left: 120px; color: rgb(128, 128, 128);">
+                    looks good!
+                </div>
+            </div>
+
+            <div class="mb-2">
+                <label style="margin-left: 120px; color: rgb(128, 128, 128);" for="fullnmae" class="form-label">
+                    Fullname: </label>
+                <input type="text" class="form-control" id="Fullname" name="user[fullname]" value="<%=user.fullname%>" placeholder="fullname" 
+                    required style="width: 500px; margin-left: 120px; ">
+                <div class="valid-feedback" style="margin-left: 120px; color: rgb(128, 128, 128);">
+                    looks good!
+                </div>
+            </div>
+
+            <div class="mb-2">
+                <label style="margin-left: 120px; color: rgb(128, 128, 128);" for="email" class="form-label"> Email:
+                </label>
+                <input type="email" class="form-control" id="email" name="user[email]" value="<%=user.email%> " placeholder="Email"
+                    required style="width: 500px; margin-left: 120px; ">
+                <div class="valid-feedback" style="margin-left: 120px; color: rgb(128, 128, 128);">
+                    looks good!
+                </div>
+            </div>
+
+
+
+            <div class="mb-2">
+                <label style="margin-left: 120px; color: rgb(128, 128, 128);" for="mobileno" class="form-label"> Mobile
+                    No: </label>
+                <input type="text" class="form-control" id="mobileno" placeholder="Mobile No" value="<%=user.mobileno%>  " name="user[mobileno]"
+                    required style="width: 500px; margin-left: 120px; ">
+                <div class="valid-feedback" style="margin-left: 120px; color: rgb(128, 128, 128);">
+                    looks good!
+                </div>
+            </div>
+
+            <div class="mb-2">
+                <label style="margin-left: 120px; color: rgb(128, 128, 128);" for="predes" class="form-label"> Present
+                    Designation: </label>
+                <input type="text" class="form-control" id="predes" name="user[predes]" value=" <%=user.predes%>  "
+                    placeholder="Designation" required style="width: 500px; margin-left: 120px; ">
+                <div class="valid-feedback" style="margin-left: 120px; color: rgb(128, 128, 128);">
+                    looks good!
+                </div>
+            </div>
+            <div class="mb-2">
+                <label style="margin-left: 120px; color: rgb(128, 128, 128);" for="address" class="form-label"> Address:
+                </label>
+                <textarea name="user[addrs]" class="form-control"  required style="width: 500px; margin-left: 120px; " value=" <%= user.addrs %>  "
+                    id="address" cols="3" rows="3"><%= user.addrs  %> </textarea>
+                <div class="valid-feedback" style="margin-left: 120px; color: rgb(128, 128, 128);">
+                    looks good!
+                </div>
+            </div>
+            <div class="mb-2">
+                <label style="margin-left: 120px; color: rgb(128, 128, 128);" for="school" class="form-label"> School:
+                </label>
+                <select name="user[school]" id="school" style="width: 500px; margin-left: 120px; " required
+                    class="form-select" aria-label="Default select example"   > 
+
+                    <option value="Art">School of Studies in Art</option>
+                    <option value="Engineering & Technology">School of Studies in Engineering &
+                        Technology</option>
+                    <option value="Law">School of Law</option>
+                    <option value="Life Science">School of Studies in Life Science</option>
+                    <option value="Management & Commerce">School of Studies in Management &
+                        Commerce</option>
+                    <option value="Mathematical and Computational Science">School of Studies in
+                        Mathematical and Computational Science </option>
+                    <option value="Natural REsource">School of Studies in Natural Science
+                    </option>
+                    <option value="Physical Science">School of Studies in Physical Science
+                    </option>
+                    <option value="Social Science">School of Studies in Social Science</option>
+                </select>
+
+                <div class="valid-feedback" style="margin-left: 120px; color: rgb(128, 128, 128);">
+                    looks good!
+                </div>
+            </div>
+            <div class="mb-2">
+                <label style="margin-left: 120px; color: rgb(128, 128, 128);" for="course" class="form-label"> course:
+                </label>
+
+                <select name="user[course]" id="school" style="width: 500px; margin-left: 120px; " required
+                    class="form-select" aria-label="Default select example">
+                    <option value="B.A.">B.A.</option>
+                    <option value="B.Com.">B.Com</option>
+                    <option value="B.Ed">B.Ed</option>
+                    <option value="MCA">MCA</option>
+                    <option value="B.A.LLB">B.A.LLB</option>
+                    <option value="B.Com LLB">B.Com LLB</option>
+                    <option value="B.P.Ed.">B.P.Ed.</option>
+                    <option value="B.PHARMA.">B.PHARMA</option>
+                    <option value="B.Sc.">B.Sc</option>
+                    <option value="B.Sw">B.Sw</option>
+                    <option value="B.Lib.">B.Lib</option>
+                    <option value="B.TECH.">B.TECH</option>
+                    <option value="BJMC">BJMC</option>
+                    <option value="D.Pharma.">D.Pharma.</option>
+                    <option value="M.A.">M.A</option>
+                    <option value="MCA">MCA</option>
+                    <option value="M.Ed.">M.Ed.</option>
+                    <option value="M.Lib.">M.Lib.</option>
+                    <option value="M.P.Ed.">M.P.Ed.</option>
+                    <option value="M.PHARMA">M.PHARMA</option>
+                    <option value="M.Sc.">M.Sc.</option>
+                    <option value="M.TECH.">M.TECH.</option>
+                    <option value="M.Com.">M.Com</option>
+                    <option value="M.Sw.">M.Sw</option>
+                    <option value="MBA">MBA</option>
+                    <option value="MMCJ">MMCJ</option>
+                    <option value="Ph.D.">Ph.D.</option>
+                </select>
+
+                <div class="valid-feedback" style="margin-left: 120px; color: rgb(128, 128, 128);">
+                    looks good!
+                </div>
+            </div>
+
+            <div class="mb-2">
+                <label style="margin-left: 120px; color: rgb(128, 128, 128);" for="dep" class="form-label"> Department:
+                </label>
+
+                <select name="user[dep]" id="school" style="width: 500px; margin-left: 120px; " required
+                    class="form-select" aria-label="Default select example">
+                    <option value="Anthropology & Tribal Development">Anthropology & Tribal
+                        Development</option>
+                    <option value="Bio Technology"> Bio Technology</option>
+                    <option value="Botany"> Botany</option>
+                    <option value="Chemical Engineering"> Chemical Engineering</option>
+                    <option value="Civil Engineering"> Civil Engineering</option>
+                    <option value="Commerce"> Commerce</option>
+                    <option value="Chemistry"> Chemistry</option>
+                    <option value="Computer Sc. & Engineering">Computer Sc. & Engineering
+                    </option>
+                    <option value="Computer Sc. & IT">Computer Sc. & IT</option>
+                    <option value="Economics">Economics</option>
+                    <option value="Education">Education</option>
+                    <option value="Electronic & Comm. Engineering">Electronic & Comm.
+                        Engineering</option>
+                    <option value="English">English</option>
+                    <option value="Forensic Sc.">Forensic Sc</option>
+                    <option value="Forestry & Wild Life">Forestry & Wild Life</option>
+                    <option value="Hindi">Hindi</option>
+                    <option value="History">History</option>
+                    <option value="Industrial & Production Engineering">Industrial & Production
+                        Engineering</option>
+                    <option value="Information Technology">Information Technology</option>
+                    <option value="JOUNALISM & MASS COMMUNICATION">JOUNALISM & MASS
+                        COMMUNICATION</option>
+                    <option value="Library Sc.">Library Sc</option>
+                    <option value="Law">Law</option>
+                    <option value="Management Studies">Management Studies</option>
+                    <option value="Mechanical Engineering">Mechanical Engineering</option>
+                    <option value="Pharmacy">Pharmacy</option>
+                    <option value="Political Sc.">Political Sc</option>
+                    <option value="Pure & Applied Maths">Pure & Applied Maths</option>
+                    <option value="Pure and Applied Physics">Pure and Applied Physics</option>
+                    <option value="Physical Education">Physical Education</option>
+                    <option value="Rural Technology">Rural Technology</option>
+                    <option value="Social Work">Social Work</option>
+                    <option value="Zoology">Zoology</option>
+
+                </select>
+
+                <div class="valid-feedback" style="margin-left: 120px; color: rgb(128, 128, 128);">
+                    looks good!
+                </div>
+            </div>
+
+
+            <!--             
+         <input type="file" name="image" id="image"> -->
+
+            <div class="mb-3 mt-2 " style="width: 623px; margin-top: 8px; ">
+                <div class="form-file custom-file" style="margin-left: 120px; color: rgb(128, 128, 128);">
+                    <input type="file" class="form-file-input" id="image" name="i">
+                    <label class="form-file-label" for="image">
+                        <span class="form-file-text custom-file-label">update image...</span>
+                        <span class="form-file-button">Browse</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="mb-3">
+               
+             
+                <img src="<%= user.image[0].thumbnail%> " style="margin-left: 220px;" class="img-thumbnail"  alt="">
+                 <div class="form-check-inline" >
+                    <input type="checkbox" name="deleteImages[]" id="image" value=" <%= user.image[0].filename %>  " >
+                 </div>
+                 <label for="image">Delete?</label>
+            </div>
+
+
+            <div class="mb-2 mt-5 ">
+                <button class="btn btn-primary " style="width: 400px; margin-left: 180px;">Submit</button>
+            </div>
+
+
+        </form>
+    </div>

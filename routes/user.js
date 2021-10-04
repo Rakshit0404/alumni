@@ -16,6 +16,7 @@ router.post('/register',  catchAsync(async(req,res)=>{
         const user=new User({email,username});
         const newuser= await User.register(user,password);
         
+        
         req.login(newuser ,e =>{
             if(e) return next(e);
             req.flash('succes',"welcome alumni !!");

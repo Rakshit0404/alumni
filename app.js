@@ -20,6 +20,7 @@ const userproRoutes=require('./routes/userpro')
 const Blog=require('./models/blogs');
 const Blogtype=require('./models/blogtype');
 const Comments=require('./models/comments');
+const methodOverride = require('method-override');
 
 
 mongoose.connect('mongodb://localhost:27017/alumni', {
@@ -41,7 +42,7 @@ app.engine('ejs',ejsmate);
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'))
 app.use(express.urlencoded({ extended: true }));
-
+app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname,'views/layouts')));
 app.use(express.static(path.join(__dirname,'uploads')));
 
