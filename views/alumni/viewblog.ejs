@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
     <link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="/topbar/topbar.css">
     <link rel="stylesheet" href="/viewblog/viewblog.css">
 </head>
@@ -67,10 +68,11 @@
                 <div style="width:100%;">
                     <div class=contentcontainer>
                         <div class=username>
-                            <span style="color:rgb(163, 162, 162);"><i class="bi bi-share-fill"></i> Posted by
+                            <span><span style="color:rgb(163, 162, 162);"><i class="bi bi-share-fill"></i> Posted by
                             </span>
                             <b><a href="/viewprofile" style="color: black;">/<%-blog.bloggerName.username%>
-                                </a></b>
+                                </a></b></span>
+                                <span><button class="btn btn-secondary" onclick="location.href='/<%= corner%>/<%=blog._id%>/updateblog'">Update your blog</button></span>
                         </div>
                         <div class="text">
                             <%-blog.blogText%>
@@ -85,23 +87,41 @@
                 </div>
             </div>
             <div id=commentsection>
-                <h1>Comment</h1>
-                <form action="/comment" method="post" id=forming>
-                    <textarea name="comment" id="comment" style="width:100%; height:100px;"></textarea>
-                    <input type="submit" class="btn btn-danger" id="clicktocomment" style="float:right;" value="Post comment">
+                <h1>Comments</h1>
+                <form method="post" id=forming>
+                    <input type="text" name="blogger" style="display: none;" value="<%=blog._id%>">
+                    <textarea name="comment" id="comment" style="width:100%; height:100px;" placeholder="write a comment..."></textarea>
+                    <input type="submit" class="btn btn-danger" id="clicktocomment" style="float:right;"
+                        value="Post comment">
                 </form>
-                <div style="width:100%; height:auto;">
-
+                <div style="width:100%; height:auto; margin-top:46px;">
+                    <% for(let cum of blog.comments){ %>
+                        <div class=comment>
+                            <div class=commenthead><i class="bi bi-share-fill" style="margin-right: 6px;"></i><span style="margin-right: 5px;">comment by</span>
+                                <b><span style=" color:rgb(0, 0, 0);"> /<%= cum.commentName.username %></span></b></div>
+                            <div class=commentcont><%= cum.commentText %></div>
+                        </div>
+                    <% } %>
                 </div>
             </div>
         </div>
         <script>
-            const click=document.querySelector('#clicktocomment');
-            click.addEventListener('click',(e)=>{
-                console.log("Rakshit");
-                e.preventDefault();
-            })
+            $(function () {
+                $('#forming').on('submit', function (e) {
+                    $.ajax({
+                        type: 'post',
+                        url: '/comment',
+                        data: $('#forming').serialize(),
+                        success: function () {
+                            alert("Email has been sent!");
+                        }
+                    });
+                    e.preventDefault();
+                    setTimeout(()=>{
+                        window.location.reload();
+                    })
+                });
+            });
         </script>
 </body>
-
 </html>

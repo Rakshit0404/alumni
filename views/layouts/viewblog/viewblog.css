@@ -47,6 +47,8 @@ body{
     width:100%;
     height:40px;
     border-bottom: 1px solid rgb(184, 181, 181);
+    display: flex;
+    justify-content: space-between;
 }
 .text{
     width:fit-content !important;
@@ -54,10 +56,29 @@ body{
     position: relative;
     padding-top: 20px;
 }
-
 #commentsection{
     width:80%;
-    height:300px;
+    height:auto;
+    border-bottom: 100px solid white;
+}
+.comment{
+    margin-top: 20px;
+    background-color: rgb(245, 239, 239);
+    padding: 12px;
+    padding-left: 32px;
+    padding-right: 32px;
+    border-radius: 6px;
+}
+.commenthead{
+    height:50px;
+    border-bottom: 1px solid black;
+    display: flex;
+    align-items: center;
+    color:rgb(163, 162, 162);
+}
+.commentcont{
+    margin-top: 10px;
+    padding-bottom: 20px;
 }
 
 .bi-save2-fill, .bi-chat-fill, .bi-hand-thumbs-up-fill{

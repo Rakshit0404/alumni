@@ -64,7 +64,7 @@
         </div>
         <div id="block">
             <div
-                style="display: flex; flex-direction: row; width:100%; padding: 10px; margin-bottom: 20px; background-color: rgb(226, 222, 222); border-radius: 5px;">
+                style="display: flex; flex-direction: row; width:100%; padding: 10px; margin-bottom: 20px; background-color: rgb(226, 222, 222); border-radius: 5px;" onclick="location.href='/blogs/<%=corner.name %>/writeblog'">
                 <input type="text" name="" id="" placeholder="create post" style="width:inherit;">
                 <button class="icon"><i class="bi bi-images"></i></button>
                 <button class="icon"><i class="bi bi-link-45deg"></i></button>
@@ -103,8 +103,6 @@
                 <% } %>
 
         </div>
-
-        <div onclick="location.href='/blogs/<%=corner.name %>/writeblog'">write a blog</div>
 </body>
 
 </html>
