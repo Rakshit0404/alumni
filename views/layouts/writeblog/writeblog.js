@@ -25,8 +25,8 @@ const butto=document.querySelector("#butto");
 const filenames=document.querySelector("#filenames");
 butto.addEventListener('click',(e)=>{
     var iframe = document.getElementById('upload_ifr');
+    console.log(iframe);
     var images = iframe.contentWindow.document.querySelectorAll('p img');
-    // console.log(images);
     console.log(images);
     var str="";
     for(let im of images)
@@ -45,4 +45,3 @@ butto.addEventListener('click',(e)=>{
     console.log(array);
     document.querySelector("#submit").click();
 })
-
