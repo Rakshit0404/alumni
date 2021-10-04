@@ -31,7 +31,7 @@
   <div class="container mt-5"    >
   <div class="profile">
      <div class="imageprofile" >
-        <div class="img" style="background-image: url(<%=user.image[0].url%>);" >
+        <div class="img" style="background-image: url(<%=user.image[0].thumbnail%>);" >
            
         </div>
         <div class="fullname" >
@@ -53,13 +53,13 @@
         <i class="bi bi-book"></i>Course:<%= user.course%> 
        </div>
        <div class="dep">
-        <i class="bi bi-people"></i>Department: 
+        <i class="bi bi-people"></i>Department: <%=user.dep%> 
        </div>
        <div class="designation" >
-        <i class="bi bi-briefcase"></i>Designation:<%=   %> 
+        <i class="bi bi-briefcase"></i>Designation:<%= user.predes%> 
        </div>
        <div class="address" >
-        <i class="bi bi-house-door"></i> Address:<%=   %> 
+        <i class="bi bi-house-door"></i> Address:<%=user.addrs%> 
        </div>
        <div class="phone_No">
         <i class="bi bi-telephone" ></i>ContactNo:+91<%= user.mobileno%> 

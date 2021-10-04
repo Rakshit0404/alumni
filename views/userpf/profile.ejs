@@ -27,7 +27,9 @@
        
 
       <a href="/viewprofile/<%=currentUser.email%> ">viewprofile</a>
-     <h2 style="text-align: center; margin-top: 20px; margin-bottom: 40px; font-family: 'Dancing Script', cursive; font-size: 80px; " >Edit profile</h2>
+
+      <a href="/editprofile/<%=currentUser.email  %> ">editprofile</a>
+     <h2 style="text-align: center; margin-top: 20px; margin-bottom: 40px; font-family: 'Dancing Script', cursive; font-size: 80px; " >Create profile</h2>
    
    
      <div class="pages"  style="width: 750px; height: 750px; overflow: scroll;" >  
@@ -104,7 +106,7 @@
             <div class="mb-2">
                 <label style="margin-left: 120px; color: rgb(128, 128, 128);" for="predes" class="form-label"> Present
                     Designation: </label>
-                <input type="text" class="form-control" id="predes" name="user[presentdesignation]" placeholder="Designation"  required
+                <input type="text" class="form-control" id="predes" name="user[predes]" placeholder="Designation"  required
                     style="width: 500px; margin-left: 120px; ">
                 <div class="valid-feedback" style="margin-left: 120px; color: rgb(128, 128, 128);"  >
                     looks good!
@@ -113,7 +115,7 @@
             <div class="mb-2">
                 <label style="margin-left: 120px; color: rgb(128, 128, 128);" for="address" class="form-label"> Address:
                 </label>
-                <textarea name="user[address]" class="form-control"  style="width: 500px; margin-left: 120px; "  id="address" cols="3" rows="3"></textarea>
+                <textarea name="user[addrs]" class="form-control" required style="width: 500px; margin-left: 120px; "  id="address" cols="3" rows="3"></textarea>
                 <div class="valid-feedback" style="margin-left: 120px; color: rgb(128, 128, 128);" >
                     looks good!
                 </div>
@@ -181,7 +183,7 @@
                 <label style="margin-left: 120px; color: rgb(128, 128, 128);" for="dep" class="form-label"> Department:
                 </label>
 
-                <select name="user[department]" id="school"  style="width: 500px; margin-left: 120px; "  required class="form-select" aria-label="Default select example">
+                <select name="user[dep]" id="school"  style="width: 500px; margin-left: 120px; "  required class="form-select" aria-label="Default select example">
                     <option value="Anthropology & Tribal Development">Anthropology & Tribal Development</option> 
                     <option value="Bio Technology"> Bio Technology</option>
                     <option value="Botany"> Botany</option>

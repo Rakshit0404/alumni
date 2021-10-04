@@ -6,11 +6,11 @@ module.exports.userprofileSchema = Joi.object({
         fullname: Joi.string().required(),
         email: Joi.string(),
         mobileno:Joi.string().max(12).min(10),
-        presentdesignation: Joi.string(),
-        address: Joi.string(),
+        predes: Joi.string(),
+        addrs: Joi.string(),
         school: Joi.string(),
         course: Joi.string(),
-        department: Joi.string()
+        dep: Joi.string()
 
 
     }).required(),
