@@ -107,7 +107,6 @@ app.get('/blogs/:corner',async(req,res,next)=>{
       await naya.save();
     }
     corner=corner[0];
-    console.log(corner);
     res.render('alumni/blogtype',{corner});
 })
 
@@ -115,7 +114,6 @@ app.get('/blogs/:corner/writeblog',(req,res)=>{
   const {corner}=req.params;
   res.render('alumni/writeblog',{corner});
 })
-
 
 app.get('/blogs',(req,res)=>{
     res.render("alumni/blog.ejs");
