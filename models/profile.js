@@ -30,7 +30,7 @@ const UserprofileSchema=new schema({
     course:String,
     dep:String,
     notable:String,
-    image:[ImageSchema]
+    images:[ImageSchema]
 })
 
 module.exports=mongoose.model('Userpro',UserprofileSchema);
