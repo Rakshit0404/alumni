@@ -52,6 +52,14 @@ body{
   
 }
 
+.clgname{
+    color: #000000;
+    font-weight: bold; 
+    font-size: 20px;
+    padding-top: 16px; 
+    font-family: 'PT Sans', sans-serif;
+}
+
 .top{
     
     display: flex;
@@ -254,7 +262,7 @@ body{
     display: none;
 }
 
-@media screen and (max-width:1100px) {
+@media screen and (max-width:768px) {
     
     
 
@@ -284,6 +292,15 @@ body{
     z-index: -1;
 }
 
+.clgname{
+    color: #000000;
+    font-weight: bold; 
+    font-size: 15px;
+    padding-top: 16px; 
+    font-family: 'PT Sans', sans-serif;
+}
+
+
 .background{
     display: flex;
     
@@ -295,11 +312,11 @@ body{
 
 .section2{
     display: flex;
-    width: 380px;
-    height: 600px;
+    width: 280px;
+    height: 500px;
     background-color: white;
     margin-top: 40px;
-    margin-left: 60px;
+    margin-left: 40px;
     flex-direction: column;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5),
   
@@ -323,14 +340,14 @@ body{
     font-size: 16px;
     font-weight: bold;
     margin-top: 39px;
-    margin-left: 110px;
-    margin-right: 100px;
+    margin-left: 100px;
+    margin-right: 80px;
     
 
 }
 
 .signup{
-    width: 300px;
+    width: 250px;
     height: 50px;
     background-color: #ffffff; 
     margin: auto;  
@@ -444,11 +461,11 @@ body{
 
 .section3{
     display: flex;
-    width: 380px;
+    width: 300px;
     height: 450px;
     background-color: white;
     margin-top: 120px;
-    margin-left: 65px;
+    margin-left: 35px;
     flex-direction: column;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5),
     
@@ -469,7 +486,7 @@ body{
 .loginb{
     background-color: rgb(248, 47, 47);
     border: none;
-    width: 380px;
+    width: 100%;
     color: white;
     height: 55px; 
     font-weight: 500; 
