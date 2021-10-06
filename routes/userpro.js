@@ -60,7 +60,7 @@ router.put('/editprofile/:email_p',upload.array('image'),async(req,res)=>{
         for (let filename of req.body.deleteImages) {
             console.log(filename);
             // await cloudinary.uploader.destroy(filename);
-            Cloudinary.uploader.destroy(filename);
+            await Cloudinary.uploader.destroy(filename);
         }
         await user.updateOne({ $pull: { images: { filename: { $in: req.body.deleteImages } } } })
         console.log(user);
