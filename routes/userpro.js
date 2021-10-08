@@ -7,7 +7,7 @@ const multer  = require('multer')
 const {storage}=require('../cloudinary_config')
 const { cloudinary } = require("../cloudinary_config");
 const upload = multer({ storage })
-const Cloudinary = require('cloudinary').v2;
+
 
 
 router.get('/userprofile',isLoggedIn,(req,res)=>{
@@ -56,17 +56,20 @@ router.put('/editprofile/:email_p',upload.array('image'),async(req,res)=>{
     await user.save();
     console.log(req.body.deleteImages);
     if (req.body.deleteImages) {
-       
+        console.log(req.body.deleteImages);
         for (let filename of req.body.deleteImages) {
             console.log(filename);
-            // await cloudinary.uploader.destroy(filename);
-            await Cloudinary.uploader.destroy(filename);
+            await cloudinary.uploader.destroy(filename);
         }
         await user.updateOne({ $pull: { images: { filename: { $in: req.body.deleteImages } } } })
-        console.log(user);
+        console.log("after changes",user)
     }
+    // await user.updateOne({$pull: {images : {filename:{$in: req.body.deleteImages}}}})
+    
     res.send('hooray');
 })
+
+
 
 module.exports=router;
 
