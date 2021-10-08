@@ -50,7 +50,7 @@ body{
     display: flex;
     justify-content: space-between;
 }
-.text{
+#text{
     width:fit-content !important;
     overflow-y: hidden;
     position: relative;

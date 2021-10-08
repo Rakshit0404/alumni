@@ -69,12 +69,21 @@
                     <div class=contentcontainer>
                         <div class=username>
                             <span><span style="color:rgb(163, 162, 162);"><i class="bi bi-share-fill"></i> Posted by
-                            </span>
-                            <b><a href="/viewprofile" style="color: black;">/<%-blog.bloggerName.username%>
-                                </a></b></span>
-                                <span><button class="btn btn-secondary" onclick="location.href='/<%= corner%>/<%=blog._id%>/updateblog'">Update your blog</button></span>
+                                </span>
+                                <b><a href="/viewprofile" style="color: black;">/<%-blog.bloggerName.username%>
+                                    </a></b></span>
+                            <% if(`${blog.bloggerName._id}`==`${user}`){ %>
+                                <span>
+                                    <span>
+                                        <button class="btn btn-danger" id="deleteblog">Delete Blog</button>
+                                    </span>
+                                    <span><button class="btn btn-secondary"
+                                            onclick="location.href='/<%= corner%>/<%=blog._id%>/updateblog'">Update your
+                                            blog</button></span>
+                                </span>
+                                <% } %>
                         </div>
-                        <div class="text">
+                        <div id="text">
                             <%-blog.blogText%>
                         </div>
                     </div>
@@ -90,22 +99,47 @@
                 <h1>Comments</h1>
                 <form method="post" id=forming>
                     <input type="text" name="blogger" style="display: none;" value="<%=blog._id%>">
-                    <textarea name="comment" id="comment" style="width:100%; height:100px;" placeholder="write a comment..."></textarea>
+                    <textarea name="comment" id="comment" style="width:100%; height:100px;"
+                        placeholder="write a comment..."></textarea>
                     <input type="submit" class="btn btn-danger" id="clicktocomment" style="float:right;"
                         value="Post comment">
                 </form>
                 <div style="width:100%; height:auto; margin-top:46px;">
                     <% for(let cum of blog.comments){ %>
                         <div class=comment>
-                            <div class=commenthead><i class="bi bi-share-fill" style="margin-right: 6px;"></i><span style="margin-right: 5px;">comment by</span>
-                                <b><span style=" color:rgb(0, 0, 0);"> /<%= cum.commentName.username %></span></b></div>
-                            <div class=commentcont><%= cum.commentText %></div>
+                            <div class=commenthead><i class="bi bi-share-fill" style="margin-right: 6px;"></i><span
+                                    style="margin-right: 5px;">comment by</span>
+                                <b><span style=" color:rgb(0, 0, 0);"> /<%= cum.commentName.username %></span></b>
+                            </div>
+                            <div class=commentcont>
+                                <%= cum.commentText %>
+                            </div>
                         </div>
-                    <% } %>
+                        <% } %>
                 </div>
             </div>
         </div>
         <script>
+            console.log(`<%=user%>`)
+            console.log(`<%=blog.bloggerName._id%>`)
+            const deleteblog = document.querySelector('#deleteblog');
+            deleteblog.addEventListener('click', (e) => {
+                const block = document.querySelector('#text');
+                const images = block.querySelectorAll('img');
+                var str = "";
+                for (let im of images) {
+                    str += im.src.substr(33) + "|";
+                }
+                str = str.replace(/%20/g, " ");
+                $.ajax({
+                    type: 'post',
+                    url: '/deleteblog',
+                    data: { blogid: `<%=blog._id%>`, string: str },
+                    success: function () {
+                        alert("Post has been deleted!");
+                    }
+                });
+            })
             $(function () {
                 $('#forming').on('submit', function (e) {
                     $.ajax({
@@ -117,11 +151,12 @@
                         }
                     });
                     e.preventDefault();
-                    setTimeout(()=>{
+                    setTimeout(() => {
                         window.location.reload();
                     })
                 });
             });
         </script>
 </body>
+
 </html>
