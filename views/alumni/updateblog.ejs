@@ -65,10 +65,11 @@
                 <div class="carrier" style="width:60%;height:auto;">
                     <div id=pagename>Update your Blog</div>
                     <textarea class="tinymce" id=upload><%-blog.blogText%></textarea>
-                    <form action="/blogs/<%= corner %> " method="post" enctype="multipart/form-data"
-                        style="width:min-content;">
-                        <input type="text" name="content" id="content" style="display:none;">
-                        <input type="submit" id="submit" style="display:none;">
+                    <form action="/blogs/<%= corner %>/upload" method="post" enctype="multipart/form-data"
+                        style="width:min-content; display:none;">
+                        <input type=text name=identify id=identify value="<%=blog._id%>">
+                        <input type="text" name="content" id="content">
+                        <input type="submit" id="submit">
                     </form>
                     <button id=butto class="btn btn-danger"
                         style="width:60px; margin-top: 6px; border-radius: 20px;">Post</button>
@@ -119,7 +120,7 @@
             content.innerHTML=`<%-blog.blogText%>`;
             console.log(content);
             var images=content.querySelectorAll('img');
-            console.log(images); 
+            console.log(images);
             var str = "";
             for (let im of images) {
                 str += im.src.substr(33) + "|";
