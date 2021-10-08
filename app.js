@@ -121,6 +121,7 @@ app.get('/blogs',(req,res)=>{
 
 app.get('/blogs/:corner/:id',async (req,res)=>{
     const{id,corner}=req.params;
+    const user=req.user._id;
     const blog= await Blog.findById({_id:id}).populate({
       path:'bloggerName',
       populate:{
@@ -132,7 +133,7 @@ app.get('/blogs/:corner/:id',async (req,res)=>{
         path:'commentName'
       }
     }).populate('commentName');
-    res.render("alumni/viewblog",{blog,corner});
+    res.render("alumni/viewblog",{blog,corner,user});
 })
 
 app.get('/:corner/:id/updateblog',async (req,res)=>{
@@ -218,6 +219,17 @@ app.post('/blogs/:corner',async (req,res)=>{
     res.redirect(`/blogs/${corner}`);
 })
 
+app.post('/blogs/:corner/upload',async (req,res)=>{
+  const {corner}=req.params; 
+  var banda=await User.find({email:req.user.email});
+  banda=banda[0];
+  var post=await Blog.find({_id:req.body.identify});
+  post=post[0];
+  post.blogText=req.body.content;
+  await post.save();
+  res.redirect(`/blogs/${corner}`);
+})
+
 app.post('/comment',async (req,res)=>{
     var user= await User.find({_id:req.user._id});
     user=user[0];
@@ -231,11 +243,21 @@ app.post('/comment',async (req,res)=>{
 })
 
 app.post('/update',async (req,res)=>{
-    console.log(req.body);
     var str=(req.body).string;
-    console.log(str);
     var newarray=str.split("|");
-    console.log(newarray)
+    array[req.user._id]=newarray;
+    console.log(array);
+})
+
+app.post('/deleteblog',async (req,res)=>{
+    console.log(req.body);
+})
+
+app.post('/like',async (req,res)=>{
+  console.log(req.body);
+  const blog=await Blog.findById({_id:req.body.string});
+  blog.upvotes=blog.upvotes+1;
+  console.log(blog);
 })
 
 app.get('/contactus',(req,res)=>{
