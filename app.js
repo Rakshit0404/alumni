@@ -202,7 +202,6 @@ app.post('/tempupload',(req,res)=>{
   {
     fs.unlinkSync(`./uploads/blogimages/${d}`);
   }
-  console.log(array);
   delete array[req.user._id];
   console.log(array);
 });
@@ -249,8 +248,17 @@ app.post('/update',async (req,res)=>{
     console.log(array);
 })
 
-app.post('/deleteblog',async (req,res)=>{
-    console.log(req.body);
+app.post('/deleteblog/:corner',async (req,res)=>{
+    const {corner}=req.params;
+    console.log(corner);
+    var newarray=req.body.string.split("|");
+    console.log(newarray);
+    for(let i=0;i<newarray.length-1;i++)
+    {
+        let d=newarray[i];
+        fs.unlinkSync(`./uploads/blogimages/${d}`);
+    }
+    await Blog.deleteOne({_id:req.body.blogid});
 })
 
 app.post('/like',async (req,res)=>{
