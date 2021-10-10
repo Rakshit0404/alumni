@@ -50,6 +50,7 @@ body{
     background-color: rgb(252, 250, 248);
     margin-bottom: 14px;
     border-radius: 5px;
+    overflow: hidden;
 }
 .ablog:hover{
     border-right: 2px solid grey;
