@@ -74,6 +74,7 @@ body{
     border-bottom: 1px solid black;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     color:rgb(163, 162, 162);
 }
 .commentcont{
