@@ -2,6 +2,10 @@ body{
     display:flex;
     flex-direction: column;
 }
+img {
+    max-width: 650px !important;
+    height: auto;
+}
 #topbar{
     background-color: #C21717;
     color:white;
