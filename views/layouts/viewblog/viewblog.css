@@ -77,12 +77,19 @@ body{
     justify-content: space-between;
     color:rgb(163, 162, 162);
 }
+img {
+    max-width: 650px !important;
+    height: auto;
+}
 .commentcont{
     margin-top: 10px;
     padding-bottom: 20px;
 }
+#likeee{
+    font-size: 23px;
+}
 
-.bi-save2-fill, .bi-chat-fill, .bi-hand-thumbs-up-fill{
+.bi-save2-fill, .bi-chat-fill, .bi-hearts-fill{
     color:grey !important;
     cursor: pointer;
 }
