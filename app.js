@@ -16,10 +16,11 @@ const userRoutes=require('./routes/user');
 const User=require('./models/user');
 const ExpressError=require('./utils/ExpressError');
 const catchAsync=require('./utils/catchAsync');
-const userproRoutes=require('./routes/userpro')
+const userproRoutes=require('./routes/userpro');
 const Blog=require('./models/blogs');
 const Blogtype=require('./models/blogtype');
 const Comments=require('./models/comments');
+const Like=require('./models/like');
 const methodOverride = require('method-override');
 
 
@@ -90,6 +91,7 @@ var mime = require('mime');
 app.use(fileUpload({}));
 const array=require('./models/array');
 const { findById } = require('./models/user');
+const blogs = require('./models/blogs');
 
 
 app.get('/blogs/:corner',async(req,res,next)=>{
@@ -99,7 +101,13 @@ app.get('/blogs/:corner',async(req,res,next)=>{
       populate:{
         path:'bloggerName'
       }
-    }).populate('bloggerName')
+    }).populate({
+        path:'bloggerName',
+        populate:{
+          path:'comments'
+        }
+    }).populate('comments');
+    console.log(corner);
     if(corner.length==0)
     {
       let naya=await new Blogtype({name:req.params.corner});
@@ -107,7 +115,8 @@ app.get('/blogs/:corner',async(req,res,next)=>{
       await naya.save();
     }
     corner=corner[0];
-    res.render('alumni/blogtype',{corner});
+    let blogtype=req.params.corner;
+    res.render('alumni/blogtype',{corner,blogtype});
 })
 
 app.get('/blogs/:corner/writeblog',(req,res)=>{
@@ -263,9 +272,25 @@ app.post('/deleteblog/:corner',async (req,res)=>{
 
 app.post('/like',async (req,res)=>{
   console.log(req.body);
-  const blog=await Blog.findById({_id:req.body.string});
-  blog.upvotes=blog.upvotes+1;
-  console.log(blog);
+  const blog=await Blog.findById({_id:req.body.blogid});
+  if(include(blog.likes, req.body.userid))
+  {
+    blog.likes=blog.likes.filter((ele)=>{
+      return ele!=req.body.userid;
+    })
+  }
+  else{
+    blog.likes.push(req.body.userid);
+  }
+  console.log(blog.likes);
+  blog.save();
+})
+
+app.post('/delcomment',async (req,res)=>{
+  await Comments.findByIdAndDelete({_id:req.body.string});
+  const blogdel= await Blog.findById({_id:req.body.blogid});
+  blogdel.comments.remove(req.body.string);
+  blogdel.save();
 })
 
 app.get('/contactus',(req,res)=>{
@@ -289,3 +314,10 @@ app.use((err,req,res,next)=>{
 app.listen('3000',()=>{
 console.log("listening to port 3000");
 })
+
+function include(arr, obj) {
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i] == obj) return true;
+
+  }
+}
