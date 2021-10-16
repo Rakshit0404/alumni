@@ -192,14 +192,12 @@ app.post('/upload', function (req, res) {
   }
 });
 
-app.get('/uploadtemp',(req,res)=>{
-  res.render("alumni/writeblogtemp");
-})
-
 app.post('/tempupload',(req,res)=>{
   const {filenames}= req.body;
   var divide=filenames.split("|");
+  console.log("hiii")
   console.log(divide);
+  console.log("hiii")
   function diffArray(arr1, arr2) {
     return arr1
       .concat(arr2)
@@ -211,8 +209,11 @@ app.post('/tempupload',(req,res)=>{
   {
     fs.unlinkSync(`./uploads/blogimages/${d}`);
   }
+  console.log("hiii")
   delete array[req.user._id];
+  console.log("hiii")
   console.log(array);
+  console.log("hiii")
 });
 
 app.post('/blogs/:corner',async (req,res)=>{
@@ -318,6 +319,5 @@ console.log("listening to port 3000");
 function include(arr, obj) {
   for (var i = 0; i < arr.length; i++) {
     if (arr[i] == obj) return true;
-
   }
 }
