@@ -66,14 +66,13 @@
                 <div class="carrier" style="width:60%;height:auto;">
                     <div id=pagename>Write a Blog</div>
                     <textarea class="tinymce" id=upload></textarea>
-                    <form action="/blogs/<%= corner %> " method="post" enctype="multipart/form-data" style="width:min-content;">
+                    <form action="/blogs/<%= corner %> " method="post" enctype="multipart/form-data"
+                        style="width:min-content;">
                         <input type="text" name="content" id="content" style="display:none;">
                         <input type="submit" id="submit" style="display:none;">
                     </form>
                     <button id=butto class="btn btn-danger"
                         style="width:60px; margin-top: 6px; border-radius: 20px;">Post</button>
-                    <!-- submitting request -->
-                    <iframe id=justupdate src="/uploadtemp" frameborder="0" style="display:none;"></iframe>
                 </div>
                 <div class="carrier">
                     <!-- <div id=select>
@@ -114,6 +113,28 @@
                 </div>
             </div>
         </div>
+        <script>
+            const butto = document.querySelector("#butto");
+            const filenames = document.querySelector("#filenames");
+            butto.addEventListener('click', (e) => {
+                var iframe = document.getElementById('upload_ifr');
+                var images = iframe.contentWindow.document.querySelectorAll('p img');
+                var str = "";
+                for (let im of images) {
+                    str += im.src.substr(33) + "|";
+                }
+                str = str.replace(/%20/g, " ");
+                $.post("/tempupload",
+                    { filenames: str },
+                    function (data, status) {
+                        alert("Data: " + data + "\nStatus: " + status);
+                    });
+                var getcontent = tinyMCE.get("upload").getContent({ format: 'raw' });
+                var content = document.querySelector("#content");
+                content.value = getcontent;
+                document.querySelector("#submit").click();
+            })
+        </script>
         <script type=module src="/writeblog/writeblog.js"></script>
         <script type=text/javascript src="/plugins/tinymce/tinymce.min.js"></script>
         <script type=text/javascript src="/plugins/tinymce/init-tinymce.js"></script>
