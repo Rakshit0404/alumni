@@ -80,9 +80,8 @@
                                     <%=blog.likes.length%>
                                 </div>
 
-                                <i class="likeee" <%if(blog.likes.indexOf(user)!=-1){ %>style="color:tomato !important;"
-                                    <%}%>
-                                        class="bi bi-heart-fill" name="<%=blog._id%>"></i>
+                                <i <%if(blog.likes.indexOf(user)!=-1){ %>style="color:tomato !important;"<%}%>
+                                        class="likeee bi bi-heart-fill" name="<%=blog._id%>"></i>
                             </div>
                         </div>
                         <div style="width:100%;">
@@ -116,8 +115,22 @@
         </div>
         <script>
             const likeee = document.querySelectorAll('.likeee');
-
-            
+            if(likeee&&likeee.length)
+            {
+            for (let li of likeee) {
+                li.addEventListener('click', (e) => {
+                    var id=li.getAttribute('name');
+                    $.post("/like",
+                        { blogid: id, userid: `<%= user %>` },
+                        function (data, status) {
+                            alert("Data: " + data + "\nStatus: " + status);
+                        }
+                    );
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 200)
+                })}
+            }
         </script>
 </body>
 
