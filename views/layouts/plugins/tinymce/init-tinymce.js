@@ -1,6 +1,6 @@
 tinymce.init({
     selector:"textarea.tinymce",
-
+	content_style: 'img {max-width: 650px !important; height:auto;}',
     /* width and height of the editor */
 	width: "100%",
 	

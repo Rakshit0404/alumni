@@ -2,6 +2,10 @@ body{
     display:flex;
     flex-direction: column;
 }
+img {
+    max-width: 650px !important;
+    height: auto;
+}
 #topbar{
     background-color: #C21717;
     color:white;
@@ -50,6 +54,7 @@ body{
     background-color: rgb(252, 250, 248);
     margin-bottom: 14px;
     border-radius: 5px;
+    overflow: hidden;
 }
 .ablog:hover{
     border-right: 2px solid grey;
@@ -109,6 +114,14 @@ input{
 input:focus{
     outline-width:0;
     border:1px solid rgb(206, 201, 201);
+}
+#noblogsyet{
+    font-size: 35px;
+    padding:20px;
+    width:100%;
+    background-color: rgb(240, 231, 221);
+    color:rgb(109, 109, 109);
+    border-radius: 6px;
 }
 
 .bi-save2-fill, .bi-chat-fill, .bi-hand-thumbs-up-fill{

@@ -60,21 +60,33 @@
                 <div class=likes>
                     <div>
                         <div style="width:40px; height:30px; text-align:center; margin-top: 40px;">
-                            <%=blog.comments.length%>
+                            <%=blog.likes.length%>
                         </div>
-                        <i class="bi bi-hand-thumbs-up-fill" style="font-size: 25px;"></i>
+                        
+                        <i id="likeee"
+                        <%if(blog.likes.indexOf(user)!=-1){ %>style="color:tomato !important;"<%}%>
+                         class="bi bi-heart-fill" ></i>
                     </div>
                 </div>
                 <div style="width:100%;">
                     <div class=contentcontainer>
                         <div class=username>
                             <span><span style="color:rgb(163, 162, 162);"><i class="bi bi-share-fill"></i> Posted by
-                            </span>
-                            <b><a href="/viewprofile" style="color: black;">/<%-blog.bloggerName.username%>
-                                </a></b></span>
-                                <span><button class="btn btn-secondary" onclick="location.href='/<%= corner%>/<%=blog._id%>/updateblog'">Update your blog</button></span>
+                                </span>
+                                <b><a href="/viewprofile" style="color: black;">/<%-blog.bloggerName.username%>
+                                    </a></b></span>
+                            <% if(`${blog.bloggerName._id}`==`${user}`){ %>
+                                <span>
+                                    <span>
+                                        <button class="btn btn-danger" id="deleteblog">Delete Blog</button>
+                                    </span>
+                                    <span><button class="btn btn-secondary"
+                                            onclick="location.href='/<%= corner%>/<%=blog._id%>/updateblog'">Update your
+                                            blog</button></span>
+                                </span>
+                                <% } %>
                         </div>
-                        <div class="text">
+                        <div id="text">
                             <%-blog.blogText%>
                         </div>
                     </div>
@@ -87,25 +99,87 @@
                 </div>
             </div>
             <div id=commentsection>
-                <h1>Comments</h1>
+                <h1>
+                    <%=blog.comments.length%> Comments
+                </h1>
                 <form method="post" id=forming>
                     <input type="text" name="blogger" style="display: none;" value="<%=blog._id%>">
-                    <textarea name="comment" id="comment" style="width:100%; height:100px;" placeholder="write a comment..."></textarea>
+                    <textarea name="comment" id="comment" style="width:100%; height:100px;"
+                        placeholder="write a comment..."></textarea>
                     <input type="submit" class="btn btn-danger" id="clicktocomment" style="float:right;"
                         value="Post comment">
                 </form>
                 <div style="width:100%; height:auto; margin-top:46px;">
                     <% for(let cum of blog.comments){ %>
                         <div class=comment>
-                            <div class=commenthead><i class="bi bi-share-fill" style="margin-right: 6px;"></i><span style="margin-right: 5px;">comment by</span>
-                                <b><span style=" color:rgb(0, 0, 0);"> /<%= cum.commentName.username %></span></b></div>
-                            <div class=commentcont><%= cum.commentText %></div>
+                            <div class=commenthead><span><i class="bi bi-share-fill"
+                                        style="margin-right: 6px;"></i><span style="margin-right: 5px;">comment
+                                        by</span>
+                                    <b><span style=" color:rgb(0, 0, 0);"> /<%= cum.commentName.username %>
+                                        </span></b></span>
+                                <% if(`${cum.commentName._id}`==`${user}`){ %>
+                                    <button class="delcomment btn btn-secondary" name="<%=cum._id%>">Delete
+                                        comment</button>
+                                    <% } %>
+                            </div>
+                            <div class=commentcont>
+                                <%= cum.commentText %>
+                            </div>
                         </div>
-                    <% } %>
+                        <% } %>
                 </div>
             </div>
         </div>
         <script>
+            const likeee = document.querySelector('#likeee');
+            likeee.addEventListener('click', (e) => {
+                console.log(`<%= blog._id %>`);
+                $.post("/like",
+                    { blogid: `<%= blog._id %>`, userid: `<%= user %>`, },
+                    function (data, status) {
+                        alert("Data: " + data + "\nStatus: " + status);
+                    });
+                setTimeout(() => {
+                    window.location.reload();
+                }, 200)
+            })
+
+            const deleteblog = document.querySelector('#deleteblog');
+            if (deleteblog) {
+                deleteblog.addEventListener('click', (e) => {
+                    const block = document.querySelector('#text');
+                    const images = block.querySelectorAll('img');
+                    var str = "";
+                    for (let im of images) {
+                        str += im.src.substr(33) + "|";
+                    }
+                    str = str.replace(/%20/g, " ");
+                    $.ajax({
+                        type: 'post',
+                        url: '/deleteblog/<%=corner%>',
+                        data: { blogid: `<%=blog._id%>`, string: str }
+                    });
+                    window.open("/blogs/<%=corner%>", "_self");
+                })
+            }
+
+            const delcomment = document.querySelectorAll('.delcomment');
+            if (delcomment) {
+                for (let del of delcomment) {
+                    del.addEventListener('click', () => {
+                        const str = del.getAttribute('name');
+                        $.post("/delcomment",
+                            { string: str, blogid: `<%=blog._id%>` },
+                            function (data, status) {
+                                alert("Data: " + data + "\nStatus: " + status);
+                            });
+                        setTimeout(() => {
+                            window.location.reload();
+                        }, 200)
+                    })
+                }
+            }
+
             $(function () {
                 $('#forming').on('submit', function (e) {
                     $.ajax({
@@ -117,11 +191,12 @@
                         }
                     });
                     e.preventDefault();
-                    setTimeout(()=>{
+                    setTimeout(() => {
                         window.location.reload();
-                    })
+                    }, 200)
                 });
             });
         </script>
 </body>
+
 </html>

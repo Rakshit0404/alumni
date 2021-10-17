@@ -2,6 +2,7 @@ const mongoose=require('mongoose');
 
 const comments=require('./comments');
 const User=require('./user');
+const Like=require('./like');
 
 const blogs=new mongoose.Schema({
     bloggerName:{
@@ -13,10 +14,10 @@ const blogs=new mongoose.Schema({
         type:mongoose.Schema.Types.ObjectId,
         ref:'Comments'
     }],
-    upvotes:{
-        type:Number,
-        default:0
-    }
+    likes:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'Like'
+    }]
 })
 
 module.exports=mongoose.model('Blog',blogs);

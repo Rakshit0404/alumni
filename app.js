@@ -16,10 +16,11 @@ const userRoutes=require('./routes/user');
 const User=require('./models/user');
 const ExpressError=require('./utils/ExpressError');
 const catchAsync=require('./utils/catchAsync');
-const userproRoutes=require('./routes/userpro')
+const userproRoutes=require('./routes/userpro');
 const Blog=require('./models/blogs');
 const Blogtype=require('./models/blogtype');
 const Comments=require('./models/comments');
+const Like=require('./models/like');
 const methodOverride = require('method-override');
 
 
@@ -90,6 +91,7 @@ var mime = require('mime');
 app.use(fileUpload({}));
 const array=require('./models/array');
 const { findById } = require('./models/user');
+const blogs = require('./models/blogs');
 
 
 app.get('/blogs/:corner',async(req,res,next)=>{
@@ -99,7 +101,13 @@ app.get('/blogs/:corner',async(req,res,next)=>{
       populate:{
         path:'bloggerName'
       }
-    }).populate('bloggerName')
+    }).populate({
+        path:'bloggerName',
+        populate:{
+          path:'comments'
+        }
+    }).populate('comments');
+    console.log(corner);
     if(corner.length==0)
     {
       let naya=await new Blogtype({name:req.params.corner});
@@ -107,8 +115,8 @@ app.get('/blogs/:corner',async(req,res,next)=>{
       await naya.save();
     }
     corner=corner[0];
-    console.log(corner);
-    res.render('alumni/blogtype',{corner});
+    let blogtype=req.params.corner;
+    res.render('alumni/blogtype',{corner,blogtype});
 })
 
 app.get('/blogs/:corner/writeblog',(req,res)=>{
@@ -116,13 +124,13 @@ app.get('/blogs/:corner/writeblog',(req,res)=>{
   res.render('alumni/writeblog',{corner});
 })
 
-
 app.get('/blogs',(req,res)=>{
     res.render("alumni/blog.ejs");
 })
 
 app.get('/blogs/:corner/:id',async (req,res)=>{
     const{id,corner}=req.params;
+    const user=req.user._id;
     const blog= await Blog.findById({_id:id}).populate({
       path:'bloggerName',
       populate:{
@@ -134,7 +142,7 @@ app.get('/blogs/:corner/:id',async (req,res)=>{
         path:'commentName'
       }
     }).populate('commentName');
-    res.render("alumni/viewblog",{blog,corner});
+    res.render("alumni/viewblog",{blog,corner,user});
 })
 
 app.get('/:corner/:id/updateblog',async (req,res)=>{
@@ -184,14 +192,12 @@ app.post('/upload', function (req, res) {
   }
 });
 
-app.get('/uploadtemp',(req,res)=>{
-  res.render("alumni/writeblogtemp");
-})
-
 app.post('/tempupload',(req,res)=>{
   const {filenames}= req.body;
   var divide=filenames.split("|");
+  console.log("hiii")
   console.log(divide);
+  console.log("hiii")
   function diffArray(arr1, arr2) {
     return arr1
       .concat(arr2)
@@ -203,9 +209,11 @@ app.post('/tempupload',(req,res)=>{
   {
     fs.unlinkSync(`./uploads/blogimages/${d}`);
   }
-  console.log(array);
+  console.log("hiii")
   delete array[req.user._id];
+  console.log("hiii")
   console.log(array);
+  console.log("hiii")
 });
 
 app.post('/blogs/:corner',async (req,res)=>{
@@ -218,6 +226,17 @@ app.post('/blogs/:corner',async (req,res)=>{
     await newpost.save();
     await requiredtype.save();
     res.redirect(`/blogs/${corner}`);
+})
+
+app.post('/blogs/:corner/upload',async (req,res)=>{
+  const {corner}=req.params; 
+  var banda=await User.find({email:req.user.email});
+  banda=banda[0];
+  var post=await Blog.find({_id:req.body.identify});
+  post=post[0];
+  post.blogText=req.body.content;
+  await post.save();
+  res.redirect(`/blogs/${corner}`);
 })
 
 app.post('/comment',async (req,res)=>{
@@ -233,11 +252,46 @@ app.post('/comment',async (req,res)=>{
 })
 
 app.post('/update',async (req,res)=>{
-    console.log(req.body);
     var str=(req.body).string;
-    console.log(str);
     var newarray=str.split("|");
-    console.log(newarray)
+    array[req.user._id]=newarray;
+    console.log(array);
+})
+
+app.post('/deleteblog/:corner',async (req,res)=>{
+    const {corner}=req.params;
+    console.log(corner);
+    var newarray=req.body.string.split("|");
+    console.log(newarray);
+    for(let i=0;i<newarray.length-1;i++)
+    {
+        let d=newarray[i];
+        fs.unlinkSync(`./uploads/blogimages/${d}`);
+    }
+    await Blog.deleteOne({_id:req.body.blogid});
+})
+
+app.post('/like',async (req,res)=>{
+  console.log(req.body);
+  const blog=await Blog.findById({_id:req.body.blogid});
+  if(include(blog.likes, req.body.userid))
+  {
+    blog.likes=blog.likes.filter((ele)=>{
+      return ele!=req.body.userid;
+    })
+  }
+  else{
+    blog.likes.push(req.body.userid);
+  }
+  console.log(blog.likes);
+  blog.save();
+})
+
+app.post('/delcomment',async (req,res)=>{
+  await Comments.findByIdAndDelete({_id:req.body.string});
+  const blogdel= await Blog.findById({_id:req.body.blogid});
+  blogdel.comments.remove(req.body.string);
+  blogdel.save();
 })
 
 app.get('/contactus',(req,res)=>{
@@ -261,3 +315,9 @@ app.use((err,req,res,next)=>{
 app.listen('3000',()=>{
 console.log("listening to port 3000");
 })
+
+function include(arr, obj) {
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i] == obj) return true;
+  }
+}
