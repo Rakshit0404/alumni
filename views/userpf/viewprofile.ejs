@@ -30,10 +30,19 @@
 <div  style="background-color: #f4f7fd;"  >  
   <div class="container mt-5"    >
   <div class="profile">
-     <div class="imageprofile" >
+    <% if((user.images.length)){ %>
+      <div class="imageprofile" >
         <div class="img" style="background-image: url(<%=user.images[0].thumbnail%>);" >
-           
+      </div>
+      <% } else { %>
+        <div class="imageprofile" >
+          <div class="img" style="background-image: url();" >
         </div>
+     
+        <% } %>  
+    
+           
+       
         <div class="fullname" >
           <i class="bi bi-person-fill"></i><%= user.fullname %> 
         </div>
