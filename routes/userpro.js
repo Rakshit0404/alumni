@@ -17,20 +17,22 @@ router.get('/userprofile',isLoggedIn,(req,res)=>{
 
 
 router.post('/userprofile',  upload.array('image') , validateuser , catchAsync(async(req,res)=>{
-    console.log(req.body,req.files);
+    // console.log(req.body,req.files);
     const userpro=new Userpro(req.body.user);
-    userpro.images=req.files.map(f=>({url:f.path , filename:f.filename}))
+    const email=req.body.user.email;
+    console.log(email);
+    userpro.images=req.files.map(f=>({url:f.path , filename:f.filename}));
     // console.log(images)
-    console.log(userpro);
+    // console.log(userpro);
     await userpro.save();
-    res.send('hooray');
+    res.redirect(`/viewprofile/${email}`);
 }));
 
 router.get('/viewprofile/:email_p', isLoggedIn ,async(req,res)=>{
      const {email_p}=req.params
     //console.log(email_p);
      const user= await Userpro.findOne({email : email_p });
-     console.log(user);
+    //  console.log(user);
      res.render('userpf/viewprofile',{user})
 })
 
@@ -54,19 +56,19 @@ router.put('/editprofile/:email_p',upload.array('image'),async(req,res)=>{
     const img=req.files.map(f => ({url:f.path , filename:f.filename}));
     user.images.push(...img);
     await user.save();
-    console.log(req.body.deleteImages);
+    // console.log(req.body.deleteImages);
     if (req.body.deleteImages) {
-        console.log(req.body.deleteImages);
+        // console.log(req.body.deleteImages);
         for (let filename of req.body.deleteImages) {
-            console.log(filename);
+            // console.log(filename);
             await cloudinary.uploader.destroy(filename);
         }
         await user.updateOne({ $pull: { images: { filename: { $in: req.body.deleteImages } } } })
-        console.log("after changes",user)
+        // console.log("after changes",user)
     }
     // await user.updateOne({$pull: {images : {filename:{$in: req.body.deleteImages}}}})
     
-    res.send('hooray');
+    res.redirect(`/viewprofile/${email_p}`);
 })
 
 
