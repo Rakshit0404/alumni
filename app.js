@@ -116,7 +116,7 @@ app.get('/blogs/:corner',async(req,res,next)=>{
     }
     corner=corner[0];
     let blogtype=req.params.corner;
-    res.render('alumni/blogtype',{corner,blogtype});
+    res.render('alumni/blogtype',{corner,blogtype,user:req.user._id});
 })
 
 app.get('/blogs/:corner/writeblog',(req,res)=>{
