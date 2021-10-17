@@ -233,13 +233,24 @@
             </div>
 
             <div class="mb-3">
-               
-             
-                <img src="<%= user.images[0].thumbnail%> " style="margin-left: 220px;" class="img-thumbnail"  alt="">
-                 <div class="form-check-inline" >
-                    <input type="checkbox" name="deleteImages[]" id="image" value="<%=user.images[0].filename%>" >
-                 </div>
-                 <label for="image">Delete?</label>
+                        <%=console.log(user.images)  %> 
+                       <% if ((user.images.length)) { %>
+                        <img src="<%= user.images[0].thumbnail%> " style="margin-left: 220px;" class="img-thumbnail"  alt="">
+                        <div class="form-check-inline" >
+                           <input type="checkbox" name="deleteImages[]" id="image" value="<%=user.images[0].filename%>" >
+                        </div>
+                        <label for="image">Delete?</label>
+                    <% } else { %>
+                       
+                        <img src="" style="margin-left: 220px;" class="img-thumbnail"  alt="">
+                        <div class="form-check-inline" >
+                           <input type="checkbox" name="deleteImages[]" id="image" value="" >
+                        </div>
+                        <label for="image">Delete?</label>
+                    <%  }  %>
+                         
+         
+                        
             </div>
 
 
