@@ -33,6 +33,9 @@ router.get('/viewprofile/:email_p', isLoggedIn ,async(req,res)=>{
     //console.log(email_p);
      const user= await Userpro.findOne({email : email_p });
     //  console.log(user);
+     if(user===null){
+         res.redirect('/userprofile')
+     }
      res.render('userpf/viewprofile',{user})
 })
 
@@ -43,6 +46,10 @@ router.get('/editprofile/:email_p',isLoggedIn,async(req,res)=>{
     // console.log("in edit")
     // console.log(user);
     // console.log(user.addrs)
+    if(user===null){
+        req.flash('error',"please complete you profile")
+        res.redirect('/userprofile')
+    }
     
     res.render('userpf/editpro',{user});
 })

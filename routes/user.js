@@ -23,6 +23,7 @@ router.post('/register',  catchAsync(async(req,res)=>{
             res.redirect('/');
         })
     } catch(e){
+        console.log(e);
         req.flash('error',e.message);
         res.redirect('/login');
     }
