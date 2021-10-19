@@ -94,8 +94,8 @@ const { findById } = require('./models/user');
 const blogs = require('./models/blogs');
 
 
-app.get('/blogs/:corner',async(req,res,next)=>{
-    console.log(req.params.corner);
+app.get('/blogs/:corner',async(req,res)=>{
+    const{index,limit}=req.query;
     var corner=await Blogtype.find({name:req.params.corner}).populate({
       path:'blogs',
       populate:{
@@ -282,8 +282,11 @@ app.post('/like',async (req,res)=>{
   }
   else{
     blog.likes.push(req.body.userid);
+    // for(let i=0;i<1000;i++)
+    // {
+    //   blog.likes.push('6159faad99f9482050920aad');
+    // }
   }
-  console.log(blog.likes);
   blog.save();
 })
 
@@ -315,9 +318,15 @@ app.use((err,req,res,next)=>{
 app.listen('3000',()=>{
 console.log("listening to port 3000");
 })
-
+//extra functions
 function include(arr, obj) {
   for (var i = 0; i < arr.length; i++) {
     if (arr[i] == obj) return true;
   }
+}
+
+function pagination(model,index)
+{
+  model=model.slice((index-1)*15,15);
+  return model;
 }
