@@ -109,11 +109,35 @@
                         </div>
                     </div>
                     <% } %>
-                        <% } else{ %>
+                        <% } else { %>
                             <div id=noblogsyet><span>.....no blogs yet</span></div>
-                            <% } %>
+                        <% } %>
+        </div>
+        <div id="page">
+            <div class="pages" style="width:max-content; padding-left:4px; padding-right:4px; margin-right:40px;" name="<%= parseInt(index)-1 %>"><i class="bi bi-caret-left-fill"></i> prev </div>
+            <% for(let i=1;i<=blognos/15+1;i++){ %>
+                <% if(Math.abs(index-i)<2||i==Math.floor(blognos/15)+1||i==1){ %>
+                    <div class="pages" style=<%- (index==i && "color:white;background-color:black;")%> name="<%= i %>"><%= i %></div>
+                <% } else if(Math.abs(index-i)<6){ %>
+                    <span style="margin-left: 1px; margin-right: 1px;"><b>.</b></span>
+                <% } %>
+            <% } %>
+            <div class="pages" style="width:max-content; padding-left:4px; padding-right:4px; margin-left:40px;" name="<%= parseInt(index)+1 %>"> next<i class="bi bi-caret-right-fill"></i></div>
         </div>
         <script>
+            console.log("<%=blognos%>")
+            const pages=document.querySelectorAll(".pages");
+            for(let page of pages)
+            {
+                page.addEventListener('click',(e)=>{
+                    const index=page.getAttribute('name');
+                    if(index>0&&index<=parseInt('<%=Math.floor(blognos/15)+1%>'))
+                    {
+                        window.open(`/blogs/<%=blogtype%>?index=${index}`,"_self");
+                    }
+                })
+            }
+
             const likeee = document.querySelectorAll('.likeee');
             if(likeee&&likeee.length)
             {
