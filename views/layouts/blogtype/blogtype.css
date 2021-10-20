@@ -123,6 +123,31 @@ input:focus{
     color:rgb(109, 109, 109);
     border-radius: 6px;
 }
+#page{
+    display:flex;
+    flex-direction: row;
+    margin-top: 100px;
+    width:100%;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+    border-top: 1px solid rgb(226, 226, 226);
+    border-bottom: 1px solid rgb(226, 226, 226);
+    background-color: rgb(238, 238, 238);
+    padding:10px
+}
+.pages{
+    width:30px;
+    height:30px;
+    border:1px solid grey;
+    border-radius: 3px;
+    text-align: center;
+    margin:3px;
+    cursor: pointer;
+}
+.pages:hover{
+    background-color: rgb(238, 238, 238);
+}
 
 .bi-save2-fill, .bi-chat-fill, .bi-hand-thumbs-up-fill{
     color:grey !important;
@@ -151,3 +176,5 @@ input:focus{
   ::-webkit-scrollbar-thumb:hover {
     background: rgb(203, 45, 45);
   }
+
+  
