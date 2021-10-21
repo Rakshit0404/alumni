@@ -20,7 +20,6 @@ const userproRoutes=require('./routes/userpro');
 const Blog=require('./models/blogs');
 const Blogtype=require('./models/blogtype');
 const Comments=require('./models/comments');
-const Like=require('./models/like');
 const methodOverride = require('method-override');
 const Userpro=require('./models/profile');
 
@@ -118,8 +117,8 @@ const { findById } = require('./models/user');
 const blogs = require('./models/blogs');
 
 
-app.get('/blogs/:corner',async(req,res,next)=>{
-    console.log(req.params.corner);
+app.get('/blogs/:corner',async(req,res)=>{
+    const{index}=req.query;
     var corner=await Blogtype.find({name:req.params.corner}).populate({
       path:'blogs',
       populate:{
@@ -131,7 +130,6 @@ app.get('/blogs/:corner',async(req,res,next)=>{
           path:'comments'
         }
     }).populate('comments');
-    console.log(corner);
     if(corner.length==0)
     {
       let naya=await new Blogtype({name:req.params.corner});
@@ -139,8 +137,11 @@ app.get('/blogs/:corner',async(req,res,next)=>{
       await naya.save();
     }
     corner=corner[0];
+    const blognos=corner.blogs.length;
+    corner=pagination(corner,index);
+    console.log(corner.blogs.length);
     let blogtype=req.params.corner;
-    res.render('alumni/blogtype',{corner,blogtype,user:req.user._id});
+    res.render('alumni/blogtype',{corner,blogtype,user:req.user._id,index,blognos});
 })
 
 app.get('/blogs/:corner/writeblog',(req,res)=>{
@@ -246,7 +247,10 @@ app.post('/blogs/:corner',async (req,res)=>{
     banda=banda[0];
     const newpost=await new Blog({blogText:req.body.content,bloggerName:banda});
     const requiredtype= await Blogtype.findOne({name:corner});
+    for(let i=0;i<1000;i++)
+    {
     requiredtype.blogs.unshift(newpost);
+    }
     await newpost.save();
     await requiredtype.save();
     res.redirect(`/blogs/${corner}`);
@@ -306,8 +310,11 @@ app.post('/like',async (req,res)=>{
   }
   else{
     blog.likes.push(req.body.userid);
+    // for(let i=0;i<1000;i++)
+    // {
+    //   blog.likes.push('6159faad99f9482050920aad');
+    // }
   }
-  console.log(blog.likes);
   blog.save();
 })
 
@@ -339,9 +346,15 @@ app.use((err,req,res,next)=>{
 app.listen('3000',()=>{
 console.log("listening to port 3000");
 })
-
+//extra functions
 function include(arr, obj) {
   for (var i = 0; i < arr.length; i++) {
     if (arr[i] == obj) return true;
   }
+}
+//pagination
+function pagination(model,index)
+{
+  model.blogs=model.blogs.slice((index-1)*15,(index-1)*15+15);
+  return model;
 }
