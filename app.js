@@ -22,6 +22,7 @@ const Blogtype=require('./models/blogtype');
 const Comments=require('./models/comments');
 const Like=require('./models/like');
 const methodOverride = require('method-override');
+const Userpro=require('./models/profile');
 
 
 mongoose.connect('mongodb://localhost:27017/alumni', {
@@ -84,6 +85,29 @@ app.get('/',(req,res)=>{
 app.use('/',userRoutes)
 
 app.use("/",userproRoutes)
+
+app.get("/search",(req,res)=>{
+  res.render('search/search')
+})
+
+app.post('/search',async(req,res)=>{
+    console.log(req.body.search);
+    const str=req.body.search.toLowerCase().trim();
+    let user= await Userpro.find();
+    user=checkString(user,str);
+    console.log(user);
+    res.send("searching");
+})
+
+function checkString(users,str){
+    // let s=[];
+    // users.forEach(user=>s.push(user.fullname));
+    // let ans=[];
+   return ( users.filter(user=>{
+      return user.fullname.trim().toLowerCase().includes(str);
+    })
+   )
+  }
 
 const fs = require('fs-extra');
 var fileUpload = require('express-fileupload');
