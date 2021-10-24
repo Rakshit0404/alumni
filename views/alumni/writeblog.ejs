@@ -121,7 +121,7 @@
                 var images = iframe.contentWindow.document.querySelectorAll('p img');
                 var str = "";
                 for (let im of images) {
-                    str += im.src.substr(33) + "|";
+                    str += im.src.split("/").reverse()[0] + "|";
                 }
                 str = str.replace(/%20/g, " ");
                 $.post("/tempupload",
