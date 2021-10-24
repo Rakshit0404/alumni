@@ -151,13 +151,13 @@
                     const images = block.querySelectorAll('img');
                     var str = "";
                     for (let im of images) {
-                        str += im.src.substr(33) + "|";
+                        str += im.src.split("/").reverse()[0] + "|";
                     }
                     str = str.replace(/%20/g, " ");
                     $.ajax({
                         type: 'post',
                         url: '/deleteblog/<%=corner%>',
-                        data: { blogid: `<%=blog._id%>`, string: str }
+                        data: { blogid: `<%=blog._id%>`, string: str, folder:`<%=blog.folderName%>` }
                     });
                     window.open("/blogs/<%=corner%>", "_self");
                 })
