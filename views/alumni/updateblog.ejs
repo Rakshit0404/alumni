@@ -65,7 +65,7 @@
                 <div class="carrier" style="width:60%;height:auto;">
                     <div id=pagename>Update your Blog</div>
                     <textarea class="tinymce" id=upload><%-blog.blogText%></textarea>
-                    <form action="/blogs/<%= corner %>/upload" method="post" enctype="multipart/form-data"
+                    <form action="/blogs/<%= corner %>/updateblog" method="post" enctype="multipart/form-data"
                         style="width:min-content; display:none;">
                         <input type=text name=identify id=identify value="<%=blog._id%>">
                         <input type="text" name="content" id="content">
@@ -73,8 +73,6 @@
                     </form>
                     <button id=butto class="btn btn-danger"
                         style="width:60px; margin-top: 6px; border-radius: 20px;">Post</button>
-                    <!-- submitting request -->
-                    <iframe id=justupdate src="/uploadtemp" frameborder="0" style="display:none;"></iframe>
                 </div>
                 <div class="carrier">
                     <!-- <div id=select>
@@ -123,7 +121,7 @@
             console.log(images);
             var str = "";
             for (let im of images) {
-                str += im.src.substr(33) + "|";
+                str += im.src.split("/").reverse()[0] + "|";
             }
             str = str.replace(/%20/g, " ");
             $.post("/update",
@@ -138,7 +136,7 @@
                 var images = iframe.contentWindow.document.querySelectorAll('p img');
                 var str = "";
                 for (let im of images) {
-                    str += im.src.substr(33) + "|";
+                    str += im.src.split("/").reverse()[0] + "|";
                 }
                 str = str.replace(/%20/g, " ");
                 $.post("/tempupload",
