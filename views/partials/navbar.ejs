@@ -17,20 +17,33 @@
     </div>
   </div>
   <div class=navcontent>
-    <% if(!currentUser) { %>
+    <% if(userNow == "") { %>
       <div class=navitems onclick="location.href='/login';"><a
           style="color: inherit; text-decoration: none;">LOGIN/SIGNUP</a>
       </div>
-
+    <% }else if(userNow.length == 0){ %>
+      <div class=navitems><%= currentUser.username %></div>
+      <div class="usertoggle">
+        <div class="edit"> <a href="/userprofile" style="color: inherit; text-decoration: none; "> profile </a> </div>
+        <div class="logout"><a href="/logout" style="color: inherit; text-decoration: none; ">Logout</a></div>
+      </div>
       <% } else { %>
         <div class=navitems id="user"> <span style="font-size: 15px;">
             <%=currentUser.username%>
-          </span> </div>
+          </span> 
+          <div class="usertoggle">
+            <div class="edit"> <a href="/userprofile" style="color: inherit; text-decoration: none; "> profile </a> </div>
+            <div class="logout"><a href="/logout" style="color: inherit; text-decoration: none; ">Logout</a></div>
+          </div>
+        </div>
+        <div class="dropdown navitems">
+          <div class="dropbtn" style="font-size:15px;"><%=currentUser.username%>sdvsvfb</div>
+          <div class="dropdown-content">
+            <a href="/userprofile">Fill Details</a>
+            <a href="/logout">Log Out</a>
+          </div>
+        </div>
         <% } %>
   </div>
 </div>
 
-<div class="usertoggle">
-  <div class="edit"> <a href="/userprofile" style="color: inherit; text-decoration: none; "> profile </a> </div>
-  <div class="logout"><a href="/logout" style="color: inherit; text-decoration: none; ">Logout</a></div>
-</div>
