@@ -1,3 +1,23 @@
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: rgb(30, 29, 46);
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 6px;
+    background: rgb(203, 45, 45);
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(203, 45, 45);
+  }
 body{
     display:flex;
     flex-direction: column;
@@ -23,6 +43,7 @@ img {
 }
 #block{
     margin-left: 20vw;
+    min-width: 50%;
     max-width: 750px;
 }
 #head{
@@ -157,25 +178,13 @@ input:focus{
 .bi-save2-fill:hover, .bi-chat-fill:hover, .bi-hand-thumbs-up-fill:hover{
     color:black !important;
 }
-::-webkit-scrollbar {
-    width: 10px;
-  }
-  
-  /* Track */
-  ::-webkit-scrollbar-track {
-    background: rgb(30, 29, 46);
-  }
-  
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 6px;
-    background: rgb(203, 45, 45);
-  }
-  
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: rgb(203, 45, 45);
-  }
+
+#alumnis{
+    width:400px;
+    height:400px;
+    border:1px solid black;
+    margin-left:30px;
+}
+
 
   
