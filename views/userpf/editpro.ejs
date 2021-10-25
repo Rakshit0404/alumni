@@ -39,7 +39,18 @@
         <form action="/editprofile/<%=currentUser.email%>?_method=PUT" method="post" novalidate class="validate-form"
             enctype="multipart/form-data">
 
-
+            <% if(!user.username){ %>
+                <div class="mb-2 mt-2 ">
+                    <label style="margin-left: 120px; color: rgb(128, 128, 128);" for="username"
+                        class="form-label">Username:</label>
+    
+                    <input type="text" class="form-control" id="Username" name='user[username]' value=""
+                        placeholder="username" required style="width: 500px; margin-left: 120px; ">
+                    <div class="valid-feedback" style="margin-left: 120px; color: rgb(128, 128, 128);">
+                        looks good!
+                    </div>
+                </div>
+                <% } else { %> 
             <div class="mb-2 mt-2 ">
                 <label style="margin-left: 120px; color: rgb(128, 128, 128);" for="username"
                     class="form-label">Username:</label>
@@ -50,6 +61,20 @@
                     looks good!
                 </div>
             </div>
+            <% } %> 
+
+            
+            <% if (!user.fullname) { %>
+                <div class="mb-2">
+                    <label style="margin-left: 120px; color: rgb(128, 128, 128);" for="fullnmae" class="form-label">
+                        Fullname: </label>
+                    <input type="text" class="form-control" id="Fullname" name="user[fullname]" value="" placeholder="fullname" 
+                        required style="width: 500px; margin-left: 120px; ">
+                    <div class="valid-feedback" style="margin-left: 120px; color: rgb(128, 128, 128);">
+                        looks good!
+                    </div>
+                </div>
+            <% } else { %>
 
             <div class="mb-2">
                 <label style="margin-left: 120px; color: rgb(128, 128, 128);" for="fullnmae" class="form-label">
@@ -60,6 +85,20 @@
                     looks good!
                 </div>
             </div>
+             <% } %> 
+
+             <% if(!user.email){ %>
+                <div class="mb-2">
+                    <label style="margin-left: 120px; color: rgb(128, 128, 128);" for="email" class="form-label"> Email:
+                    </label>
+                    <input type="email" class="form-control" id="email" name="user[email]" value="<%=user.email%> " placeholder="Email"
+                        required style="width: 500px; margin-left: 120px; ">
+                    <div class="valid-feedback" style="margin-left: 120px; color: rgb(128, 128, 128);">
+                        looks good!
+                    </div>
+                </div>
+    
+            <% } else { %> 
 
             <div class="mb-2">
                 <label style="margin-left: 120px; color: rgb(128, 128, 128);" for="email" class="form-label"> Email:
@@ -71,36 +110,76 @@
                 </div>
             </div>
 
+            <% } %> 
 
 
+            <% if(!user.mobileno){ %> 
+                <div class="mb-2">
+                    <label style="margin-left: 120px; color: rgb(128, 128, 128);" for="mobileno" class="form-label"> Mobile
+                        No: </label>
+                    <input type="text" class="form-control" id="mobileno" placeholder="Mobile No" value="" name="user[mobileno]"
+                        required style="width: 500px; margin-left: 120px; ">
+                    <div class="valid-feedback" style="margin-left: 120px; color: rgb(128, 128, 128);">
+                        looks good!
+                    </div>
+                </div>
+                <% } else { %> 
             <div class="mb-2">
                 <label style="margin-left: 120px; color: rgb(128, 128, 128);" for="mobileno" class="form-label"> Mobile
                     No: </label>
-                <input type="text" class="form-control" id="mobileno" placeholder="Mobile No" value="<%=user.mobileno%>  " name="user[mobileno]"
+                <input type="text" class="form-control" id="mobileno" placeholder="Mobile No" value="<%=user.mobileno%>" name="user[mobileno]"
                     required style="width: 500px; margin-left: 120px; ">
                 <div class="valid-feedback" style="margin-left: 120px; color: rgb(128, 128, 128);">
                     looks good!
                 </div>
             </div>
-
+            <% } %> 
+            <% if(!user.predes){ %>
+                <div class="mb-2">
+                    <label style="margin-left: 120px; color: rgb(128, 128, 128);" for="predes" class="form-label"> Present
+                        Designation: </label>
+                    <input type="text" class="form-control" id="predes" name="user[predes]" value=""
+                        placeholder="Designation" required style="width: 500px; margin-left: 120px; ">
+                    <div class="valid-feedback" style="margin-left: 120px; color: rgb(128, 128, 128);">
+                        looks good!
+                    </div>
+                </div>
+                <% } else { %> 
             <div class="mb-2">
                 <label style="margin-left: 120px; color: rgb(128, 128, 128);" for="predes" class="form-label"> Present
                     Designation: </label>
-                <input type="text" class="form-control" id="predes" name="user[predes]" value=" <%=user.predes%>  "
+                <input type="text" class="form-control" id="predes" name="user[predes]" value="<%=user.predes%>"
                     placeholder="Designation" required style="width: 500px; margin-left: 120px; ">
                 <div class="valid-feedback" style="margin-left: 120px; color: rgb(128, 128, 128);">
                     looks good!
                 </div>
             </div>
+
+            <% } %> 
+
+            <% if(!user.addrs){ %> 
+                <div class="mb-2">
+                    <label style="margin-left: 120px; color: rgb(128, 128, 128);" for="address" class="form-label"> Address:
+                    </label>
+                    <textarea name="user[addrs]" class="form-control"  required style="width: 500px; margin-left: 120px; " value=" <%= user.addrs %>  "
+                        id="address" cols="3" rows="3"></textarea>
+                    <div class="valid-feedback" style="margin-left: 120px; color: rgb(128, 128, 128);">
+                        looks good!
+                    </div>
+                </div>
+            <% }else{ %> 
             <div class="mb-2">
                 <label style="margin-left: 120px; color: rgb(128, 128, 128);" for="address" class="form-label"> Address:
                 </label>
                 <textarea name="user[addrs]" class="form-control"  required style="width: 500px; margin-left: 120px; " value=" <%= user.addrs %>  "
-                    id="address" cols="3" rows="3"><%= user.addrs  %> </textarea>
+                    id="address" cols="3" rows="3"><%=user.addrs%></textarea>
                 <div class="valid-feedback" style="margin-left: 120px; color: rgb(128, 128, 128);">
                     looks good!
                 </div>
             </div>
+            <% } %>
+            
+            
             <div class="mb-2">
                 <label style="margin-left: 120px; color: rgb(128, 128, 128);" for="school" class="form-label"> School:
                 </label>
@@ -245,10 +324,10 @@
                     <% } else { %>
                        
                         <img src="" style="margin-left: 220px;" class="img-thumbnail"  alt="">
-                        <div class="form-check-inline" >
+                        <div class="form-check-inline" style="display: none;" >
                            <input type="checkbox" name="deleteImages[]" id="image" value="" >
                         </div>
-                        <label for="image">Delete?</label>
+                        <label for="image" style="display: none;" >Delete?</label>
                     <%  }  %>
                          
          
