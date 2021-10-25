@@ -77,8 +77,17 @@ app.use((req, res, next) => {
   next();
 })
 
-app.get('/', (req, res) => {
-  res.render('layouts/home');
+app.get('/', async (req, res) => {
+  var userNow = "";
+  if(req.user)
+  {
+    userNow = await Userpro.find({email:req.user.email});
+    if(userNow.length)
+    {
+      userNow = userNow[0];
+    }
+  }
+  res.render('layouts/home',{userNow});
 })
 
 app.use('/', userRoutes)
@@ -135,12 +144,19 @@ app.get('/blogs/:corner', async (req, res) => {
     corner.push(naya);
     await naya.save();
   }
+  const user=Userpro.find({_id: req.user._id});
+  const alumnis = [];
+  if(user.length)
+  {
+    alumnis = Userpro.find({branch: user.branch});
+  }
   corner = corner[0];
+  console.log(alumnis);
   const blognos = corner.blogs.length;
   corner = pagination(corner, index);
   console.log(corner.blogs.length);
   let blogtype = req.params.corner;
-  res.render('alumni/blogtype', { corner, blogtype, user: req.user._id, index, blognos });
+  res.render('alumni/blogtype', { corner, blogtype, user: req.user._id, index, blognos, alumnis });
 })
 
 app.get('/blogs/:corner/writeblog', (req, res) => {
@@ -259,7 +275,7 @@ app.post('/blogs/:corner/updateblog', async (req, res) => {
   post = post[0];
   post.blogText = req.body.content;
   await post.save();
-  res.redirect(`/blogs/${corner}`);
+  res.redirect(`/blogs/${corner}?index=1`);
 })
 
 app.post('/comment', async (req, res) => {
