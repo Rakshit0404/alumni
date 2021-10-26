@@ -135,6 +135,7 @@ img{
     grid-gap:5px;
     padding: 80px;
     background-color: rgba(122, 29, 29, 0.2);
+    font-family: 'Major Mono Display', monospace;
 }
 
 .blocks{
