@@ -78,7 +78,7 @@ app.use((req, res, next) => {
 })
 
 app.get('/', async (req, res) => {
-  var userNow = "";
+  var userNow = "Nothing";
   if(req.user)
   {
     userNow = await Userpro.find({email:req.user.email});
