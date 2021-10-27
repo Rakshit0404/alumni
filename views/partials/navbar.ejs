@@ -30,9 +30,16 @@
         </div>
       </div>
       <% } else { %>
-        <div class="dropdown navitems" style="display:flex; justify-content: center; align-items: flex-start;">
+        <div class="dropdown" style="display:flex; justify-content: center; align-items: flex-start; margin-right:20px;">
           <img src="<%= userNow.images[0].url %>" style="height:50px; width:50px;">
-          <div class="dropdown-content">
+          <div class="dropdown-content" style="margin-top: 55px;min-width: 300px;">
+            <div style="display: flex; background-color: rgb(224, 222, 222);">
+              <img src="<%= userNow.images[0].url %>" style="height:60px; width:60px; padding:20px;">
+              <div>
+                <b><a href="/viewprofile/<%=currentUser.username%>" style=" margin-top:10px; height:10px !important; font-size: 15px;"><%=currentUser.username%></a></b>
+                <a href="/viewprofile/<%=currentUser.email%>" style=" font-size: 12px;"><%=currentUser.email%></a>
+              </div>
+            </div>
             <a href="/viewprofile/<%=currentUser.email%>">View Profile</a>
             <a href="/editprofile/<%=currentUser.email %>">Edit Profile</a>
             <a href="/logout">Log Out</a>
