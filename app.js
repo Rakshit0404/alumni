@@ -149,6 +149,7 @@ app.get('/blogs/:corner', async (req, res) => {
   if(user.length)
   {
     alumnis = Userpro.find({branch: user.branch});
+    console.log(alumnis);
   }
   corner = corner[0];
   console.log(alumnis);
