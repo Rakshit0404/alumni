@@ -95,16 +95,21 @@ app.use('/', userRoutes)
 app.use("/", userproRoutes)
 
 app.get("/search",(req,res)=>{
-  res.render('search/search')
+  const user=[{isNothing:true}];
+  res.render('search/search',{user});
 })
 
 app.post('/search',async(req,res)=>{
     console.log(req.body.search);
-    const str=req.body.search.toLowerCase().trim();
+    let str=req.body.search.trim().toLowerCase();
+    if(str===""){
+      str=null;
+    }
+    console.log(str);
     let user= await Userpro.find();
     user=checkString(user,str);
     console.log(user);
-    res.send("searching");
+    res.render("search/search",{user});
 })
 
 function checkString(users,str){

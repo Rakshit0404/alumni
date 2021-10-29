@@ -1,4 +1,90 @@
-<!DOCTYPE html>
+<% layout('layouts/boilerplate') %>
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="/">GGV Alumni</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+       
+        <div class="navbar-nav ms-auto">
+            <% if(!currentUser) { %>
+                <div ><a
+                    style="color: white; text-decoration: none;  ">LOGIN/SIGNUP</a>
+                </div>
+          
+                <% } else { %>
+                  <div> <span style="font-size: 20px; color: white; font-weight: 400; ">
+                    <i class="bi bi-person" style="margin-right: 8px; font-size: 25px; " ></i><%=currentUser.username%>
+                    </span> </div>
+                  <% } %>
+          </div>
+      
+      </div>
+    </div>
+  </nav>
+
+  <div style="overflow: scroll; width:100vw; height: 100vh; ">
+  <form action="/search" method="post">
+
+    <div class="input-group flex-nowrap mt-5 w-50 mx-auto ">
+      <input type="text" class="form-control" placeholder="Search for an alumni" name="search" aria-label="Username" aria-describedby="addon-wrapping">
+      <span class="input-group-text" id="addon-wrapping"><button type="submit"  style="border: none;"  ><i class="bi bi-search"></i></button></span>
+    </div>
+ </form>   
+
+   
+ <% if(user[0].isNothing){%> 
+ <!-- <div class="card mb-3 mx-auto mt-5 " style="max-width: 540px;">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="..." class="img-fluid rounded-start" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      </div>
+    </div>
+  </div>
+</div> -->
+<!-- <div class="mx-auto mt-5 " >Sorry ! No User Found</div> -->
+<% } else if(!user.length){ %>
+ 
+  <div class="mx-auto mt-5 " >Sorry ! No User Found</div>
+<% }else { %>
+  
+  <div class="card mb-3 mx-auto mt-5 " style="max-width: 540px;  padding: 50px;">
+    <div class="row g-0">
+      <% if(!user[0].images.length){ %> 
+      <div class="col-md-4">
+        <img src="/images/no-profile.png" class="img-fluid rounded-start" alt="...">
+      </div>
+      <% }else{ %>
+        <img src="<%=user[0].images[0].thumbnail%> " class="img-fluid rounded-start" alt="...">
+        <% } %> 
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title"><%=user[0].fullname%> </h5>
+          <p class="card-text"><small class="text-muted"><%= user[0].dep%> </small></p>
+          <p class="card-text  mt-5 position-absolute  end-0 "><a href="/viewprofile/<%= user[0].email%> "  style="text-decoration:none; padding: 14px 25px; 
+                                                                                          background-color: rgba(211, 18, 18, 0.61);
+                                                                                          color: white;
+                                                                                          font-weight: bold;">Viewprofile</a></p>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  <% } %> 
+
+</div>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -14,4 +100,4 @@
  
 
 </body>
-</html>
+</html> -->
