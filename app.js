@@ -144,11 +144,12 @@ app.get('/blogs/:corner', async (req, res) => {
     corner.push(naya);
     await naya.save();
   }
-  const user=Userpro.find({_id: req.user._id});
-  const alumnis = [];
+  let user=await Userpro.find({email: req.user.email});
+  console.log(user);
+  let alumnis = [];
   if(user.length)
   {
-    alumnis = Userpro.find({branch: user.branch});
+    alumnis = await Userpro.find({course: user[0].course});
     console.log(alumnis);
   }
   corner = corner[0];
