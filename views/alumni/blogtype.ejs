@@ -117,8 +117,36 @@
                                 <div id=noblogsyet><span>.....no blogs yet</span></div>
                                 <% } %>
             </div>
+            <div>
             <div id="alumnis">
-                <%=console.log(alumnis)%>
+                <div id=smallnav>Alumnis</div>
+                <div style="overflow-y: scroll; scroll-behavior: smooth;">
+                <%for(let alums of alumnis){ %>
+                    <div class=alums>
+                        <div><img style="width:50px; height:auto; margin-left:25px;" src="<%= alums.images[0].url %>"></div>
+                        <div style="margin-left: 50px;">
+                            <div><b>
+                                <%=alums.fullname%>
+                            </b></div>
+                            <div>
+                                <%=alums.predes%>
+                            </div>
+                        </div>
+                    </div>
+                  <% } %>
+                </div>
+            </div>
+            <div id=warning>
+                <div id="selecthead">Strict Rules</div>
+                <div style="padding:10px; box-sizing: border-box;">
+                    <ul>
+                        <li>Do not write abusive content</li>
+                        <li>Check for copyrights before uploading images</li>
+                        <li>Do not write the same blog again</li>
+                        <li>Try to use less than 5 photos in the blog if possible</li>
+                    </ul>
+                </div>
+            </div>
             </div>
         </div>
         <div id="page">
@@ -138,7 +166,7 @@
                                     name="<%= parseInt(index)+1 %>"> next<i class="bi bi-caret-right-fill"></i></div>
         </div>
         <script>
-            console.log("<%=blognos%>")
+            console.log("<%=alumnis[0].url%>");
             const pages = document.querySelectorAll(".pages");
             for (let page of pages) {
                 page.addEventListener('click', (e) => {
