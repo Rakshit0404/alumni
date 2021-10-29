@@ -7,7 +7,7 @@ h1 {
 .container {
     width: 100%;
     margin: 0 auto;
-    margin-bottom: 150px;
+    margin-bottom: 30px;
 }
 
 .carousel-item > div {
@@ -18,7 +18,9 @@ h1 {
 }
 
 .item-1 {
-    background-color: #3498db;
+    background-image: linear-gradient(rgba(2, 51, 124, 0.7),rgba(2, 51, 124, 0.7)), url(../images/Equilibrio.jpg);
+    background-size: 100% auto;
+    background-position: center;
 }
 
 .item-2 {
@@ -88,7 +90,6 @@ h1 {
 }
 
 .carousel-prev::before {
-    content: '\f053';
     font-family: "FontAwesome";
 }
 
@@ -98,7 +99,6 @@ h1 {
 }
 
 .carousel-next::before {
-    content: '\f054';
     font-family: "FontAwesome";
 }
 
