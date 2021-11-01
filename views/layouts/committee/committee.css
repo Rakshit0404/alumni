@@ -14,7 +14,7 @@
     margin-left: 98%;
     background-color: rgb(203, 45, 45);
     clip-path: polygon(5% 0%, 100% 0%, 100% 100%, 5% 100%,5% 70%, 0% 65%, 0% 35%, 5% 30% );
-    transition: margin-left 0.8s;
+    transition: margin-left 0.8s ease;
 }
 #contactsofmems:hover{
     margin-left:50%;
