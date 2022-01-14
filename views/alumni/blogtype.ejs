@@ -123,7 +123,7 @@
                 <div style="overflow-y: scroll; scroll-behavior: smooth;">
                 <%for(let alums of alumnis){ %>
                     <div class=alums>
-                        <div><img style="width:50px; height:auto; margin-left:25px;" src="<%= alums.images[0].url %>"></div>
+                        <div><img style="width:50px; height:auto; margin-left:25px;" src="<%= alums.images[0]==0&&alums.images[0].url %>"></div>
                         <div style="margin-left: 50px;">
                             <div><b>
                                 <%=alums.fullname%>
@@ -166,8 +166,6 @@
                                     name="<%= parseInt(index)+1 %>"> next<i class="bi bi-caret-right-fill"></i></div>
         </div>
         <script>
-            console.log("<%=alumnis[0].url%>");
-            const pages = document.querySelectorAll(".pages");
             for (let page of pages) {
                 page.addEventListener('click', (e) => {
                     const index = page.getAttribute('name');

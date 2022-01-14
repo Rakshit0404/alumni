@@ -1,0 +1,1 @@
+mongodb+srv://abstergo04:<password>@cluster0.3rljr.mongodb.net/myFirstDatabase?retryWrites=true&w=majority

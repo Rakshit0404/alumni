@@ -2,7 +2,7 @@ if (process.env.NODE_ENV !== "production") {
   require('dotenv').config();
 }
 
-
+const dburl = process.env.db_url;
 const express = require('express');
 const path = require('path');
 const app = express();
@@ -23,8 +23,14 @@ const Comments = require('./models/comments');
 const methodOverride = require('method-override');
 const Userpro=require('./models/profile');
 
+// mongoose.connect('mongodb://localhost:27017/alumni', {
+//   useNewUrlParser: true,
+//   useCreateIndex: true,
+//   useUnifiedTopology: true,
+//   useFindAndModify: false
+// })
 
-mongoose.connect('mongodb://localhost:27017/alumni', {
+mongoose.connect(dburl, {
   useNewUrlParser: true,
   useCreateIndex: true,
   useUnifiedTopology: true,
@@ -87,6 +93,7 @@ app.get('/', async (req, res) => {
       userNow = userNow[0];
     }
   }
+  console.log(userNow);
   res.render('layouts/home',{userNow});
 })
 
