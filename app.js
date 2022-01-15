@@ -92,6 +92,9 @@ app.get('/', async (req, res) => {
     {
       userNow = userNow[0];
     }
+    else{
+      userNow = "Something";
+    }
   }
   console.log(userNow);
   res.render('layouts/home',{userNow});

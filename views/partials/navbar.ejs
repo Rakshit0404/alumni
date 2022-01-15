@@ -7,7 +7,7 @@
     </div>
     <div class=navitems onclick="location.href='/#committee';"><a
         style="text-decoration: none; color: inherit; ">COMMITTEE</a></div>
-    <div class=navitems onclick="location.href='/contactus';"><a
+    <div class=navitems onclick="location.href='/#footer';"><a
         style="text-decoration: none; color: inherit;">CONTACT</a></div>
     <div class=navitems onclick="location.href='/#happenings';"><a
         style="text-decoration: none; color: inherit;">EVENTS</a></div>
@@ -21,7 +21,7 @@
       <div class=navitems onclick="location.href='/login';"><a
           style="color: inherit; text-decoration: none;">LOGIN/SIGNUP</a>
       </div>
-    <% }else if(userNow.images.length === 0){ %>
+    <% }else if(userNow=="Something"){ %>
       <div class="dropdown navitems">
         <div class="dropbtn" style="font-size:15px;"><%=currentUser.username%></div>
         <div class="dropdown-content">
@@ -31,10 +31,10 @@
       </div>
       <% } else { %>
         <div class="dropdown" style="display:flex; justify-content: center; align-items: flex-start; margin-right:20px;">
-          <img src="<%= userNow.images[0].url %>" style="height:50px; width:50px;">
+          <div style="height:50px; width:50px; border-radius:50%; overflow:hidden;"><img src="<%= userNow.images.length!=0 ? userNow.images[0].url : "/images/no-profile.png"%>" style="height:auto; width:100%;"></div>
           <div class="dropdown-content" style="margin-top: 55px;min-width: 300px;">
             <div style="display: flex; background-color: rgb(224, 222, 222);">
-              <img src="<%= userNow.images[0].url %>" style="height:60px; width:60px; padding:20px;">
+              <div style="height:60px; width:60px; padding:20px; border-radius:50%; overflow:hidden;"><img src="<%= userNow.images.length!=0 ? userNow.images[0].url : "/images/no-profile.png"%>" style="height:auto; width:100%;"></div>
               <div>
                 <b><a href="/viewprofile/<%=currentUser.username%>" style=" margin-top:10px; height:10px !important; font-size: 15px;"><%=currentUser.username%></a></b>
                 <a href="/viewprofile/<%=currentUser.email%>" style=" font-size: 12px;"><%=currentUser.email%></a>

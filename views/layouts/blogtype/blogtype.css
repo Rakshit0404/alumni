@@ -215,7 +215,7 @@ input:focus{
 #warning{
     width:90%;
     margin-left: 30px;
-    height:32%;
+    height:max-content;
     margin-top: 30px;
     background-color: rgb(245, 240, 240);
     overflow:hidden;
@@ -223,7 +223,8 @@ input:focus{
     font-family: 'Chakra Petch', sans-serif;
 }
 #selecthead{
-    height:20%;
+    min-height:70px;
+    max-height: 70px;
     display: flex;
     justify-content: center;
     align-items: center;
