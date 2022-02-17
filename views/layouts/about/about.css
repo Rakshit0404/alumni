@@ -26,9 +26,13 @@
     #vccut{
         height:auto;
         width:30vw;
-        padding-top:5vw;
-        padding-right:8vw;
+        margin-top:5vw;
+        margin-right:7vw;
+        padding-right: 1vw;
+        padding-left: 20px;
         font-size: 14px;
+        border: 2px solid rgba(255, 86, 56, 0.5);
+        background-color: rgba(253, 61, 27, 0.1);
     }
     .readmore:hover{
         background-color: white !important;
@@ -80,7 +84,6 @@
         align-items: center;
         margin-left: 20px;
         margin-right: 20px;
-        /* backdrop-filter: blur(1px); */
     }
     .readmore:hover{
         background-color: white !important;

@@ -2,7 +2,7 @@ if (process.env.NODE_ENV !== "production") {
   require('dotenv').config();
 }
 
-
+const dburl = process.env.db_url;
 const express = require('express');
 const path = require('path');
 const app = express();
@@ -23,8 +23,14 @@ const Comments = require('./models/comments');
 const methodOverride = require('method-override');
 const Userpro=require('./models/profile');
 
+// mongoose.connect('mongodb://localhost:27017/alumni', {
+//   useNewUrlParser: true,
+//   useCreateIndex: true,
+//   useUnifiedTopology: true,
+//   useFindAndModify: false
+// })
 
-mongoose.connect('mongodb://localhost:27017/alumni', {
+mongoose.connect(dburl, {
   useNewUrlParser: true,
   useCreateIndex: true,
   useUnifiedTopology: true,
@@ -77,8 +83,18 @@ app.use((req, res, next) => {
   next();
 })
 
-app.get('/', (req, res) => {
-  res.render('layouts/home');
+app.get('/', async (req, res) => {
+  var userNow = "Nothing";
+  if(req.user)
+  {
+    userNow = await Userpro.find({email:req.user.email});
+    if(userNow.length)
+    {
+      userNow = userNow[0];
+    }
+  }
+  console.log(userNow);
+  res.render('layouts/home',{userNow});
 })
 
 app.use('/', userRoutes)
@@ -140,12 +156,21 @@ app.get('/blogs/:corner', async (req, res) => {
     corner.push(naya);
     await naya.save();
   }
+  let user=await Userpro.find({email: req.user.email});
+  console.log(user);
+  let alumnis = [];
+  if(user.length)
+  {
+    alumnis = await Userpro.find({course: user[0].course});
+    console.log(alumnis);
+  }
   corner = corner[0];
+  console.log(alumnis);
   const blognos = corner.blogs.length;
   corner = pagination(corner, index);
   console.log(corner.blogs.length);
   let blogtype = req.params.corner;
-  res.render('alumni/blogtype', { corner, blogtype, user: req.user._id, index, blognos });
+  res.render('alumni/blogtype', { corner, blogtype, user: req.user._id, index, blognos, alumnis });
 })
 
 app.get('/blogs/:corner/writeblog', (req, res) => {
@@ -264,7 +289,7 @@ app.post('/blogs/:corner/updateblog', async (req, res) => {
   post = post[0];
   post.blogText = req.body.content;
   await post.save();
-  res.redirect(`/blogs/${corner}`);
+  res.redirect(`/blogs/${corner}?index=1`);
 })
 
 app.post('/comment', async (req, res) => {
@@ -338,7 +363,10 @@ app.use((err, req, res, next) => {
   res.status(statusCode).render('error', { err });
 })
 
-app.listen('3000', () => {
+const port=process.env.PORT || 3000;
+
+
+app.listen(port, () => {
   console.log("listening to port 3000");
 })
 //extra functions

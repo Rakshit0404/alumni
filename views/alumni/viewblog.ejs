@@ -91,7 +91,7 @@
                         </div>
                     </div>
                     <div class=details>
-                        <div><i class="bi bi-chat-fill"></i>
+                        <div onclick="location.href='/blogs/<%=corner%>/<%=blog._id%>#forming'" style="cursor: pointer;"><i class="bi bi-chat-fill"></i>
                             <%=blog.comments.length%> comments
                         </div>
                         <div><i class="bi bi-save2-fill"></i> save</div>
@@ -159,7 +159,7 @@
                         url: '/deleteblog/<%=corner%>',
                         data: { blogid: `<%=blog._id%>`, string: str, folder:`<%=blog.folderName%>` }
                     });
-                    window.open("/blogs/<%=corner%>", "_self");
+                    window.open("/blogs/<%=corner%>?index=1", "_self");
                 })
             }
 
